@@ -67,12 +67,12 @@ class AppView extends AbstractView
 
         @header      = new Header
         @wrapper     = new Wrapper
-        @footer      = new Footer
+        # @footer      = new Footer
 
         @
             .addChild @header
             .addChild @wrapper
-            .addChild @footer
+            # .addChild @footer
 
         @onAllRendered()
         return

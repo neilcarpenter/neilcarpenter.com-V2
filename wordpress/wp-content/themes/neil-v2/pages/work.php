@@ -11,7 +11,7 @@
 
 		<div class="page page-work" data-template="page-work">
 
-			<h2>Work</h2>
+			<h2 data-page-transition>Work</h2>
 			
 		</div>
 

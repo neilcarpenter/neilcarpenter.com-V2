@@ -1,0 +1,12 @@
+@font-face {
+  font-family: 'Open Sans';
+  src: url('OpenSans-Regular.eot'); /* IE9 Compat Modes */
+  src: url('OpenSans-Regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('OpenSans-Regular.woff') format('woff'), /* Modern Browsers */
+       url('OpenSans-Regular.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('OpenSans-Regular.svg#dc56f0938c09c27a4156bb0f8f5176a2') format('svg'); /* Legacy iOS */
+       
+  font-style:   normal;
+  font-weight:  400;
+}
+

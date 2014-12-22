@@ -11,7 +11,7 @@
 
 		<div class="page page-about" data-template="page-about">
 
-			<h2>About</h2>
+			<h2 data-page-transition>About</h2>
 			
 		</div>
 

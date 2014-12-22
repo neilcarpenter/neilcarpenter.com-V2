@@ -1,7 +1,13 @@
 	<header data-template="site-header" id="site-header">
 
-        <h1><a href="<?= get_site_url(); ?>">Go home website</a></h1>
-        <i>Sup headah</i>
+        <h1 class="logo"><a href="<?= get_site_url(); ?>">Neil Carpenter</a></h1>
+        <nav>
+            <ul>
+                <li><a href="<?= get_site_url(); ?>/about">About</a></li>
+                <li><a href="<?= get_site_url(); ?>/work">Work</a></li>
+                <li><a href="<?= get_site_url(); ?>/contact">Contact</a></li>
+            </ul>
+        </nav>
 
 	</header>
 

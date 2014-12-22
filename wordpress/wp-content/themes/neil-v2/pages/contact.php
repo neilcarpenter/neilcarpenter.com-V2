@@ -11,7 +11,7 @@
 
 		<div class="page page-contact" data-template="page-contact">
 
-			<h2>Contact</h2>
+			<h2 data-page-transition>Contact</h2>
 			
 		</div>
 

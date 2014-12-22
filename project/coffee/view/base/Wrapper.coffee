@@ -51,7 +51,7 @@ class Wrapper extends AbstractView
 
 		@NC().appView.off 'start', @start
 
-		@updateDims()
+		# @updateDims()
 		@bindEvents()
 
 		null
@@ -59,15 +59,15 @@ class Wrapper extends AbstractView
 	bindEvents : =>
 
 		@NC().nav.on Nav.EVENT_CHANGE_VIEW, @changeView
-		@NC().appView.on @NC().appView.EVENT_UPDATE_DIMENSIONS, @updateDims
+		# @NC().appView.on @NC().appView.EVENT_UPDATE_DIMENSIONS, @updateDims
 
 		null
 
-	updateDims : =>
+	# updateDims : =>
 
-		@$el.css 'min-height', @NC().appView.dims.h
+	# 	@$el.css 'min-height', @NC().appView.dims.h
 
-		null
+	# 	null
 
 	changeView : (area, sub, query) =>
 

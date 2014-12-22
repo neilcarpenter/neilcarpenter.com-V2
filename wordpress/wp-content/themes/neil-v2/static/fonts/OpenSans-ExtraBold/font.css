@@ -1,0 +1,12 @@
+@font-face {
+  font-family: 'Open Sans Extrabold';
+  src: url('OpenSans-ExtraBold.eot'); /* IE9 Compat Modes */
+  src: url('OpenSans-ExtraBold.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('OpenSans-ExtraBold.woff') format('woff'), /* Modern Browsers */
+       url('OpenSans-ExtraBold.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('OpenSans-ExtraBold.svg#5c62748eddf7ad78c6f00917cd538fb7') format('svg'); /* Legacy iOS */
+       
+  font-style:   normal;
+  font-weight:  700;
+}
+

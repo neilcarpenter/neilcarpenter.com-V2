@@ -11,7 +11,7 @@
 
 		<div class="page page-home" data-template="page-home">
 
-			<h2>Homepage</h2>
+			<h2 data-page-transition>Homepage</h2>
 			
 		</div>
 
