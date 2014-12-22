@@ -1,0 +1,16 @@
+.idea
+.vagrant
+
+latest.tar.gz
+
+/node_modules
+.sass-cache/
+.sublime/
+
+# OSX 
+*.DS_Store
+
+dploy.yaml
+wordpress/.rev
+wordpress/wp-content/uploads
+wordpress/wp-content/plugins/wordpress-importer/

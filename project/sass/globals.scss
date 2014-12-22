@@ -1,0 +1,35 @@
+/*
+ * GLOBAL SASS VARIABLES GO HERE
+ */
+
+/*
+ * Paths
+ */
+
+$image_folder        : "assets_static/";
+$image_retina_folder : "assets/";
+
+/*
+ * colours
+ */
+
+/*
+ * layout-related
+ */
+
+/*
+ * Media queries breakpoints
+ */
+
+$breakpoints: (
+  small         'all and ( max-width: 874px )',
+  ipad          'screen and (min-device-width : 768px) and (max-device-width : 1024px)',
+  medium        'all and (max-width: 959px) and (min-width: 875px)',
+  large         'all and ( min-width: 1024px ) and ( max-width: 1366px )',
+  extra-large   'all and ( min-width: 1367px )',
+  short         'all and ( max-height: 450px )',
+);
+
+$MOBILE  : (small medium);
+$DESKTOP : (ipad large extra-large);
+$IPAD    : (ipad);

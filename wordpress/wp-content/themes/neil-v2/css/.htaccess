@@ -1,0 +1,5 @@
+<ifModule mod_headers.c>
+  <filesMatch "\\.(css|js|svg|xml|json)$">
+    Header set Content-Encoding "gzip"
+  </filesMatch>
+</ifModule>

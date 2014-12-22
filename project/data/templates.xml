@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<templates>
+
+    <!--
+        LOADER
+    -->
+
+    <template id="preloader">
+        <![CDATA[
+            <div class="preloader preloader-<%= type %>"></div>
+        ]]>
+    </template>
+
+</templates>
