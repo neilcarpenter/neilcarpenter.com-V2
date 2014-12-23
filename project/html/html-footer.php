@@ -5,6 +5,7 @@
 
 require('neil-v2-config.php');
 ?>
+	</section>
 
 		<script type="text/javascript">
 

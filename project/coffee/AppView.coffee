@@ -2,7 +2,6 @@ AbstractView   = require './view/AbstractView'
 Preloader      = require './view/base/Preloader'
 Header         = require './view/base/Header'
 Wrapper        = require './view/base/Wrapper'
-Footer         = require './view/base/Footer'
 ModalManager   = require './view/modals/_ModalManager'
 MediaQueries   = require './utils/MediaQueries'
 Scroller       = require './utils/Scroller'
@@ -15,7 +14,6 @@ class AppView extends AbstractView
     $body    : null
 
     wrapper  : null
-    footer   : null
 
     dims :
         w : null
@@ -63,16 +61,14 @@ class AppView extends AbstractView
         @bindEvents()
 
         @preloader      = new Preloader('site')
-        @modalManager   = new ModalManager()
+        @modalManager   = new ModalManager
 
         @header      = new Header
         @wrapper     = new Wrapper
-        # @footer      = new Footer
 
         @
             .addChild @header
             .addChild @wrapper
-            # .addChild @footer
 
         @onAllRendered()
         return

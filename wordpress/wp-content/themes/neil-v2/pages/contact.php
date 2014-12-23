@@ -14,7 +14,5 @@
 			<h2 data-page-transition>Contact</h2>
 			
 		</div>
-
-	<? get_template_part( 'parts/shared/footer' ); ?>
 	
 <? get_template_part( 'parts/shared/html-footer' ); ?>

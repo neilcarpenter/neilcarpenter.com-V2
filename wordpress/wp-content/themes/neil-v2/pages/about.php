@@ -15,6 +15,4 @@
 			
 		</div>
 
-	<? get_template_part( 'parts/shared/footer' ); ?>
-	
 <? get_template_part( 'parts/shared/html-footer' ); ?>
