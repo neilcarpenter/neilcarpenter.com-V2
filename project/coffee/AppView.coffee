@@ -60,17 +60,18 @@ class AppView extends AbstractView
 
         @bindEvents()
 
-        @preloader      = new Preloader('site')
-        @modalManager   = new ModalManager
+        @preloader    = new Preloader('site')
+        @modalManager = new ModalManager
 
-        @header      = new Header
-        @wrapper     = new Wrapper
+        @header  = new Header
+        @wrapper = new Wrapper
 
         @
             .addChild @header
             .addChild @wrapper
 
         @onAllRendered()
+
         return
 
     bindEvents : =>

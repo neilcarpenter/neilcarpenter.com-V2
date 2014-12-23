@@ -1,0 +1,31 @@
+.preloader {
+	opacity: 0;
+	visibility: hidden;
+	transition: all .3s $easeInOutCubic;
+
+	&.show {
+		opacity: 1;
+		visibility: visible;
+	}
+
+	&.preloader-site {
+		z-index: 3;
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: $nc-secondary;
+	}
+
+	.preloader-inner {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		width: 30px;
+		height: 30px;
+		border-radius: 50%;
+		background: $nc-primary;
+	}
+}

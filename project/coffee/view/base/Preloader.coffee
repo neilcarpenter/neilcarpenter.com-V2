@@ -5,6 +5,7 @@ class Preloader extends AbstractView
 	cb              : null
 	
 	TRANSITION_TIME : 0.5
+	CSS_CLASS_SHOW  : 'show'
 
 	templateName : 'preloader'
 
@@ -39,7 +40,7 @@ class Preloader extends AbstractView
 
 	show : (@cb) =>
 
-		@$el.addClass 'preloader-active'
+		@$el.addClass @CSS_CLASS_SHOW
 
 		# @$el.css 'display' : 'block'
 
@@ -55,7 +56,7 @@ class Preloader extends AbstractView
 
 		# console.log "!!! HIDING PRELOADER !!!"
 
-		@$el.removeClass 'preloader-active'
+		@$el.removeClass @CSS_CLASS_SHOW
 		setTimeout @onHideComplete, 300
 
 		null

@@ -4,6 +4,7 @@
 	left: 0;
 	width: 100%;
 	padding: 18px $side-padding-desktop;
+	z-index: 4;
 
 	.logo {
 		margin: 0;
@@ -18,7 +19,6 @@
 
 	nav {
 		float: right;
-		margin-top: 4px;
 
 		ul {
 			list-style-type: none;
@@ -37,6 +37,21 @@
 			a {
 				@include font-size(1.6);
 				font-weight: 700;
+				display: block;
+				padding: 4px 0 7px;
+				border-bottom: 0px solid $nc-primary;
+				transition: all .15s $easeInOutCubic;
+
+				.no-touch & {
+
+					&:hover {
+						border-bottom: 3px solid $nc-primary;
+					}
+				}
+
+				&.active {
+					border-bottom: 3px solid $nc-primary;
+				}
 			}
 		}
 	}
