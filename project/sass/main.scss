@@ -14,7 +14,7 @@
 @import 'utils/helpers';
 @import 'utils/retina';
 @import 'utils/responsive';
-@import 'utils/reset';
+@import 'utils/oocss';
 
 /*
  * ICONS
@@ -43,6 +43,7 @@
  */
 
 @import 'views/header';
+@import 'views/wrapper';
 
 /*
  * PREVIEW MODE - JS is disabled

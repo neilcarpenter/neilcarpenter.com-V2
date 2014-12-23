@@ -1,0 +1,43 @@
+#site-header {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	padding: 18px $side-padding-desktop;
+
+	.logo {
+		margin: 0;
+		float: left;
+		text-transform: uppercase;
+		letter-spacing: 3px;
+		font-weight: 800;
+		@include font-size(2.1);
+		border-bottom: 3px solid $nc-primary;
+		padding-bottom: 16px;
+	}
+
+	nav {
+		float: right;
+		margin-top: 4px;
+
+		ul {
+			list-style-type: none;
+			padding: 0;
+			margin: 0;
+		}
+
+		li {
+			float: left;
+			margin-left: 20px;
+
+			&:first-child {
+				margin-left: 0;
+			}
+
+			a {
+				@include font-size(1.6);
+				font-weight: 800;
+			}
+		}
+	}
+}

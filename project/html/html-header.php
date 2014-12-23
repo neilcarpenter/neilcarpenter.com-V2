@@ -47,6 +47,8 @@
 	<meta name="twitter:description" content="<?= $meta['description'] ?>">
 	<meta name="twitter:image"       content="<?= $meta['image'] ?>">
 
+	<link href='http://fonts.googleapis.com/css?Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
 	<link rel="stylesheet" href="<? bloginfo('template_directory');?>/{{ css/main.css }}">
 	<script src="<? bloginfo('template_directory');?>/{{ js/vendor/modernizr-dev.js }}"></script>
 

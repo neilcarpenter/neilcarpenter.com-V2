@@ -1,4 +1,4 @@
-	<header data-template="site-header" id="site-header">
+	<header data-template="site-header" id="site-header" class="cf">
 
         <h1 class="logo"><a href="<?= get_site_url(); ?>">Neil Carpenter</a></h1>
         <nav>
