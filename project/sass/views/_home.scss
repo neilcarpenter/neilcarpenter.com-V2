@@ -1,0 +1,11 @@
+.home-tagline {
+	position: absolute;
+	bottom: $side-padding-desktop;
+	right: $side-padding-desktop;
+	text-align: right;
+	font-weight: 800;
+	text-transform: uppercase;
+	margin: 0;
+	@include font-size(10);
+	line-height: 0.9;
+}

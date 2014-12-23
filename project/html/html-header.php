@@ -58,4 +58,6 @@
 
 	<div id="main" data-template="main">
 
-		<div id="preloader" class="preloader preloader-site"></div>
+		<div id="preloader" class="preloader preloader-site show">
+			<span class="preloader-inner"></span>
+		</div>

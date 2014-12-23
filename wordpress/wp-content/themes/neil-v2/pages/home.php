@@ -11,7 +11,7 @@
 
 		<div class="page page-home" data-template="page-home">
 
-			<h2 data-page-transition>Homepage</h2>
+			<h2 class="home-tagline" data-page-transition>I make</br>websites</h2>
 			
 		</div>
 	

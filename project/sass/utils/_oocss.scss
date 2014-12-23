@@ -1,0 +1,10 @@
+.content-link {
+	border-bottom: 2px solid $nc-primary;
+
+    .no-touch & {
+
+        &:hover {
+            color: $nc-primary-0-6;
+        }
+    }
+}
