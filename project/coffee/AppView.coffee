@@ -180,6 +180,8 @@ class AppView extends AbstractView
 
     trackPageView : =>
 
+        return unless window.ga
+
         ga 'send', 'pageview', 'page' : window.location.href.split(@NC().BASE_URL)[1] or '/'
 
         null
