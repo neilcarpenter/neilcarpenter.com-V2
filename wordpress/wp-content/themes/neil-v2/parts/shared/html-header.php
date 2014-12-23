@@ -21,7 +21,6 @@
 
 	<meta name="description" content="<?= $meta['description'] ?>">
 	<meta name="keywords" content="<?= $meta['keywords'] ?>">
-	<meta name="author" content="">
 	<meta name="viewport" id="viewport" content="width=device-width, initial-scale=1.0" />
 
 	<link rel="shortcut icon" href="<? bloginfo('url');?>/favicon.png" type="image/x-icon" />
