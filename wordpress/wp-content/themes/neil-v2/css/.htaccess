@@ -1,6 +1,6 @@
 <ifModule mod_headers.c>
   <filesMatch "\\.(css|js|svg|xml|json)$">
     Header set Content-Encoding "gzip"
-    Header set Vary "Accept-Encoding"
+    SetEnv no-gzip 1
   </filesMatch>
 </ifModule>
