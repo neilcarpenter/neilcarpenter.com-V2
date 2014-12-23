@@ -10,7 +10,7 @@
 		float: left;
 		text-transform: uppercase;
 		letter-spacing: 3px;
-		font-weight: 800;
+		font-weight: 700;
 		@include font-size(2.1);
 		border-bottom: 3px solid $nc-primary;
 		padding-bottom: 16px;
@@ -36,7 +36,7 @@
 
 			a {
 				@include font-size(1.6);
-				font-weight: 800;
+				font-weight: 700;
 			}
 		}
 	}
