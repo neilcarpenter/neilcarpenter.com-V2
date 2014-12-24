@@ -11,10 +11,10 @@
 
 		<div class="page page-work" data-template="page-work">
 
-			<div class="grid">
+			<div class="grid" data-page-transition>
 
 				<div class="row cf">
-					<article class="grid-item grid-item-large" data-page-transition>
+					<article class="grid-item grid-item-large">
 						<a href="<?= get_site_url(); ?>/work/test-projjjj">
 							<span class="work-preview-thumb">
 								<span class="bg-image"></span>
@@ -23,7 +23,7 @@
 							<h1 class="work-preview-name">Resonate.io 2015</h1>
 						</a>
 					</article>
-					<article class="grid-item grid-item-small" data-page-transition>
+					<article class="grid-item grid-item-small">
 						<a href="<?= get_site_url(); ?>/work/test-projjjj">
 							<span class="work-preview-thumb">
 								<span class="bg-image"></span>
@@ -35,7 +35,7 @@
 				</div>
 
 				<div class="row cf">
-					<article class="grid-item grid-item-small" data-page-transition>
+					<article class="grid-item grid-item-small">
 						<a href="<?= get_site_url(); ?>/work/test-projjjj">
 							<span class="work-preview-thumb">
 								<span class="bg-image"></span>
@@ -44,7 +44,7 @@
 							<h1 class="work-preview-name">GIF Generator</h1>
 						</a>
 					</article>
-					<article class="grid-item grid-item-large" data-page-transition>
+					<article class="grid-item grid-item-large">
 						<a href="<?= get_site_url(); ?>/work/test-projjjj">
 							<span class="work-preview-thumb">
 								<span class="bg-image"></span>
@@ -56,7 +56,7 @@
 				</div>
 
 				<div class="row cf">
-					<article class="grid-item grid-item-large" data-page-transition>
+					<article class="grid-item grid-item-large">
 						<a href="<?= get_site_url(); ?>/work/test-projjjj">
 							<span class="work-preview-thumb">
 								<span class="bg-image"></span>
@@ -65,7 +65,7 @@
 							<h1 class="work-preview-name">Bus to Applandia</h1>
 						</a>
 					</article>
-					<article class="grid-item grid-item-small" data-page-transition>
+					<article class="grid-item grid-item-small">
 						<a href="<?= get_site_url(); ?>/work/test-projjjj">
 							<span class="work-preview-thumb">
 								<span class="bg-image"></span>
@@ -77,7 +77,7 @@
 				</div>
 
 				<div class="row cf">
-					<article class="grid-item grid-item-small" data-page-transition>
+					<article class="grid-item grid-item-small">
 						<a href="<?= get_site_url(); ?>/work/test-projjjj">
 							<span class="work-preview-thumb">
 								<span class="bg-image"></span>
@@ -86,7 +86,7 @@
 							<h1 class="work-preview-name">Love Cravendale</h1>
 						</a>
 					</article>
-					<article class="grid-item grid-item-large" data-page-transition>
+					<article class="grid-item grid-item-large">
 						<a href="<?= get_site_url(); ?>/work/test-projjjj">
 							<span class="work-preview-thumb">
 								<span class="bg-image"></span>
