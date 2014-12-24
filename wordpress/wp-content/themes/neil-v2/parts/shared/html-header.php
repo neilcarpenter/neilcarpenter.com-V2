@@ -2,13 +2,10 @@
  /**
   * REMEBER to edit this in /project/html, not in WP template directory
   */
-?>
 
-<?
 	$id   = get_the_ID();
 	$meta = nc_get_meta( $id );
 ?>
-
 <!DOCTYPE html>
 <html class="no-js" lang="en-gb">
 <head>

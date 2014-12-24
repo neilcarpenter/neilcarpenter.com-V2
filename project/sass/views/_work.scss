@@ -1,0 +1,56 @@
+.page-work {
+
+	.row {
+		margin-bottom: 30px;
+	}
+
+	.grid-item {
+		float: left;
+
+		&:first-child {
+			margin-right: 2%;
+		}
+
+		&.grid-item-large {
+			width: #{(3*18.4%)+(2*2%)};
+		}
+
+		&.grid-item-small {
+			width: #{(2*18.4%)+(1*2%)};		
+		}
+	}
+
+	.work-preview-thumb {
+		position: relative;
+		display: block;
+		width: 100%;
+		overflow: hidden;
+		height: 400px;
+
+		.bg-image {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-repeat: no-repeat;
+			background-position: center center;
+			background-size: cover;
+
+			background-image: url(../static/img/_tmp/cal.jpg);
+		}
+	}
+
+	.work-preview-client {
+		text-transform: uppercase;
+		margin-bottom: 0;
+		@include font-size(1.1);
+		font-weight: 800;
+		margin-top: 11px;
+	}
+
+	.work-preview-name {
+		@include font-size(2);
+		margin-top: 10px;
+	}
+}

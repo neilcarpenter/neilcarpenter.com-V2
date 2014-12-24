@@ -13,7 +13,7 @@
 
 			<div class="content">
 				<p class="intro" data-page-transition>What up.</p>
-				<p class="intro-sub" data-page-transition>If you feel like getting in touch, please use email on <a href="mailto:hi@neilcarpenter.com" title="Email me">hi@neilcarpenter.com</a>, or try one of the social accounts below.</p>
+				<p class="intro-sub" data-page-transition>If you feel like getting in touch, please email me on <a href="mailto:hi@neilcarpenter.com" title="Email me">hi@neilcarpenter.com</a>, or try one of the social accounts below.</p>
 				<ul class="social-account-list">
 					<li data-page-transition><a href="http://twitter.com/neilcarpenter" target="_blank">Twitter</a></li>
 					<li data-page-transition><a href="http://github.com/neilcarpenter" target="_blank">Github</a></li>

@@ -12,8 +12,16 @@
 @import 'utils/mixins';
 @import 'utils/normalise';
 @import 'utils/helpers';
+
+/*
+ * RESPONSIVE / RETINA
+ */
 @import 'utils/retina';
 @import 'utils/responsive';
+
+/*
+ * COMPONENTS
+ */
 @import 'utils/oocss';
 
 /*
@@ -47,6 +55,7 @@
 @import 'views/wrapper';
 @import 'views/home';
 @import 'views/about';
+@import 'views/work';
 @import 'views/contact';
 
 /*
