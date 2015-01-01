@@ -8,4 +8,11 @@
 	margin: 0;
 	@include font-size(10);
 	line-height: 0.9;
+
+	.wo {
+
+		&:after {
+			height: 3px;
+		}
+	}
 }

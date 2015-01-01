@@ -1,10 +1,11 @@
-AbstractView   = require './view/AbstractView'
-Preloader      = require './view/base/Preloader'
-Header         = require './view/base/Header'
-Wrapper        = require './view/base/Wrapper'
-ModalManager   = require './view/modals/_ModalManager'
-MediaQueries   = require './utils/MediaQueries'
-Scroller       = require './utils/Scroller'
+AbstractView     = require './view/AbstractView'
+Preloader        = require './view/base/Preloader'
+Header           = require './view/base/Header'
+Wrapper          = require './view/base/Wrapper'
+ModalManager     = require './view/modals/_ModalManager'
+MediaQueries     = require './utils/MediaQueries'
+Scroller         = require './utils/Scroller'
+ScrollItemInView = require './utils/ScrollItemInView'
 
 class AppView extends AbstractView
 
@@ -60,8 +61,9 @@ class AppView extends AbstractView
 
         @bindEvents()
 
-        @preloader    = new Preloader('site')
-        @modalManager = new ModalManager
+        @preloader        = new Preloader('site')
+        @modalManager     = new ModalManager
+        @scrollItemInView = new ScrollItemInView
 
         @header  = new Header
         @wrapper = new Wrapper
@@ -98,12 +100,16 @@ class AppView extends AbstractView
             @$body.removeClass('disable-hover')
         , 50
 
+        @scrollItemInView.onScroll()
+
         null
 
     onAllRendered : =>
+
         # console.log "onAllRendered : =>"
         @begin()
-        return
+
+        null
 
     begin : =>
 
@@ -114,6 +120,7 @@ class AppView extends AbstractView
         @preloader.hide()
         @updateMediaQueriesLog()
 
+        @scrollItemInView.getItems()
         @onScroll()
 
         return

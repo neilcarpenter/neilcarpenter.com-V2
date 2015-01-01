@@ -16,7 +16,11 @@
 		}
 
 		&.grid-item-small {
-			width: #{(2*18.4%)+(1*2%)};		
+			width: #{(2*18.4%)+(1*2%)};
+		}
+
+		> a {
+			display: block;
 		}
 	}
 
@@ -24,20 +28,10 @@
 		position: relative;
 		display: block;
 		width: 100%;
-		overflow: hidden;
 		height: 400px;
 
 		.bg-image {
-			position: absolute;
-			top: 0;
-			left: 0;
-			width: 100%;
-			height: 100%;
-			background-repeat: no-repeat;
-			background-position: center center;
-			background-size: cover;
-
-			background-image: url(../static/img/_tmp/cal.jpg);
+			background-image: url(../static/img/_tmp/any.jpg);
 		}
 	}
 

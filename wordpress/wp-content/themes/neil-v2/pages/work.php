@@ -14,85 +14,85 @@
 			<div class="grid" data-page-transition>
 
 				<div class="row cf">
-					<article class="grid-item grid-item-large">
+					<article class="grid-item grid-item-large" data-scroll-item>
 						<a href="<?= get_site_url(); ?>/work/test-projjjj">
-							<span class="work-preview-thumb">
+							<span class="work-preview-thumb bg-image-wrapper">
 								<span class="bg-image"></span>
 							</span>
-							<h2 class="work-preview-client">Resonate</h2>
-							<h1 class="work-preview-name">Resonate.io 2015</h1>
+							<h2 class="work-preview-client"><span class="wo"><span class="wi">Resonate</span></span></h2>
+							<h1 class="work-preview-name"><span class="wo"><span class="wi">Resonate.io 2015</span></span></h1>
 						</a>
 					</article>
-					<article class="grid-item grid-item-small">
+					<article class="grid-item grid-item-small" data-scroll-item>
 						<a href="<?= get_site_url(); ?>/work/test-projjjj">
-							<span class="work-preview-thumb">
+							<span class="work-preview-thumb bg-image-wrapper">
 								<span class="bg-image"></span>
 							</span>
-							<h2 class="work-preview-client">Three</h2>
-							<h1 class="work-preview-name">Calendar Me</h1>
-						</a>
-					</article>
-				</div>
-
-				<div class="row cf">
-					<article class="grid-item grid-item-small">
-						<a href="<?= get_site_url(); ?>/work/test-projjjj">
-							<span class="work-preview-thumb">
-								<span class="bg-image"></span>
-							</span>
-							<h2 class="work-preview-client">AT&T</h2>
-							<h1 class="work-preview-name">GIF Generator</h1>
-						</a>
-					</article>
-					<article class="grid-item grid-item-large">
-						<a href="<?= get_site_url(); ?>/work/test-projjjj">
-							<span class="work-preview-thumb">
-								<span class="bg-image"></span>
-							</span>
-							<h2 class="work-preview-client">Adidas</h2>
-							<h1 class="work-preview-name">Challenge All or Nothing</h1>
+							<h2 class="work-preview-client"><span class="wo"><span class="wi">Three</span></span></h2>
+							<h1 class="work-preview-name"><span class="wo"><span class="wi">Calendar Me</span></span></h1>
 						</a>
 					</article>
 				</div>
 
 				<div class="row cf">
-					<article class="grid-item grid-item-large">
+					<article class="grid-item grid-item-small" data-scroll-item>
 						<a href="<?= get_site_url(); ?>/work/test-projjjj">
-							<span class="work-preview-thumb">
+							<span class="work-preview-thumb bg-image-wrapper">
 								<span class="bg-image"></span>
 							</span>
-							<h2 class="work-preview-client">HP</h2>
-							<h1 class="work-preview-name">Bus to Applandia</h1>
+							<h2 class="work-preview-client"><span class="wo"><span class="wi">AT&T</span></span></h2>
+							<h1 class="work-preview-name"><span class="wo"><span class="wi">GIF Generator</span></span></h1>
 						</a>
 					</article>
-					<article class="grid-item grid-item-small">
+					<article class="grid-item grid-item-large" data-scroll-item>
 						<a href="<?= get_site_url(); ?>/work/test-projjjj">
-							<span class="work-preview-thumb">
+							<span class="work-preview-thumb bg-image-wrapper">
 								<span class="bg-image"></span>
 							</span>
-							<h2 class="work-preview-client">Axe</h2>
-							<h1 class="work-preview-name">Social Effort Scale</h1>
+							<h2 class="work-preview-client"><span class="wo"><span class="wi">Adidas</span></span></h2>
+							<h1 class="work-preview-name"><span class="wo"><span class="wi">Challenge All or Nothing</span></span></h1>
 						</a>
 					</article>
 				</div>
 
 				<div class="row cf">
-					<article class="grid-item grid-item-small">
+					<article class="grid-item grid-item-large" data-scroll-item>
 						<a href="<?= get_site_url(); ?>/work/test-projjjj">
-							<span class="work-preview-thumb">
+							<span class="work-preview-thumb bg-image-wrapper">
 								<span class="bg-image"></span>
 							</span>
-							<h2 class="work-preview-client">Cravendale</h2>
-							<h1 class="work-preview-name">Love Cravendale</h1>
+							<h2 class="work-preview-client"><span class="wo"><span class="wi">HP</span></span></h2>
+							<h1 class="work-preview-name"><span class="wo"><span class="wi">Bus to Applandia</span></span></h1>
 						</a>
 					</article>
-					<article class="grid-item grid-item-large">
+					<article class="grid-item grid-item-small" data-scroll-item>
 						<a href="<?= get_site_url(); ?>/work/test-projjjj">
-							<span class="work-preview-thumb">
+							<span class="work-preview-thumb bg-image-wrapper">
 								<span class="bg-image"></span>
 							</span>
-							<h2 class="work-preview-client">Cravendale</h2>
-							<h1 class="work-preview-name">The Milk Matters</h1>
+							<h2 class="work-preview-client"><span class="wo"><span class="wi">Axe</span></span></h2>
+							<h1 class="work-preview-name"><span class="wo"><span class="wi">Social Effort Scale</span></span></h1>
+						</a>
+					</article>
+				</div>
+
+				<div class="row cf">
+					<article class="grid-item grid-item-small" data-scroll-item>
+						<a href="<?= get_site_url(); ?>/work/test-projjjj">
+							<span class="work-preview-thumb bg-image-wrapper">
+								<span class="bg-image"></span>
+							</span>
+							<h2 class="work-preview-client"><span class="wo"><span class="wi">Cravendale</span></span></h2>
+							<h1 class="work-preview-name"><span class="wo"><span class="wi">Love Cravendale</span></span></h1>
+						</a>
+					</article>
+					<article class="grid-item grid-item-large" data-scroll-item>
+						<a href="<?= get_site_url(); ?>/work/test-projjjj">
+							<span class="work-preview-thumb bg-image-wrapper">
+								<span class="bg-image"></span>
+							</span>
+							<h2 class="work-preview-client"><span class="wo"><span class="wi">Cravendale</span></span></h2>
+							<h1 class="work-preview-name"><span class="wo"><span class="wi">The Milk Matters</span></span></h1>
 						</a>
 					</article>
 				</div>

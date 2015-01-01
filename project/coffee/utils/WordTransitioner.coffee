@@ -29,14 +29,22 @@ class WordTransitioner
 		len    = $words.length
 
 		$words.each (i, el) =>
-			do (i, el) =>
+			do (i, el, $words) =>
+				delay = (i*@delay)
 				setTimeout =>
 					$(el).addClass className
 					if i is len-1
 						setTimeout =>
 							cb?()
+							if direction is 'out' then @reset $words
 						, @ANIM_DURATION
-				, (i*@delay)
+				, delay
+
+		null
+
+	@reset : ($el) =>
+
+		$el.removeClass @classNames.animIn + ' ' + @classNames.animOut
 
 		null
 

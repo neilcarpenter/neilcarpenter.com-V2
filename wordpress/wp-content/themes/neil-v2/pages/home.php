@@ -19,11 +19,11 @@
 			<h2 class="home-tagline" data-tagline data-page-transition>
 				<span class="wo"><span class="wi"><?= $firstTagline[0] ?></span></span></br><span class="wo"><span class="wi"><?= $firstTagline[1] ?></span></span>
 			</h2>
+
+			<script>
+				window._TAGLINES = <?= json_encode($taglines); ?>;
+			</script>
 			
 		</div>
-
-	<script>
-		window._TAGLINES = <?= json_encode($taglines); ?>;
-	</script>
 	
 <? get_template_part( 'parts/shared/html-footer' ); ?>

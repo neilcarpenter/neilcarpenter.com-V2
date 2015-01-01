@@ -9,6 +9,8 @@ Scroller        = require '../../utils/Scroller'
 
 class Wrapper extends AbstractView
 
+	@VIEW_UPDATED : 'VIEW_UPDATED'
+
 	template          : 'wrapper'
 
 	views             : null
@@ -60,6 +62,7 @@ class Wrapper extends AbstractView
 
 		@NC().nav.on Nav.EVENT_CHANGE_VIEW, @changeView
 		@NC().appView.on @NC().appView.EVENT_UPDATE_DIMENSIONS, @updateDims
+		@on Wrapper.VIEW_UPDATED, @onViewUpdated
 
 		null
 
@@ -102,12 +105,15 @@ class Wrapper extends AbstractView
 
 		$.when.apply($, dfds).done =>
 
-			@NC().appView.preloader.hide @transitionViews
-			@updatePageTitle @currentView.pageTitle
+			@NC().appView.preloader.hide =>
+
+				@transitionViews @previousView, @currentView, =>
+
+					@trigger Wrapper.VIEW_UPDATED
 
 		null
 
-	transitionViews : (from=@previousView, to=@currentView) =>
+	transitionViews : (from=@previousView, to=@currentView, cb) =>
 
 		# console.log "transitionViews : (from=@previousView, to=@currentView) =>", from, to
 
@@ -116,11 +122,19 @@ class Wrapper extends AbstractView
 		force = (from and (from instanceof ProjectPageView and to instanceof ProjectPageView))
 
 		if !from
-			to.show()
+			to.show => cb?()
 		else
-			from.hide => to.show force, => @pageSwitchDfd.resolve()
+			from.hide => to.show force, =>
+				@pageSwitchDfd.resolve()
+				cb?()
 
 		@NC().appView.getDims()
+
+		null
+
+	onViewUpdated : =>
+
+		@updatePageTitle @currentView.pageTitle
 
 		null
 

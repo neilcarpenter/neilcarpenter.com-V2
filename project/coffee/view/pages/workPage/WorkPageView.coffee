@@ -1,4 +1,5 @@
 AbstractViewPage = require '../../AbstractViewPage'
+WordTransitioner = require '../../../utils/WordTransitioner'
 
 class WorkPageView extends AbstractViewPage
 
@@ -6,25 +7,16 @@ class WorkPageView extends AbstractViewPage
 
 	constructor : ->
 
-		###
+		super
 
-		instantiate classes here
+		return null
 
-		@exampleClass = new ExampleClass
-
-		###
+	show : =>
 
 		super
 
-		###
+		# WordTransitioner.in @$el
 
-		add classes to app structure here
-
-		@
-			.addChild(@exampleClass)
-
-		###
-
-		return null
+		null
 
 module.exports = WorkPageView
