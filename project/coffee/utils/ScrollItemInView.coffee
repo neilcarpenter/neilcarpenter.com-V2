@@ -1,13 +1,15 @@
 AbstractView     = require '../view/AbstractView'
 Wrapper          = require '../view/base/Wrapper'
 WordTransitioner = require './WordTransitioner'
+LazyImageLoader  = require './LazyImageLoader'
 
 class ScrollItemInView extends AbstractView
 
-	CSS_CLASS_SHOW : 'show'
+	classNames :
+		SHOW : 'show'
 
 	defaults :
-		showThreshold : 0.85
+		showThreshold : 0.8
 		itemDelay     : 250
 
 	items : []
@@ -33,7 +35,14 @@ class ScrollItemInView extends AbstractView
 
 	bindEvents : =>
 
-		@NC().appView.wrapper.on Wrapper.VIEW_UPDATED, @getItems
+		@NC().appView.wrapper.on Wrapper.VIEW_UPDATED, @onViewUpdated
+
+		null
+
+	onViewUpdated : =>
+
+		@getItems()
+		@requestTick()
 
 		null
 
@@ -61,10 +70,7 @@ class ScrollItemInView extends AbstractView
 		threshold   = @lastScrollY + (@NC().appView.dims.h * @defaults.showThreshold)
 		itemsToShow = []
 
-		for item, i in @items
-
-			if threshold > item.offset
-				itemsToShow.push item
+		(if threshold > item.offset then itemsToShow.push item) for item, i in @items
 
 		if itemsToShow.length
 			@showItems itemsToShow
@@ -93,9 +99,17 @@ class ScrollItemInView extends AbstractView
 				delay = (@defaults.itemDelay*i)
 
 				setTimeout =>
-					item.$el.addClass @CSS_CLASS_SHOW
-					WordTransitioner.in item.$el
+					@showItem item.$el
 				, delay
+
+		null
+
+	showItem : ($el) =>
+
+		$el.addClass @classNames.SHOW
+
+		WordTransitioner.in $el
+		LazyImageLoader.load $el
 
 		null
 

@@ -1,12 +1,11 @@
 class WordTransitioner
 
 	@classNames :
-		word    : 'wo'
-		animIn  : 'a'
-		animOut : 'ao'
+		WORD     : 'wo'
+		ANIM_IN  : 'a'
+		ANIM_OUT : 'ao'
 
-	@delay : 500
-
+	@ANIM_DELAY    : 500
 	@ANIM_DURATION : 1000
 
 	@in : ($el, cb) =>
@@ -23,14 +22,14 @@ class WordTransitioner
 
 	@animate : (direction, $el, cb) =>
 
-		className = @classNames[(if direction is 'in' then 'animIn' else 'animOut')]
+		className = @classNames[(if direction is 'in' then 'ANIM_IN' else 'ANIM_OUT')]
 
-		$words = $el.find '.'+@classNames.word
+		$words = $el.find '.'+@classNames.WORD
 		len    = $words.length
 
 		$words.each (i, el) =>
 			do (i, el, $words) =>
-				delay = (i*@delay)
+				delay = (i*@ANIM_DELAY)
 				setTimeout =>
 					$(el).addClass className
 					if i is len-1
@@ -44,7 +43,7 @@ class WordTransitioner
 
 	@reset : ($el) =>
 
-		$el.removeClass @classNames.animIn + ' ' + @classNames.animOut
+		$el.removeClass @classNames.ANIM_IN + ' ' + @classNames.ANIM_OUT
 
 		null
 
