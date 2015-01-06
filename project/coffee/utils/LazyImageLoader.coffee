@@ -8,9 +8,10 @@ class LazyImageLoader
 	@load : ($el) =>
 
 		$imgSrcEl = if $el.attr("#{LazyImageLoader.ATTR}") then $el else $el.find("[#{LazyImageLoader.ATTR}]")
-		imgSrc    = $imgSrcEl.attr("#{LazyImageLoader.ATTR}")
+		_imgSrc   = $imgSrcEl.attr("#{LazyImageLoader.ATTR}")
+		imgSrc    = if _imgSrc then @supplantString _imgSrc, @getVars() else null
 
-		return unless imgSrc and !$imgSrcEl.data('loading')
+		return unless _imgSrc and !$imgSrcEl.data('loading')
 		$imgSrcEl.data('loading', true)
 
 		img = new Image
@@ -20,7 +21,7 @@ class LazyImageLoader
 					.css('background-image', "url(#{imgSrc})")
 					.end()
 				.addClass @classNames.LOADED
-		img.src = @supplantString imgSrc, @getVars()
+		img.src = imgSrc
 
 		null
 

@@ -16,8 +16,8 @@
 				<div class="row cf">
 					<article class="grid-item grid-item-large" data-scroll-item>
 						<a href="<?= get_site_url(); ?>/work/test-projjjj">
-							<span class="work-preview-thumb bg-image-wrapper" data-lazyimage="http://neilcarpenter.com/wp-content/uploads/2014/12/thumb-resonate2015.jpg">
-								<span class="bg-image" style="background-image: url(http://neilcarpenter.com/wp-content/uploads/2014/12/thumb-resonate2015.jpg)"></span>
+							<span class="work-preview-thumb bg-image-wrapper" data-lazyimage="{{ BASE_URL }}/wp-content/themes/neil-v2/static/img/_tmp/header09.jpg">
+								<span class="bg-image"></span>
 							</span>
 							<h2 class="work-preview-client"><span class="wo"><span class="wi">Resonate</span></span></h2>
 							<h1 class="work-preview-name"><span class="wo"><span class="wi">Resonate.io 2015</span></span></h1>
@@ -25,8 +25,8 @@
 					</article>
 					<article class="grid-item grid-item-small" data-scroll-item>
 						<a href="<?= get_site_url(); ?>/work/test-projjjj">
-							<span class="work-preview-thumb bg-image-wrapper" data-lazyimage="http://neilcarpenter.com/wp-content/uploads/2014/12/thumb-calendarme.jpg">
-								<span class="bg-image" style="background-image: url(http://neilcarpenter.com/wp-content/uploads/2014/12/thumb-calendarme.jpg)"></span>
+							<span class="work-preview-thumb bg-image-wrapper" data-lazyimage="{{ BASE_URL }}/wp-content/themes/neil-v2/static/img/_tmp/cal_large.jpg">
+								<span class="bg-image"></span>
 							</span>
 							<h2 class="work-preview-client"><span class="wo"><span class="wi">Three</span></span></h2>
 							<h1 class="work-preview-name"><span class="wo"><span class="wi">Calendar Me</span></span></h1>

@@ -23,6 +23,11 @@ class AppView extends AbstractView
         c : null
         r : null
 
+    rwdSizes :
+        LARGE  : 'LRG'
+        MEDIUM : 'MED'
+        SMALL  : 'SML'
+
     lastScrollY : 0
     ticking     : false
 
@@ -179,7 +184,7 @@ class AppView extends AbstractView
 
     getRwdSize : (w, h, dpr) =>
 
-        size = 'MEDIUM'
+        size = @rwdSizes.LARGE
 
         size
 

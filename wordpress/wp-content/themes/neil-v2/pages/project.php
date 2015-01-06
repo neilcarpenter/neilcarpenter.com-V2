@@ -12,6 +12,7 @@
 		<?
 		$prevProject = nc_get_project_nav($id, 'previous');
 		$nextProject = nc_get_project_nav($id, 'next');
+		$heroImgSrc  = wp_get_attachment_image_src( get_field('project_thumbnail'), 'original' );
 		?>
 
 		<div class="page page-project" data-template="page-project">
@@ -24,7 +25,7 @@
 						<h1 class="proj-name"><span class="wo"><span class="wi"><?= get_the_title() ?></span></span></h1>
 					</div>
 					<div class="proj-img-wrap proj-img_1">
-						<span class="proj-img bg-image-wrapper" data-scroll-item data-lazyimage="http://neilcarpenter.com/wp-content/uploads/2014/12/thumb-resonate2015.jpg">
+						<span class="proj-img bg-image-wrapper" data-scroll-item data-lazyimage="<?= $heroImgSrc[0] ?>">
 							<span class="bg-image"></span>
 						</span>
 					</div>
@@ -32,8 +33,6 @@
 				</div>
 
 				<h3 class="proj-subtitle" data-scroll-item><? the_field('project_client') ?> - <?= get_the_title() ?></h3>
-
-				<? //the_field('project_content') ?>
 
 				<nav class="proj-nav-top" data-scroll-item>
 					<? if ($prevProject) { ?>
@@ -44,20 +43,18 @@
 					<? } ?>
 				</nav>
 
+				<? the_field('project_content') ?>
+
+				<? /* here just for reference
+
 				<div class="proj-intro" data-scroll-item>
 					<p>Fully responsive, single-page, interactive site for the Resonate conference 2015 - bringing together artists to drive a forward-looking debate on the position of technology in art and culture.</p>
-					<p><a href="http://three.co.uk/calendarMe" target="_blank">Visit site</a></p>
+					<p><a href="http://resonate.io/2015" target="_blank">Visit site</a></p>
 				</div>
 
 				<div class="row cf">
 					<div class="grid-item grid-item-full" data-post-intro>
-						<div class="proj-img-wrap proj-img_3">
-							<span class="proj-img bg-image-wrapper" data-scroll-item data-lazyimage="http://neilcarpenter.com/wp-content/uploads/2014/12/thumb-resonate2015.jpg">
-								<span class="bg-image"></span>
-							</span>
-							<span class="proj-img bg-image-wrapper" data-scroll-item data-lazyimage="http://neilcarpenter.com/wp-content/uploads/2014/12/thumb-resonate2015.jpg">
-								<span class="bg-image"></span>
-							</span>
+						<div class="proj-img-wrap proj-img_1">
 							<span class="proj-img bg-image-wrapper" data-scroll-item data-lazyimage="http://neilcarpenter.com/wp-content/uploads/2014/12/thumb-resonate2015.jpg">
 								<span class="bg-image"></span>
 							</span>
@@ -67,10 +64,14 @@
 
 				<div class="row cf">
 					<div class="grid-item grid-item-small" data-scroll-item>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam odit perspiciatis cupiditate magnam asperiores quod nisi iure error adipisci dicta nam quo, quibusdam natus obcaecati modi, molestiae eveniet rem ea! Nulla, quas tenetur iure vitae eius est totam veritatis iste!</p>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicin veritatis iste!</p>
+						<p><a href="http://fluuu.id" target="_blank">FLUUUID</a> collaborated with <a href="http://twitter.com/jocabola" target="_blank">@jocabola</a>, <a href="http://twitter.com/crookookoo" target="_blank">@crookookoo</a> and <a href="http://field.io" target="_blank">FIELD</a> to create the new site for the annual Resonate conference, integrating new branding courtesy of <a href="http://www.hudson-powell.com/" target="_blank">Hudson-Powell</a>, including playful transitions and animations througout the site.</p>
 					</div>
 					<div class="grid-item grid-item-large">
+						<div class="proj-img-wrap proj-img_1">
+							<span class="proj-img bg-image-wrapper" data-scroll-item data-lazyimage="http://neilcarpenter.com/wp-content/uploads/2014/12/thumb-resonate2015.jpg">
+								<span class="bg-image"></span>
+							</span>
+						</div>
 						<div class="proj-img-wrap proj-img_1">
 							<span class="proj-img bg-image-wrapper" data-scroll-item data-lazyimage="http://neilcarpenter.com/wp-content/uploads/2014/12/thumb-resonate2015.jpg">
 								<span class="bg-image"></span>
@@ -93,30 +94,21 @@
 						</div>
 					</div>
 					<div class="grid-item grid-item-small" data-scroll-item>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam odit perspiciatis cupiditate magnam asperiores quod nisi iure error adipisci dicta nam quo, quibusdam natus obcaecati modi, molestiae eveniet rem ea! Nulla, quas tenetur iure vitae eius est totam veritatis iste!</p>
+						<p>As part of FLUUUID, I helped build the core of the site, including CMS and basic app architecture. FLUUUID was 100% responsible for the build, but worked closely with numerous collaborators during the course of the project.</p>
 					</div>
 				</div>
 
 				<div class="row cf">
 					<div class="grid-item grid-item-small" data-scroll-item>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam odit perspiciatis cupiditate magnam asperiores quod nisi iure error adipisci dicta nam quo, quibusdam natus obcaecati modi, molestiae eveniet rem ea! Nulla, quas tenetur iure vitae eius est totam veritatis iste!</p>
-						<h3>Credits</h3>
-						<ul class="credit-list">
-							<li class="label">What</li>
-							<li>Hey</li>
-							<li>There</li>
-							<li class="label">What up</li>
-							<li>Hi there</li>
-						</ul>
+						<p>The site is built on WordPress, with all content rendered in PHP, but is progressively-enhanced to become a fully single page application thanks to a modified version of UNIT9's <a href="https://github.com/unit9/coffee-bone" target="_blank">coffee-bone boilerplate</a>. Coffee-bone uses Backbone, Underscore, jQuery, TweenLite, Modernizr, Script.js, CoffeeScript, Sass, Gulp, Browserify, amongst other things. The site makes use of PIXI.js for the animation overlaying the site. The site is fully responsive and heavily optimised for performance.</p>
 					</div>
 					<div class="grid-item grid-item-large">
-						<div class="proj-img-wrap proj-img_3">
+						<div class="proj-img-wrap proj-img_1">
 							<span class="proj-img bg-image-wrapper" data-scroll-item data-lazyimage="http://neilcarpenter.com/wp-content/uploads/2014/12/thumb-resonate2015.jpg">
 								<span class="bg-image"></span>
 							</span>
-							<span class="proj-img bg-image-wrapper" data-scroll-item data-lazyimage="http://neilcarpenter.com/wp-content/uploads/2014/12/thumb-resonate2015.jpg">
-								<span class="bg-image"></span>
-							</span>
+						</div>
+						<div class="proj-img-wrap proj-img_1">
 							<span class="proj-img bg-image-wrapper" data-scroll-item data-lazyimage="http://neilcarpenter.com/wp-content/uploads/2014/12/thumb-resonate2015.jpg">
 								<span class="bg-image"></span>
 							</span>
@@ -147,8 +139,40 @@
 								<span class="bg-image"></span>
 							</span>
 						</div>
+						<div class="proj-img-wrap proj-img_1">
+							<span class="proj-img bg-image-wrapper" data-scroll-item data-lazyimage="http://neilcarpenter.com/wp-content/uploads/2014/12/thumb-resonate2015.jpg">
+								<span class="bg-image"></span>
+							</span>
+						</div>
+						<div class="proj-img-wrap proj-img_1">
+							<span class="proj-img bg-image-wrapper" data-scroll-item data-lazyimage="http://neilcarpenter.com/wp-content/uploads/2014/12/thumb-resonate2015.jpg">
+								<span class="bg-image"></span>
+							</span>
+						</div>
+						<div class="proj-img-wrap proj-img_1">
+							<span class="proj-img bg-image-wrapper" data-scroll-item data-lazyimage="http://neilcarpenter.com/wp-content/uploads/2014/12/thumb-resonate2015.jpg">
+								<span class="bg-image"></span>
+							</span>
+						</div>
+						<div class="proj-img-wrap proj-img_1">
+							<span class="proj-img bg-image-wrapper" data-scroll-item data-lazyimage="http://neilcarpenter.com/wp-content/uploads/2014/12/thumb-resonate2015.jpg">
+								<span class="bg-image"></span>
+							</span>
+						</div>
+						<div class="proj-img-wrap proj-img_1">
+							<span class="proj-img bg-image-wrapper" data-scroll-item data-lazyimage="http://neilcarpenter.com/wp-content/uploads/2014/12/thumb-resonate2015.jpg">
+								<span class="bg-image"></span>
+							</span>
+						</div>
+						<div class="proj-img-wrap proj-img_1">
+							<span class="proj-img bg-image-wrapper" data-scroll-item data-lazyimage="http://neilcarpenter.com/wp-content/uploads/2014/12/thumb-resonate2015.jpg">
+								<span class="bg-image"></span>
+							</span>
+						</div>
 					</div>
 				</div>
+
+				*/  ?>
 
 				<nav class="proj-nav-bottom cf">
 					<? if ($prevProject) { ?>
