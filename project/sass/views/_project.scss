@@ -1,11 +1,50 @@
 .page-project {
-	height: 2000px;	
+	height: 2000px; // TO DO remove this
+
+	.row {
+		margin-bottom: 100px;
+	}
+
+	.grid-item {
+
+		&.grid-item-large {
+
+			.proj-img-wrap {
+				
+			}
+		}
+
+		&:first-child {
+
+			p {
+				text-align: right;
+				float: right;
+			}
+		}
+
+		.proj-img-wrap {
+			position: relative;
+			margin-bottom: 50px;
+			height: 0;
+			padding-bottom: 60%;
+
+			&:last-child {
+				margin-bottom: 0;
+			}
+		}
+
+		p {
+			margin-top: 0;
+			max-width: 400px;
+			clear: both;
+		}
+	}
 }
 
 .proj-hero {
 	height: 700px;
 	position: relative;
-	margin-bottom: 50px;
+	margin-bottom: 150px;
 	overflow: hidden;
 	transform-origin: bottom center;
 
@@ -74,7 +113,7 @@
 
 .proj-intro {
 	text-align: center;
-	margin: 0 auto;
+	margin: 0 auto 160px;
 	max-width: 50%;
 }
 

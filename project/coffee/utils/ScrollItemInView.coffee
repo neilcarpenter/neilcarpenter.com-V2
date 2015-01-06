@@ -71,6 +71,8 @@ class ScrollItemInView extends AbstractView
 					$el    : $el
 					offset : $el.offset().top
 
+				@items = _.sortBy @items, (item) -> return item.offset
+
 		null
 
 	showItems : (items) =>

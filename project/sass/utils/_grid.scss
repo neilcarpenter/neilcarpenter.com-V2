@@ -1,0 +1,24 @@
+.row {
+	margin-bottom: 30px;
+}
+
+.grid-item {
+	float: left;
+	position: relative;
+
+	&:first-child {
+		margin-right: 2%;
+	}
+
+	&.grid-item-full {
+		width: 100%;
+	}
+
+	&.grid-item-large {
+		width: #{(3*18.4%)+(2*2%)};
+	}
+
+	&.grid-item-small {
+		width: #{(2*18.4%)+(1*2%)};
+	}
+}

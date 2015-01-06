@@ -1,23 +1,6 @@
 .page-work {
 
-	.row {
-		margin-bottom: 30px;
-	}
-
 	.grid-item {
-		float: left;
-
-		&:first-child {
-			margin-right: 2%;
-		}
-
-		&.grid-item-large {
-			width: #{(3*18.4%)+(2*2%)};
-		}
-
-		&.grid-item-small {
-			width: #{(2*18.4%)+(1*2%)};
-		}
 
 		> a {
 			display: block;
