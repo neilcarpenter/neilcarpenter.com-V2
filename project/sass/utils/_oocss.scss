@@ -154,3 +154,45 @@
 		visibility: visible;
 	}
 }
+
+.arrow {
+	width: 0; 
+	height: 0;
+	transition: all .3s $easeOutCubic;
+
+	&.arrow-down-small {
+		border-left: 8px solid transparent;
+		border-right: 8px solid transparent;
+		border-top: 8px solid $nc-primary;
+	}
+
+	&.arrow-left-small {
+		border-top: 8px solid transparent;
+		border-bottom: 8px solid transparent;
+		border-right: 8px solid $nc-primary;
+	}
+
+	&.arrow-right-small {
+		border-top: 8px solid transparent;
+		border-bottom: 8px solid transparent;
+		border-left: 8px solid $nc-primary;
+	}
+
+	&.arrow-down-medium {
+		border-left: 15px solid transparent;
+		border-right: 15px solid transparent;
+		border-top: 15px solid $nc-primary;
+	}
+
+	&.arrow-left-medium {
+		border-top: 15px solid transparent;
+		border-bottom: 15px solid transparent;
+		border-right: 15px solid $nc-primary;
+	}
+
+	&.arrow-right-medium {
+		border-top: 15px solid transparent;
+		border-bottom: 15px solid transparent;
+		border-left: 15px solid $nc-primary;
+	}
+}

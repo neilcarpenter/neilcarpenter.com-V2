@@ -73,7 +73,14 @@ class ProjectPageView extends AbstractViewPage
 
 	scrollToContent : =>
 
-		Scroller.scrollTo target : @NC().appView.dims.h - @NC().appView.header.sizes.DESKTOP - @sizes.PADDING_DESKTOP
+		target = @NC().appView.dims.h - @NC().appView.header.sizes.DESKTOP - @sizes.PADDING_DESKTOP
+
+		Scroller.scrollTo target : target, =>
+
+			items = []
+			@$el.find('[data-post-intro]').find('[data-scroll-item]').each (i, el) => items.push $el : $(el)
+			@NC().appView.scrollItemInView.showItems items if items.length
+
 
 		null
 
