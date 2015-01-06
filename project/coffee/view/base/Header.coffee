@@ -8,6 +8,9 @@ class Header extends AbstractView
 	classNames :
 		ANIM_IN : 'anim-in'
 
+	sizes :
+		DESKTOP : 76
+
 	constructor : ->
 
 		super()

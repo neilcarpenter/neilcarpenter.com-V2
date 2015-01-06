@@ -6,6 +6,7 @@ class Preloader extends AbstractView
 	
 	TRANSITION_TIME : 0.5
 	CSS_CLASS_SHOW  : 'show'
+	CSS_CLASS_SHOWN : 'shown'
 
 	templateName : 'preloader'
 
@@ -66,6 +67,8 @@ class Preloader extends AbstractView
 		#@$el.css 'display' : 'none'
 		@cb?()
 		@reset()
+
+		@$el.addClass @CSS_CLASS_SHOWN
 
 		null
 

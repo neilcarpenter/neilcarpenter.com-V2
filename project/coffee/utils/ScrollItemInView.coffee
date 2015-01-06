@@ -1,3 +1,4 @@
+AppView          = require '../AppView'
 AbstractView     = require '../view/AbstractView'
 Wrapper          = require '../view/base/Wrapper'
 WordTransitioner = require './WordTransitioner'
@@ -13,9 +14,6 @@ class ScrollItemInView extends AbstractView
 		itemDelay     : 250
 
 	items : []
-
-	lastScrollY : 0
-	ticking     : false
 
 	constructor : ->
 
@@ -35,6 +33,7 @@ class ScrollItemInView extends AbstractView
 
 	bindEvents : =>
 
+		@NC().appView.on AppView.EVENT_ON_SCROLL, @onScroll
 		@NC().appView.wrapper.on Wrapper.VIEW_UPDATED, @onViewUpdated
 
 		null
@@ -42,32 +41,15 @@ class ScrollItemInView extends AbstractView
 	onViewUpdated : =>
 
 		@getItems()
-		@requestTick()
+		@onScroll()
 
 		null
 
 	onScroll : =>
 
-		@lastScrollY = window.scrollY
-		@requestTick()
-
-		null
-
-	requestTick : =>
-
-		if !@ticking
-			requestAnimationFrame @scrollUpdate
-			@ticking = true
-
-		null
-
-	scrollUpdate : =>
-
-		@ticking = false
-
 		return unless @items.length
 
-		threshold   = @lastScrollY + (@NC().appView.dims.h * @defaults.showThreshold)
+		threshold   = @NC().appView.lastScrollY + (@NC().appView.dims.h * @defaults.showThreshold)
 		itemsToShow = []
 
 		(if threshold > item.offset then itemsToShow.push item) for item, i in @items

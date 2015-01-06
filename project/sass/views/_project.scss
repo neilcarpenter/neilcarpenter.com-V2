@@ -1,0 +1,96 @@
+.page-project {
+	height: 2000px;	
+}
+
+.proj-hero {
+	height: 700px;
+	position: relative;
+	margin-bottom: 50px;
+	overflow: hidden;
+	transform-origin: bottom center;
+
+	.proj-img-wrap {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+	}
+
+	.proj-heading {
+		position: absolute;
+		left: 15px;
+		bottom: 5px;
+		z-index: 1;
+
+		.proj-client {
+			margin: 0;
+			text-transform: uppercase;
+
+			.wo:after {
+				height: 3px;
+			}
+		}
+
+		.proj-name {
+			margin: 0;
+			@include font-size(5);
+
+			.wo:after {
+				height: 5px;
+			}
+		}
+	}
+
+	.scroll-to-content {
+		position: absolute;
+		z-index: 1;
+		bottom: 20px;
+		right: 20px;
+		width: 0; 
+		height: 0;
+		cursor: pointer;
+		border-left: 15px solid transparent;
+		border-right: 15px solid transparent;
+		border-top: 15px solid $nc-primary;
+		transition: all .3s $easeOutCubic;
+
+		.no-touch & {
+
+			&:hover {
+				bottom: 18px;
+				border-top-color: $nc-primary-0-6;
+			}
+		}
+	}
+}
+
+.proj-subtitle {
+	text-align: center;
+	@include font-size(4);
+	margin: 40px auto 50px;
+	max-width: 90%;
+}
+
+.proj-intro {
+	text-align: center;
+	margin: 0 auto;
+	max-width: 50%;
+}
+
+.proj-img-wrap {
+
+	&.proj-img_1 {
+
+		.proj-img {
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+		}
+	}
+
+	.proj-img {
+		position: absolute;
+	}
+}

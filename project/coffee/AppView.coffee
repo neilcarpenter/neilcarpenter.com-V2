@@ -22,7 +22,11 @@ class AppView extends AbstractView
         o : null
         c : null
 
+    lastScrollY : 0
+    ticking     : false
+
     EVENT_UPDATE_DIMENSIONS : 'EVENT_UPDATE_DIMENSIONS'
+    EVENT_ON_SCROLL         : 'EVENT_ON_SCROLL'
 
     MOBILE_WIDTH : 700
     MOBILE       : 'mobile'
@@ -92,6 +96,23 @@ class AppView extends AbstractView
 
     onScroll : =>
 
+        @lastScrollY = window.scrollY
+        @requestTick()
+
+        null
+
+    requestTick : =>
+
+        if !@ticking
+            requestAnimationFrame @scrollUpdate
+            @ticking = true
+
+        null
+
+    scrollUpdate : =>
+
+        @ticking = false
+
         @$body.addClass('disable-hover')
 
         clearTimeout @timerScroll
@@ -100,7 +121,7 @@ class AppView extends AbstractView
             @$body.removeClass('disable-hover')
         , 50
 
-        @scrollItemInView.onScroll()
+        @trigger AppView.EVENT_ON_SCROLL
 
         null
 
