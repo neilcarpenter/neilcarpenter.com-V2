@@ -21,6 +21,7 @@ class AppView extends AbstractView
         h : null
         o : null
         c : null
+        r : null
 
     lastScrollY : 0
     ticking     : false
@@ -170,10 +171,17 @@ class AppView extends AbstractView
             h : h
             o : if h > w then 'portrait' else 'landscape'
             c : if w <= @MOBILE_WIDTH then @MOBILE else @NON_MOBILE
+            r : @getRwdSize w, h, window.devicePixelRatio
 
         @trigger @EVENT_UPDATE_DIMENSIONS, @dims
 
         return
+
+    getRwdSize : (w, h, dpr) =>
+
+        size = 'MEDIUM'
+
+        size
 
     linkManager : (e) =>
 
