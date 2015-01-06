@@ -100,6 +100,14 @@
 				<div class="row cf">
 					<div class="grid-item grid-item-small" data-scroll-item>
 						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam odit perspiciatis cupiditate magnam asperiores quod nisi iure error adipisci dicta nam quo, quibusdam natus obcaecati modi, molestiae eveniet rem ea! Nulla, quas tenetur iure vitae eius est totam veritatis iste!</p>
+						<h3>Credits</h3>
+						<ul class="credit-list">
+							<li class="label">What</li>
+							<li>Hey</li>
+							<li>There</li>
+							<li class="label">What up</li>
+							<li>Hi there</li>
+						</ul>
 					</div>
 					<div class="grid-item grid-item-large">
 						<div class="proj-img-wrap proj-img_3">

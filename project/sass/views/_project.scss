@@ -16,8 +16,15 @@
 
 		&:first-child {
 
-			p {
+			p,
+			h3,
+			li {
 				text-align: right;
+			}
+
+			p,
+			h3,
+			ul {
 				float: right;
 			}
 		}
@@ -37,6 +44,33 @@
 			margin-top: 0;
 			max-width: 400px;
 			clear: both;
+		}
+
+		h3 {
+			@include font-size(2);
+			clear: both;
+
+			&:first-child {
+				margin-top: 0;
+			}
+		}
+	}
+}
+
+.credit-list {
+	@include font-size(1.5);
+	line-height: 1.5;
+	list-style-type: none;
+	padding: 0;
+	clear: both;
+
+	.label {
+		color: $nc-primary-0-6;
+		margin-top: 15px;
+		font-style: italic;
+
+		&:first-child {
+			margin-top: 0;
 		}
 	}
 }
