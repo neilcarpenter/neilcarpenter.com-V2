@@ -31,9 +31,10 @@
 	.wi {
 		display: inline-block;
 		position: relative;
-		transform: translate(0, 130%);
-		transform: translate3d(0, 130%, 0);
-		transition: transform .4s $easeOutCubic;
+		opacity: 0;
+		transform: translate(0, 130%) skewY(-10deg);
+		transform: translate3d(0, 130%, 0) skewY(-10deg);
+		transition: all .4s $easeOutCubic;
 		transition-delay: 0.3s;
 	}
 
@@ -44,6 +45,7 @@
 		}
 
 		.wi {
+			opacity: 1;
 			transform: none;
 		}
 	}
@@ -55,8 +57,9 @@
 		}
 
 		.wi {
-			transform: translate(0, 100%);
-			transform: translate3d(0, 100%, 0);
+			opacity: 0;
+			transform: translate(0, 100%) skewY(5deg);
+			transform: translate3d(0, 100%, 0) skewY(5deg);
 		}
 	}
 }
