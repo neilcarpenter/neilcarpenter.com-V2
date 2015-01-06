@@ -6,9 +6,11 @@ class HomePageView extends AbstractViewPage
 
 	template : 'page-home'
 
-	taglineTimer : null
+	startTaglineTime : null
+	taglineTimer     : null
 
 	CHANGE_TAGLINE_INTERVAL : 6000
+	SHOW_DELAY              : 1000
 
 	constructor : ->
 
@@ -23,12 +25,15 @@ class HomePageView extends AbstractViewPage
 		if setting is 'on'
 
 			@$tagline = @$el.find('[data-tagline]')
-			@showFirstTagline()
-			@getTaglines()
-			@startTaglineTimer()
+			@startTaglineTime = setTimeout =>
+				@showFirstTagline()
+				@getTaglines()
+				@startTaglineTimer()
+			, @SHOW_DELAY
 
 		else
 
+			clearTimeout @startTaglineTime
 			@stopTaglineTimer()
 
 		null

@@ -5,6 +5,9 @@ class Header extends AbstractView
 
 	template : 'site-header'
 
+	classNames :
+		ANIM_IN : 'anim-in'
+
 	constructor : ->
 
 		super()
@@ -18,6 +21,12 @@ class Header extends AbstractView
 	bindEvents : =>
 
 		@NC().router.on Router.EVENT_HASH_CHANGED, @onHashChange
+
+		null
+
+	animateIn : =>
+
+		@$el.addClass @classNames.ANIM_IN
 
 		null
 

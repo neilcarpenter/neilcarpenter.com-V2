@@ -5,6 +5,13 @@
 	width: 100%;
 	padding: 18px $side-padding-desktop;
 	z-index: 4;
+	transform: translate(-100%, 0);
+	transform: translate3d(-100%, 0, 0);
+	transition: all .4s $easeOutCubic;
+
+	&.anim-in {
+		transform: none;
+	}
 
 	.logo {
 		margin: 0;

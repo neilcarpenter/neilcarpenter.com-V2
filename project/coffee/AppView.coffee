@@ -117,11 +117,13 @@ class AppView extends AbstractView
 
         @NC().router.start()
 
-        @preloader.hide()
         @updateMediaQueriesLog()
 
-        @scrollItemInView.getItems()
-        @onScroll()
+        @preloader.hide =>
+
+            @header.animateIn()
+            @scrollItemInView.getItems()
+            @onScroll()
 
         return
 
