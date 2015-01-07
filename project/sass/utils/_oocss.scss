@@ -120,6 +120,7 @@
 			opacity: 1;
 			visibility: visible;
 			transform: none;
+			filter: none;
 		}
 	}
 }
@@ -132,9 +133,10 @@
 	height: 100%;
 	opacity: 0;
 	visibility: hidden;
-	transition: all .3s $easeOutCubic;
-	transform: translate(-100%, 0);
-	transform: translate3d(-100%, 0, 0);
+	transition: transform .6s $easeOutCubic, opacity .6s $easeOutCubic, filter 1.6s $easeOutCubic;
+	transition: transform .6s $easeOutCubic, opacity .6s $easeOutCubic, -webkit-filter 1.6s $easeOutCubic;
+	filter: grayscale(1) brightness(0.5);
+	transform: scale(1.05);
 	background-repeat: no-repeat;
 	background-position: center center;
 	background-size: cover;
@@ -144,7 +146,7 @@
 	position: relative;
 	transform: translate(0, 15px);
 	transform: translate3d(0, 15px, 0);
-	transition: all .3s $easeOutCubic;
+	transition: all .45s $easeOutCubic;
 	opacity: 0;
 	visibility: hidden;
 

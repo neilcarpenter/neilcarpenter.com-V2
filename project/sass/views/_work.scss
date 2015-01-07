@@ -27,6 +27,7 @@
 					.bg-image {
 						filter: grayscale(1) brightness(0.5);
 						transform: scale(1.05);
+						transition: all .3s $easeOutCubic;
 					}
 
 					&:after {
