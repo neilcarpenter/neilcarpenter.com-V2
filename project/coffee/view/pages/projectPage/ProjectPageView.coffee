@@ -15,6 +15,8 @@ class ProjectPageView extends AbstractViewPage
 
 	constructor : ->
 
+		@filterPrefix = if document.body.style.webkitFilter isnt undefined then '-webkit-' else ''
+
 		super
 
 		return null
@@ -61,13 +63,22 @@ class ProjectPageView extends AbstractViewPage
 			headingOpacity   = 1 - state
 			heroScale        = 1 + (state * maxHeroScale)
 
+			grayscale  = state
+			brightness = 1 - (state*0.5)
+
+			heroCSS = 'transform': "scale(#{heroScale})"
+			heroCSS["#{@filterPrefix}filter"] = "grayscale(#{grayscale}) brightness(#{brightness})"
+
 			@$toFadeOut.css 'transform': @CSSTranslate(0, headingTranslate, 'px'), 'opacity': headingOpacity
-			@$hero.css 'transform': "scale(#{heroScale})"
+			@$hero.css heroCSS
 
 		else if @NC().appView.lastScrollY <= 0
 
+			heroCSS = 'transform': 'none'
+			heroCSS["#{@filterPrefix}filter"] = "none"
+
 			@$toFadeOut.css 'transform': 'none', 'opacity': 1
-			@$hero.css 'transform': "none"
+			@$hero.css heroCSS
 
 		null
 
