@@ -55,7 +55,7 @@
 				<div class="row cf">
 					<div class="grid-item grid-item-full" data-post-intro>
 						<div class="proj-img-wrap proj-img_1">
-							<span class="proj-img bg-image-wrapper" data-scroll-item data-lazyimage="{{ BASE_URL }}/wp-content/themes/neil-v2/static/img/_tmp/macbook_iphone.png">
+							<span class="proj-img bg-image-wrapper" data-scroll-item data-lazyimage="{{ BASE_URL }}/wp-content/uploads/2015/01/proj-resonate2015-01_{{ RWD_SIZE }}.png">
 								<span class="bg-image"></span>
 							</span>
 						</div>
@@ -68,12 +68,12 @@
 					</div>
 					<div class="grid-item grid-item-large">
 						<div class="proj-img-wrap proj-img_1">
-							<span class="proj-img bg-image-wrapper" data-scroll-item data-lazyimage="{{ BASE_URL }}/wp-content/themes/neil-v2/static/img/_tmp/macbook_iphone.png">
+							<span class="proj-img bg-image-wrapper" data-scroll-item data-lazyimage="{{ BASE_URL }}/wp-content/uploads/2015/01/proj-resonate2015-02_{{ RWD_SIZE }}.png">
 								<span class="bg-image"></span>
 							</span>
 						</div>
 						<div class="proj-img-wrap proj-img_1">
-							<span class="proj-img proj-image-browser bg-image-wrapper" data-scroll-item data-lazyimage="{{ BASE_URL }}/wp-content/themes/neil-v2/static/img/_tmp/browser.png">
+							<span class="proj-img proj-image-browser bg-image-wrapper" data-scroll-item data-lazyimage="{{ BASE_URL }}/wp-content/uploads/2015/01/proj-resonate2015-03_{{ RWD_SIZE }}.png">
 								<span class="bg-image"></span>
 							</span>
 						</div>
@@ -83,12 +83,12 @@
 				<div class="row cf">
 					<div class="grid-item grid-item-large">
 						<div class="proj-img-wrap proj-img_1">
-							<span class="proj-img bg-image-wrapper" data-scroll-item data-lazyimage="{{ BASE_URL }}/wp-content/themes/neil-v2/static/img/_tmp/macbook_iphone.png">
+							<span class="proj-img bg-image-wrapper" data-scroll-item data-lazyimage="{{ BASE_URL }}/wp-content/uploads/2015/01/proj-resonate2015-04_{{ RWD_SIZE }}.png">
 								<span class="bg-image"></span>
 							</span>
 						</div>
 						<div class="proj-img-wrap proj-img_1">
-							<span class="proj-img proj-image-browser bg-image-wrapper" data-scroll-item data-lazyimage="{{ BASE_URL }}/wp-content/themes/neil-v2/static/img/_tmp/browser.png">
+							<span class="proj-img proj-image-browser bg-image-wrapper" data-scroll-item data-lazyimage="{{ BASE_URL }}/wp-content/uploads/2015/01/proj-resonate2015-05_{{ RWD_SIZE }}.png">
 								<span class="bg-image"></span>
 							</span>
 						</div>
@@ -104,17 +104,17 @@
 					</div>
 					<div class="grid-item grid-item-large">
 						<div class="proj-img-wrap proj-img_1">
-							<span class="proj-img bg-image-wrapper" data-scroll-item data-lazyimage="{{ BASE_URL }}/wp-content/themes/neil-v2/static/img/_tmp/macbook_iphone.png">
+							<span class="proj-img bg-image-wrapper" data-scroll-item data-lazyimage="{{ BASE_URL }}/wp-content/uploads/2015/01/proj-resonate2015-06_{{ RWD_SIZE }}.png">
 								<span class="bg-image"></span>
 							</span>
 						</div>
 						<div class="proj-img-wrap proj-img_1">
-							<span class="proj-img proj-image-browser bg-image-wrapper" data-scroll-item data-lazyimage="{{ BASE_URL }}/wp-content/themes/neil-v2/static/img/_tmp/browser.png">
+							<span class="proj-img proj-image-browser bg-image-wrapper" data-scroll-item data-lazyimage="{{ BASE_URL }}/wp-content/uploads/2015/01/proj-resonate2015-07_{{ RWD_SIZE }}.png">
 								<span class="bg-image"></span>
 							</span>
 						</div>
 						<div class="proj-img-wrap proj-img_1">
-							<span class="proj-img bg-image-wrapper" data-scroll-item data-lazyimage="{{ BASE_URL }}/wp-content/themes/neil-v2/static/img/_tmp/macbook_iphone.png">
+							<span class="proj-img bg-image-wrapper" data-scroll-item data-lazyimage="{{ BASE_URL }}/wp-content/uploads/2015/01/proj-resonate2015-09_{{ RWD_SIZE }}.png">
 								<span class="bg-image"></span>
 							</span>
 						</div>
@@ -124,48 +124,48 @@
 				<div class="row cf">
 					<div class="grid-item grid-item-full">
 						<div class="proj-img-wrap proj-img_1">
-							<span class="proj-img bg-image-wrapper" data-scroll-item data-lazyimage="{{ BASE_URL }}/wp-content/themes/neil-v2/static/img/_tmp/macbook_iphone.png">
+							<span class="proj-img bg-image-wrapper" data-scroll-item data-lazyimage="{{ BASE_URL }}/wp-content/uploads/2015/01/proj-resonate2015-08_{{ RWD_SIZE }}.png">
 								<span class="bg-image"></span>
 							</span>
 						</div>
 						<div class="proj-img-wrap proj-img_3">
-							<span class="proj-img proj-img-iphone bg-image-wrapper" data-scroll-item data-lazyimage="{{ BASE_URL }}/wp-content/themes/neil-v2/static/img/_tmp/iphone.png">
+							<span class="proj-img proj-img-iphone bg-image-wrapper" data-scroll-item data-lazyimage="{{ BASE_URL }}/wp-content/uploads/2015/01/proj-resonate2015-10_{{ RWD_SIZE }}.png">
 								<span class="bg-image"></span>
 							</span>
-							<span class="proj-img proj-img-iphone bg-image-wrapper" data-scroll-item data-lazyimage="{{ BASE_URL }}/wp-content/themes/neil-v2/static/img/_tmp/iphone.png">
+							<span class="proj-img proj-img-iphone bg-image-wrapper" data-scroll-item data-lazyimage="{{ BASE_URL }}/wp-content/uploads/2015/01/proj-resonate2015-11_{{ RWD_SIZE }}.png">
 								<span class="bg-image"></span>
 							</span>
-							<span class="proj-img proj-img-iphone bg-image-wrapper" data-scroll-item data-lazyimage="{{ BASE_URL }}/wp-content/themes/neil-v2/static/img/_tmp/iphone.png">
-								<span class="bg-image"></span>
-							</span>
-						</div>
-						<div class="proj-img-wrap proj-img_1">
-							<span class="proj-img proj-image-browser bg-image-wrapper" data-scroll-item data-lazyimage="{{ BASE_URL }}/wp-content/themes/neil-v2/static/img/_tmp/browser.png">
+							<span class="proj-img proj-img-iphone bg-image-wrapper" data-scroll-item data-lazyimage="{{ BASE_URL }}/wp-content/uploads/2015/01/proj-resonate2015-12_{{ RWD_SIZE }}.png">
 								<span class="bg-image"></span>
 							</span>
 						</div>
 						<div class="proj-img-wrap proj-img_1">
-							<span class="proj-img bg-image-wrapper" data-scroll-item data-lazyimage="{{ BASE_URL }}/wp-content/themes/neil-v2/static/img/_tmp/macbook_iphone.png">
+							<span class="proj-img proj-image-browser bg-image-wrapper" data-scroll-item data-lazyimage="{{ BASE_URL }}/wp-content/uploads/2015/01/proj-resonate2015-13_{{ RWD_SIZE }}.png">
 								<span class="bg-image"></span>
 							</span>
 						</div>
 						<div class="proj-img-wrap proj-img_1">
-							<span class="proj-img proj-image-browser bg-image-wrapper" data-scroll-item data-lazyimage="{{ BASE_URL }}/wp-content/themes/neil-v2/static/img/_tmp/browser.png">
+							<span class="proj-img bg-image-wrapper" data-scroll-item data-lazyimage="{{ BASE_URL }}/wp-content/uploads/2015/01/proj-resonate2015-14_{{ RWD_SIZE }}.png">
 								<span class="bg-image"></span>
 							</span>
 						</div>
 						<div class="proj-img-wrap proj-img_1">
-							<span class="proj-img bg-image-wrapper" data-scroll-item data-lazyimage="{{ BASE_URL }}/wp-content/themes/neil-v2/static/img/_tmp/macbook_iphone.png">
+							<span class="proj-img proj-image-browser bg-image-wrapper" data-scroll-item data-lazyimage="{{ BASE_URL }}/wp-content/uploads/2015/01/proj-resonate2015-15_{{ RWD_SIZE }}.png">
 								<span class="bg-image"></span>
 							</span>
 						</div>
 						<div class="proj-img-wrap proj-img_1">
-							<span class="proj-img proj-image-browser bg-image-wrapper" data-scroll-item data-lazyimage="{{ BASE_URL }}/wp-content/themes/neil-v2/static/img/_tmp/browser.png">
+							<span class="proj-img bg-image-wrapper" data-scroll-item data-lazyimage="{{ BASE_URL }}/wp-content/uploads/2015/01/proj-resonate2015-16_{{ RWD_SIZE }}.png">
 								<span class="bg-image"></span>
 							</span>
 						</div>
 						<div class="proj-img-wrap proj-img_1">
-							<span class="proj-img bg-image-wrapper" data-scroll-item data-lazyimage="{{ BASE_URL }}/wp-content/themes/neil-v2/static/img/_tmp/macbook_iphone.png">
+							<span class="proj-img proj-image-browser bg-image-wrapper" data-scroll-item data-lazyimage="{{ BASE_URL }}/wp-content/uploads/2015/01/proj-resonate2015-17_{{ RWD_SIZE }}.png">
+								<span class="bg-image"></span>
+							</span>
+						</div>
+						<div class="proj-img-wrap proj-img_1">
+							<span class="proj-img bg-image-wrapper" data-scroll-item data-lazyimage="{{ BASE_URL }}/wp-content/uploads/2015/01/proj-resonate2015-18_{{ RWD_SIZE }}.png">
 								<span class="bg-image"></span>
 							</span>
 						</div>
