@@ -15,8 +15,8 @@
 
 				<div class="row cf">
 					<article class="grid-item grid-item-large" data-scroll-item>
-						<a href="<?= get_site_url(); ?>/work/test-projjjj">
-							<span class="work-preview-thumb bg-image-wrapper" data-lazyimage="{{ BASE_URL }}/wp-content/themes/neil-v2/static/img/_tmp/header09.jpg">
+						<a href="<?= get_site_url(); ?>/work/resonate-io-2015/">
+							<span class="work-preview-thumb bg-image-wrapper" data-lazyimage="{{ BASE_URL }}/wp-content/themes/neil-v2/static/img/_tmp/resonate2015/header09.jpg">
 								<span class="bg-image"></span>
 							</span>
 							<h2 class="work-preview-client"><span class="wo"><span class="wi">Resonate</span></span></h2>
@@ -24,7 +24,7 @@
 						</a>
 					</article>
 					<article class="grid-item grid-item-small" data-scroll-item>
-						<a href="<?= get_site_url(); ?>/work/test-projjjj">
+						<a href="<?= get_site_url(); ?>/work/resonate-io-2015/">
 							<span class="work-preview-thumb bg-image-wrapper" data-lazyimage="{{ BASE_URL }}/wp-content/themes/neil-v2/static/img/_tmp/cal_large.jpg">
 								<span class="bg-image"></span>
 							</span>
@@ -36,7 +36,7 @@
 
 				<div class="row cf">
 					<article class="grid-item grid-item-small" data-scroll-item>
-						<a href="<?= get_site_url(); ?>/work/test-projjjj">
+						<a href="<?= get_site_url(); ?>/work/resonate-io-2015/">
 							<span class="work-preview-thumb bg-image-wrapper" data-lazyimage="http://neilcarpenter.com/wp-content/uploads/2014/09/thumb-attgif.jpg">
 								<span class="bg-image" style="background-image: url(http://neilcarpenter.com/wp-content/uploads/2014/09/thumb-attgif.jpg)"></span>
 							</span>
@@ -45,7 +45,7 @@
 						</a>
 					</article>
 					<article class="grid-item grid-item-large" data-scroll-item>
-						<a href="<?= get_site_url(); ?>/work/test-projjjj">
+						<a href="<?= get_site_url(); ?>/work/resonate-io-2015/">
 							<span class="work-preview-thumb bg-image-wrapper" data-lazyimage="http://neilcarpenter.com/wp-content/uploads/2014/06/thumb-brazuca.jpg">
 								<span class="bg-image" style="background-image: url(http://neilcarpenter.com/wp-content/uploads/2014/06/thumb-brazuca.jpg)"></span>
 							</span>
@@ -57,7 +57,7 @@
 
 				<div class="row cf">
 					<article class="grid-item grid-item-large" data-scroll-item>
-						<a href="<?= get_site_url(); ?>/work/test-projjjj">
+						<a href="<?= get_site_url(); ?>/work/resonate-io-2015/">
 							<span class="work-preview-thumb bg-image-wrapper" data-lazyimage="http://neilcarpenter.com/wp-content/uploads/2014/06/hpbus-thumb.jpg">
 								<span class="bg-image" style="background-image: url(http://neilcarpenter.com/wp-content/uploads/2014/06/hpbus-thumb.jpg)"></span>
 							</span>
@@ -66,7 +66,7 @@
 						</a>
 					</article>
 					<article class="grid-item grid-item-small" data-scroll-item>
-						<a href="<?= get_site_url(); ?>/work/test-projjjj">
+						<a href="<?= get_site_url(); ?>/work/resonate-io-2015/">
 							<span class="work-preview-thumb bg-image-wrapper" data-lazyimage="http://neilcarpenter.com/wp-content/uploads/2014/06/thumb-axe.jpg">
 								<span class="bg-image" style="background-image: url(http://neilcarpenter.com/wp-content/uploads/2014/06/thumb-axe.jpg)"></span>
 							</span>
@@ -78,7 +78,7 @@
 
 				<div class="row cf">
 					<article class="grid-item grid-item-small" data-scroll-item>
-						<a href="<?= get_site_url(); ?>/work/test-projjjj">
+						<a href="<?= get_site_url(); ?>/work/resonate-io-2015/">
 							<span class="work-preview-thumb bg-image-wrapper" data-lazyimage="http://neilcarpenter.com/wp-content/uploads/2013/10/thumb-love-cravendale.jpg">
 								<span class="bg-image" style="background-image: url(http://neilcarpenter.com/wp-content/uploads/2013/10/thumb-love-cravendale.jpg)"></span>
 							</span>
@@ -87,7 +87,7 @@
 						</a>
 					</article>
 					<article class="grid-item grid-item-large" data-scroll-item>
-						<a href="<?= get_site_url(); ?>/work/test-projjjj">
+						<a href="<?= get_site_url(); ?>/work/resonate-io-2015/">
 							<span class="work-preview-thumb bg-image-wrapper" data-lazyimage="http://neilcarpenter.com/wp-content/uploads/2013/05/thumb-milk-matters.jpg">
 								<span class="bg-image" style="background-image: url(http://neilcarpenter.com/wp-content/uploads/2013/05/thumb-milk-matters.jpg)"></span>
 							</span>
@@ -99,7 +99,7 @@
 
 				<div class="row cf">
 					<article class="grid-item grid-item-large" data-scroll-item>
-						<a href="<?= get_site_url(); ?>/work/test-projjjj">
+						<a href="<?= get_site_url(); ?>/work/resonate-io-2015/">
 							<span class="work-preview-thumb bg-image-wrapper" data-lazyimage="http://neilcarpenter.com/wp-content/uploads/2013/05/thumb-lurpak-uk.jpg">
 								<span class="bg-image" style="background-image: url(http://neilcarpenter.com/wp-content/uploads/2013/05/thumb-lurpak-uk.jpg)"></span>
 							</span>
@@ -108,7 +108,7 @@
 						</a>
 					</article>
 					<article class="grid-item grid-item-small" data-scroll-item>
-						<a href="<?= get_site_url(); ?>/work/test-projjjj">
+						<a href="<?= get_site_url(); ?>/work/resonate-io-2015/">
 							<span class="work-preview-thumb bg-image-wrapper" data-lazyimage="http://neilcarpenter.com/wp-content/uploads/2013/05/ikon-thumb.jpg">
 								<span class="bg-image" style="background-image: url(http://neilcarpenter.com/wp-content/uploads/2013/05/ikon-thumb.jpg)"></span>
 							</span>

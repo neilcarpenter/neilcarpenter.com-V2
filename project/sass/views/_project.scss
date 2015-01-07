@@ -53,6 +53,10 @@
 				margin-top: 0;
 			}
 		}
+
+		.bg-image-wrapper {
+			// background: none;
+		}
 	}
 }
 
@@ -284,5 +288,14 @@
 
 	.proj-img {
 		position: absolute;
+	}
+
+	.proj-image-browser,
+	.proj-img-iphone {
+		background: none;
+
+		.bg-image {
+			background-size: contain;
+		}
 	}
 }

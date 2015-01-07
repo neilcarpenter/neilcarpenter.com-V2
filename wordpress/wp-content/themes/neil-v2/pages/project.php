@@ -43,9 +43,9 @@
 					<? } ?>
 				</nav>
 
-				<? the_field('project_content') ?>
+				<? //the_field('project_content') ?>
 
-				<? /* here just for reference
+				<? /* here just for reference */ ?>
 
 				<div class="proj-intro" data-scroll-item>
 					<p>Fully responsive, single-page, interactive site for the Resonate conference 2015 - bringing together artists to drive a forward-looking debate on the position of technology in art and culture.</p>
@@ -55,7 +55,7 @@
 				<div class="row cf">
 					<div class="grid-item grid-item-full" data-post-intro>
 						<div class="proj-img-wrap proj-img_1">
-							<span class="proj-img bg-image-wrapper" data-scroll-item data-lazyimage="http://neilcarpenter.com/wp-content/uploads/2014/12/thumb-resonate2015.jpg">
+							<span class="proj-img bg-image-wrapper" data-scroll-item data-lazyimage="{{ BASE_URL }}/wp-content/themes/neil-v2/static/img/_tmp/macbook_iphone.png">
 								<span class="bg-image"></span>
 							</span>
 						</div>
@@ -68,12 +68,12 @@
 					</div>
 					<div class="grid-item grid-item-large">
 						<div class="proj-img-wrap proj-img_1">
-							<span class="proj-img bg-image-wrapper" data-scroll-item data-lazyimage="http://neilcarpenter.com/wp-content/uploads/2014/12/thumb-resonate2015.jpg">
+							<span class="proj-img bg-image-wrapper" data-scroll-item data-lazyimage="{{ BASE_URL }}/wp-content/themes/neil-v2/static/img/_tmp/macbook_iphone.png">
 								<span class="bg-image"></span>
 							</span>
 						</div>
 						<div class="proj-img-wrap proj-img_1">
-							<span class="proj-img bg-image-wrapper" data-scroll-item data-lazyimage="http://neilcarpenter.com/wp-content/uploads/2014/12/thumb-resonate2015.jpg">
+							<span class="proj-img proj-image-browser bg-image-wrapper" data-scroll-item data-lazyimage="{{ BASE_URL }}/wp-content/themes/neil-v2/static/img/_tmp/browser.png">
 								<span class="bg-image"></span>
 							</span>
 						</div>
@@ -83,12 +83,12 @@
 				<div class="row cf">
 					<div class="grid-item grid-item-large">
 						<div class="proj-img-wrap proj-img_1">
-							<span class="proj-img bg-image-wrapper" data-scroll-item data-lazyimage="http://neilcarpenter.com/wp-content/uploads/2014/12/thumb-resonate2015.jpg">
+							<span class="proj-img bg-image-wrapper" data-scroll-item data-lazyimage="{{ BASE_URL }}/wp-content/themes/neil-v2/static/img/_tmp/macbook_iphone.png">
 								<span class="bg-image"></span>
 							</span>
 						</div>
 						<div class="proj-img-wrap proj-img_1">
-							<span class="proj-img bg-image-wrapper" data-scroll-item data-lazyimage="http://neilcarpenter.com/wp-content/uploads/2014/12/thumb-resonate2015.jpg">
+							<span class="proj-img proj-image-browser bg-image-wrapper" data-scroll-item data-lazyimage="{{ BASE_URL }}/wp-content/themes/neil-v2/static/img/_tmp/browser.png">
 								<span class="bg-image"></span>
 							</span>
 						</div>
@@ -104,17 +104,17 @@
 					</div>
 					<div class="grid-item grid-item-large">
 						<div class="proj-img-wrap proj-img_1">
-							<span class="proj-img bg-image-wrapper" data-scroll-item data-lazyimage="http://neilcarpenter.com/wp-content/uploads/2014/12/thumb-resonate2015.jpg">
+							<span class="proj-img bg-image-wrapper" data-scroll-item data-lazyimage="{{ BASE_URL }}/wp-content/themes/neil-v2/static/img/_tmp/macbook_iphone.png">
 								<span class="bg-image"></span>
 							</span>
 						</div>
 						<div class="proj-img-wrap proj-img_1">
-							<span class="proj-img bg-image-wrapper" data-scroll-item data-lazyimage="http://neilcarpenter.com/wp-content/uploads/2014/12/thumb-resonate2015.jpg">
+							<span class="proj-img proj-image-browser bg-image-wrapper" data-scroll-item data-lazyimage="{{ BASE_URL }}/wp-content/themes/neil-v2/static/img/_tmp/browser.png">
 								<span class="bg-image"></span>
 							</span>
 						</div>
 						<div class="proj-img-wrap proj-img_1">
-							<span class="proj-img bg-image-wrapper" data-scroll-item data-lazyimage="http://neilcarpenter.com/wp-content/uploads/2014/12/thumb-resonate2015.jpg">
+							<span class="proj-img bg-image-wrapper" data-scroll-item data-lazyimage="{{ BASE_URL }}/wp-content/themes/neil-v2/static/img/_tmp/macbook_iphone.png">
 								<span class="bg-image"></span>
 							</span>
 						</div>
@@ -124,55 +124,55 @@
 				<div class="row cf">
 					<div class="grid-item grid-item-full">
 						<div class="proj-img-wrap proj-img_1">
-							<span class="proj-img bg-image-wrapper" data-scroll-item data-lazyimage="http://neilcarpenter.com/wp-content/uploads/2014/12/thumb-resonate2015.jpg">
+							<span class="proj-img bg-image-wrapper" data-scroll-item data-lazyimage="{{ BASE_URL }}/wp-content/themes/neil-v2/static/img/_tmp/macbook_iphone.png">
 								<span class="bg-image"></span>
 							</span>
 						</div>
 						<div class="proj-img-wrap proj-img_3">
-							<span class="proj-img bg-image-wrapper" data-scroll-item data-lazyimage="http://neilcarpenter.com/wp-content/uploads/2014/12/thumb-resonate2015.jpg">
+							<span class="proj-img proj-img-iphone bg-image-wrapper" data-scroll-item data-lazyimage="{{ BASE_URL }}/wp-content/themes/neil-v2/static/img/_tmp/iphone.png">
 								<span class="bg-image"></span>
 							</span>
-							<span class="proj-img bg-image-wrapper" data-scroll-item data-lazyimage="http://neilcarpenter.com/wp-content/uploads/2014/12/thumb-resonate2015.jpg">
+							<span class="proj-img proj-img-iphone bg-image-wrapper" data-scroll-item data-lazyimage="{{ BASE_URL }}/wp-content/themes/neil-v2/static/img/_tmp/iphone.png">
 								<span class="bg-image"></span>
 							</span>
-							<span class="proj-img bg-image-wrapper" data-scroll-item data-lazyimage="http://neilcarpenter.com/wp-content/uploads/2014/12/thumb-resonate2015.jpg">
-								<span class="bg-image"></span>
-							</span>
-						</div>
-						<div class="proj-img-wrap proj-img_1">
-							<span class="proj-img bg-image-wrapper" data-scroll-item data-lazyimage="http://neilcarpenter.com/wp-content/uploads/2014/12/thumb-resonate2015.jpg">
+							<span class="proj-img proj-img-iphone bg-image-wrapper" data-scroll-item data-lazyimage="{{ BASE_URL }}/wp-content/themes/neil-v2/static/img/_tmp/iphone.png">
 								<span class="bg-image"></span>
 							</span>
 						</div>
 						<div class="proj-img-wrap proj-img_1">
-							<span class="proj-img bg-image-wrapper" data-scroll-item data-lazyimage="http://neilcarpenter.com/wp-content/uploads/2014/12/thumb-resonate2015.jpg">
+							<span class="proj-img proj-image-browser bg-image-wrapper" data-scroll-item data-lazyimage="{{ BASE_URL }}/wp-content/themes/neil-v2/static/img/_tmp/browser.png">
 								<span class="bg-image"></span>
 							</span>
 						</div>
 						<div class="proj-img-wrap proj-img_1">
-							<span class="proj-img bg-image-wrapper" data-scroll-item data-lazyimage="http://neilcarpenter.com/wp-content/uploads/2014/12/thumb-resonate2015.jpg">
+							<span class="proj-img bg-image-wrapper" data-scroll-item data-lazyimage="{{ BASE_URL }}/wp-content/themes/neil-v2/static/img/_tmp/macbook_iphone.png">
 								<span class="bg-image"></span>
 							</span>
 						</div>
 						<div class="proj-img-wrap proj-img_1">
-							<span class="proj-img bg-image-wrapper" data-scroll-item data-lazyimage="http://neilcarpenter.com/wp-content/uploads/2014/12/thumb-resonate2015.jpg">
+							<span class="proj-img proj-image-browser bg-image-wrapper" data-scroll-item data-lazyimage="{{ BASE_URL }}/wp-content/themes/neil-v2/static/img/_tmp/browser.png">
 								<span class="bg-image"></span>
 							</span>
 						</div>
 						<div class="proj-img-wrap proj-img_1">
-							<span class="proj-img bg-image-wrapper" data-scroll-item data-lazyimage="http://neilcarpenter.com/wp-content/uploads/2014/12/thumb-resonate2015.jpg">
+							<span class="proj-img bg-image-wrapper" data-scroll-item data-lazyimage="{{ BASE_URL }}/wp-content/themes/neil-v2/static/img/_tmp/macbook_iphone.png">
 								<span class="bg-image"></span>
 							</span>
 						</div>
 						<div class="proj-img-wrap proj-img_1">
-							<span class="proj-img bg-image-wrapper" data-scroll-item data-lazyimage="http://neilcarpenter.com/wp-content/uploads/2014/12/thumb-resonate2015.jpg">
+							<span class="proj-img proj-image-browser bg-image-wrapper" data-scroll-item data-lazyimage="{{ BASE_URL }}/wp-content/themes/neil-v2/static/img/_tmp/browser.png">
+								<span class="bg-image"></span>
+							</span>
+						</div>
+						<div class="proj-img-wrap proj-img_1">
+							<span class="proj-img bg-image-wrapper" data-scroll-item data-lazyimage="{{ BASE_URL }}/wp-content/themes/neil-v2/static/img/_tmp/macbook_iphone.png">
 								<span class="bg-image"></span>
 							</span>
 						</div>
 					</div>
 				</div>
 
-				*/  ?>
+				<?/**/  ?>
 
 				<nav class="proj-nav-bottom cf">
 					<? if ($prevProject) { ?>
