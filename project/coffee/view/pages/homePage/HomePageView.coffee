@@ -9,7 +9,7 @@ class HomePageView extends AbstractViewPage
 	startTaglineTime : null
 	taglineTimer     : null
 
-	CHANGE_TAGLINE_INTERVAL : 6000
+	CHANGE_TAGLINE_INTERVAL : 5000
 	SHOW_DELAY              : 1000
 
 	constructor : ->
