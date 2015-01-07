@@ -12,14 +12,17 @@ $image_retina_folder : "assets/";
 /*
  * colours
  */
-$nc-secondary : #2F2E2E;
+$nc-secondary : #1A1A1A;
 $nc-primary   : #fff;
 
 $nc-primary-0-6   : rgba(255, 255, 255, 0.6);
-$nc-secondary-0-6 : rgba(47, 46, 46, 0.6);
+$nc-secondary-0-6 : rgba(26, 26, 26, 0.6);
 
 $nc-primary-0-1   : rgba(255, 255, 255, 0.1);
-$nc-secondary-0-1 : rgba(47, 46, 46, 0.1);
+$nc-secondary-0-1 : rgba(26, 26, 26, 0.1);
+
+$nc-primary-0-05   : rgba(255, 255, 255, 0.05);
+$nc-secondary-0-05 : rgba(26, 26, 26, 0.05);
 
 /*
  * layout-related
