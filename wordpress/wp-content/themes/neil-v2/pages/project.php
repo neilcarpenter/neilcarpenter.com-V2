@@ -29,17 +29,17 @@
 							<span class="bg-image"></span>
 						</span>
 					</div>
-					<span class="scroll-to-content arrow arrow-down-medium" data-scroll-to-content></span>
+					<span class="scroll-to-content arrow arrow-down arrow-medium" data-scroll-to-content></span>
 				</div>
 
 				<h3 class="proj-subtitle" data-scroll-item><? the_field('project_client') ?> - <?= get_the_title() ?></h3>
 
 				<nav class="proj-nav-top" data-scroll-item>
 					<? if ($prevProject) { ?>
-						<a href="<?= $prevProject['url']; ?>" class="prev-proj arrow arrow-left-medium" title="<?= $prevProject['text']; ?>"></a>
+						<a href="<?= $prevProject['url']; ?>" class="prev-proj arrow arrow-left arrow-medium" title="<?= $prevProject['text']; ?>"></a>
 					<? } ?>
 					<? if ($nextProject) { ?>
-						<a href="<?= $nextProject['url']; ?>" class="next-proj arrow arrow-right-medium" title="<?= $nextProject['text']; ?>"></a>
+						<a href="<?= $nextProject['url']; ?>" class="next-proj arrow arrow-right arrow-medium" title="<?= $nextProject['text']; ?>"></a>
 					<? } ?>
 				</nav>
 
@@ -176,10 +176,10 @@
 
 				<nav class="proj-nav-bottom cf">
 					<? if ($prevProject) { ?>
-						<a href="<?= $prevProject['url']; ?>" class="prev-proj"><?= $prevProject['text']; ?></a>
+						<a href="<?= $prevProject['url']; ?>" class="prev-proj"><?= $prevProject['text']; ?><span class="arrow arrow-small arrow-left"></span></a>
 					<? } ?>
 					<? if ($nextProject) { ?>
-						<a href="<?= $nextProject['url']; ?>" class="next-proj"><?= $nextProject['text']; ?></a>
+						<a href="<?= $nextProject['url']; ?>" class="next-proj"><?= $nextProject['text']; ?><span class="arrow arrow-small arrow-right"></span></a>
 					<? } ?>
 				</nav>
 

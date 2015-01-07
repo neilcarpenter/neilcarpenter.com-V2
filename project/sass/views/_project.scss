@@ -131,7 +131,7 @@
 
 			&:hover {
 				bottom: 18px;
-				border-top-color: $nc-primary-0-6;
+				opacity: 0.6;
 			}
 		}
 	}
@@ -157,7 +157,7 @@
 
 			&:hover {
 				margin-left: -2px;
-				border-right-color: $nc-primary-0-6;
+				opacity: 0.6;
 			}
 		}
 	}
@@ -169,7 +169,7 @@
 
 			&:hover {
 				margin-right: -2px;
-				border-left-color: $nc-primary-0-6;
+				opacity: 0.6;
 			}
 		}
 	}
@@ -190,9 +190,7 @@
 		border-bottom: 0 solid $nc-primary;
 		transition: all .15s $easeInOutCubic;
 
-		&:after {
-			content: '';
-			@extend .arrow;
+		.arrow {
 			position: absolute;
 			top: 50%;
 			transform: translate(0, -50%);
@@ -209,18 +207,17 @@
 	.prev-proj {
 		float: left;
 
-		&:after {
-			@extend .arrow-left-small;
-			left: -20px;
+		.arrow {
+			left: -30px;
 		}
 
 		.no-touch & {
 
 			&:hover {
 
-				&:after {
+				.arrow {
 					margin-left: -2px;
-					border-right-color: $nc-primary-0-6;
+					opacity: 0.6;
 				}
 			}
 		}
@@ -229,18 +226,17 @@
 	.next-proj {
 		float: right;
 
-		&:after {
-			@extend .arrow-right-small;
-			right: -20px;
+		.arrow {
+			right: -30px;
 		}
 
 		.no-touch & {
 
 			&:hover {
 
-				&:after {
+				.arrow {
 					margin-right: -2px;
-					border-left-color: $nc-primary-0-6;
+					opacity: 0.6;
 				}
 			}
 		}

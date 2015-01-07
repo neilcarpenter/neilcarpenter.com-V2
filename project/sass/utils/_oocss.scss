@@ -156,43 +156,49 @@
 }
 
 .arrow {
-	width: 0; 
-	height: 0;
 	transition: all .3s $easeOutCubic;
+	display: inline-block;
+	position: relative;
 
-	&.arrow-down-small {
-		border-left: 8px solid transparent;
-		border-right: 8px solid transparent;
-		border-top: 8px solid $nc-primary;
+	&:after {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-image: url("data:image/svg+xml;utf8,<svg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 512 512' enable-background='new 0 0 512 512' xml:space='preserve'> <polygon points='142.332,104.886 197.48,50 402.5,256 197.48,462 142.332,407.113 292.727,256 ' fill='#fff'></polygon></svg>");
+		background-size: 100%;
 	}
 
-	&.arrow-left-small {
-		border-top: 8px solid transparent;
-		border-bottom: 8px solid transparent;
-		border-right: 8px solid $nc-primary;
+	&.arrow-small {
+		width: 20px;
+		height: 20px;
 	}
 
-	&.arrow-right-small {
-		border-top: 8px solid transparent;
-		border-bottom: 8px solid transparent;
-		border-left: 8px solid $nc-primary;
+	&.arrow-medium {
+		width: 40px;
+		height: 40px;
 	}
 
-	&.arrow-down-medium {
-		border-left: 15px solid transparent;
-		border-right: 15px solid transparent;
-		border-top: 15px solid $nc-primary;
+	&.arrow-left {
+		
+		&:after {
+			transform: rotate(180deg);
+		}
 	}
 
-	&.arrow-left-medium {
-		border-top: 15px solid transparent;
-		border-bottom: 15px solid transparent;
-		border-right: 15px solid $nc-primary;
+	&.arrow-down {
+		
+		&:after {
+			transform: rotate(90deg);
+		}
 	}
 
-	&.arrow-right-medium {
-		border-top: 15px solid transparent;
-		border-bottom: 15px solid transparent;
-		border-left: 15px solid $nc-primary;
+	&.arrow-up {
+		
+		&:after {
+			transform: rotate(-90deg);
+		}
 	}
 }
