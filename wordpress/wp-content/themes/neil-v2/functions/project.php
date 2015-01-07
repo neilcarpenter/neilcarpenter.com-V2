@@ -1,6 +1,6 @@
 <?php
 /**
- * Misc functions
+ * Project functions
  *
  * @author Neil Carpenter
  *

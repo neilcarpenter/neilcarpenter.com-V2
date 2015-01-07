@@ -314,6 +314,7 @@
 	 *
 	 */
 	include('functions/misc.php');
+	include('functions/work.php');
 	include('functions/project.php');
 
 ?>
