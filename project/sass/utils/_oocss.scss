@@ -169,7 +169,8 @@
 		left: 0;
 		width: 100%;
 		height: 100%;
-		background-image: url("data:image/svg+xml;utf8,<svg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 512 512' enable-background='new 0 0 512 512' xml:space='preserve'> <polygon points='142.332,104.886 197.48,50 402.5,256 197.48,462 142.332,407.113 292.727,256 ' fill='#fff'></polygon></svg>");
+		// background-image: url("data:image/svg+xml;utf8,<svg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 512 512' enable-background='new 0 0 512 512' xml:space='preserve'> <polygon points='142.332,104.886 197.48,50 402.5,256 197.48,462 142.332,407.113 292.727,256' fill='#fff'></polygon></svg>");
+		background-image: url("data:image/svg+xml;utf8,%3Csvg%20version%3D'1.1'%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20xmlns%3Axlink%3D'http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink'%20x%3D'0px'%20y%3D'0px'%20viewBox%3D'0%200%20512%20512'%20enable-background%3D'new%200%200%20512%20512'%20xml%3Aspace%3D'preserve'%3E%20%3Cpolygon%20points%3D'142.332%2C104.886%20197.48%2C50%20402.5%2C256%20197.48%2C462%20142.332%2C407.113%20292.727%2C256'%20fill%3D'%23fff'%3E%3C%2Fpolygon%3E%3C%2Fsvg%3E");
 		background-size: 100%;
 	}
 
