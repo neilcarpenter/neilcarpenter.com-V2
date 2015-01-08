@@ -43,19 +43,19 @@
 					<? } ?>
 				</nav>
 
-				<? //the_field('project_content') ?>
+				<? the_field('project_content') ?>
 
-				<? /* here just for reference */ ?>
+				<? /* here just for reference
 
 				<div class="proj-intro" data-scroll-item>
-					<p>Fully responsive, single-page, interactive site for the Resonate conference 2015 - bringing together artists to drive a forward-looking debate on the position of technology in art and culture.</p>
-					<p><a href="http://resonate.io/2015" target="_blank">Visit site</a></p>
+					<p>Create a calendar all about you, as a gift. You’re so thoughtful.</p>
+					<p><a href="http://three.co.uk/CalendarMe" target="_blank">Visit site</a></p>
 				</div>
 
 				<div class="row cf">
 					<div class="grid-item grid-item-full" data-post-intro>
 						<div class="proj-img-wrap proj-img_1">
-							<span class="proj-img bg-image-wrapper" data-scroll-item data-lazyimage="{{ BASE_URL }}/wp-content/uploads/2015/01/proj-resonate2015-01_{{ RWD_SIZE }}.png">
+							<span class="proj-img bg-image-wrapper" data-scroll-item data-lazyimage="{{ BASE_URL }}/wp-content/uploads/2015/01/proj-calendarme-01_{{ RWD_SIZE }}.png">
 								<span class="bg-image"></span>
 							</span>
 						</div>
@@ -64,16 +64,11 @@
 
 				<div class="row cf">
 					<div class="grid-item grid-item-small" data-scroll-item>
-						<p><a href="http://fluuu.id" target="_blank">FLUUUID</a> collaborated with <a href="http://twitter.com/jocabola" target="_blank">@jocabola</a>, <a href="http://twitter.com/crookookoo" target="_blank">@crookookoo</a> and <a href="http://field.io" target="_blank">FIELD</a> to create the new site for the annual Resonate conference, integrating new branding courtesy of <a href="http://www.hudson-powell.com/" target="_blank">Hudson-Powell</a>, including playful transitions and animations througout the site.</p>
+						<p>UNIT9 were tasked with building Three's Christmas 2014 campaign, which allows users to upload / take a photo of themselves, and create a personalised annual calendar, which they can then share, or download as a PDF. They also had chance to enter daily competition to have a printed version delivered to them.</p>
 					</div>
 					<div class="grid-item grid-item-large">
 						<div class="proj-img-wrap proj-img_1">
-							<span class="proj-img bg-image-wrapper" data-scroll-item data-lazyimage="{{ BASE_URL }}/wp-content/uploads/2015/01/proj-resonate2015-02_{{ RWD_SIZE }}.png">
-								<span class="bg-image"></span>
-							</span>
-						</div>
-						<div class="proj-img-wrap proj-img_1">
-							<span class="proj-img proj-image-browser bg-image-wrapper" data-scroll-item data-lazyimage="{{ BASE_URL }}/wp-content/uploads/2015/01/proj-resonate2015-03_{{ RWD_SIZE }}.png">
+							<span class="proj-img bg-image-wrapper" data-scroll-item data-lazyimage="{{ BASE_URL }}/wp-content/uploads/2015/01/proj-calendarme-02_{{ RWD_SIZE }}.png">
 								<span class="bg-image"></span>
 							</span>
 						</div>
@@ -83,96 +78,110 @@
 				<div class="row cf">
 					<div class="grid-item grid-item-large">
 						<div class="proj-img-wrap proj-img_1">
-							<span class="proj-img bg-image-wrapper" data-scroll-item data-lazyimage="{{ BASE_URL }}/wp-content/uploads/2015/01/proj-resonate2015-04_{{ RWD_SIZE }}.png">
-								<span class="bg-image"></span>
-							</span>
-						</div>
-						<div class="proj-img-wrap proj-img_1">
-							<span class="proj-img proj-image-browser bg-image-wrapper" data-scroll-item data-lazyimage="{{ BASE_URL }}/wp-content/uploads/2015/01/proj-resonate2015-05_{{ RWD_SIZE }}.png">
+							<span class="proj-img bg-image-wrapper" data-scroll-item data-lazyimage="{{ BASE_URL }}/wp-content/uploads/2015/01/proj-calendarme-03_{{ RWD_SIZE }}.png">
 								<span class="bg-image"></span>
 							</span>
 						</div>
 					</div>
 					<div class="grid-item grid-item-small" data-scroll-item>
-						<p>As part of FLUUUID, I helped build the core of the site, including CMS and basic app architecture. FLUUUID was 100% responsible for the build, but worked closely with numerous collaborators during the course of the project.</p>
+						<p>I was tech lead on the project at UNIT9, responsible for managing team of up to 9 developers, guiding technical decisions and liaising internally and with client throughout the course of the tight-timeline project (5 week production).</p>
 					</div>
 				</div>
 
 				<div class="row cf">
 					<div class="grid-item grid-item-small" data-scroll-item>
-						<p>The site is built on WordPress, with all content rendered in PHP, but is progressively-enhanced to become a fully single page application thanks to a modified version of UNIT9's <a href="https://github.com/unit9/coffee-bone" target="_blank">coffee-bone boilerplate</a>. Coffee-bone uses Backbone, Underscore, jQuery, TweenLite, Modernizr, Script.js, CoffeeScript, Sass, Gulp, Browserify, amongst other things. The site makes use of PIXI.js for the animation overlaying the site. The site is fully responsive and heavily optimised for performance.</p>
+						<p>The site is fully responsive, working across desktop, mobile, tablet. Front end is a Backbone app based on UNIT9's coffee-bone boilerplate, which uses Backbone, Underscore, jQuery, TweenLite, Modernizr, CoffeeScript, Sass, Gulp, Browserify. The FE also uses some JS plugins such as Fabric image editor, and slick.js carousel.</p>
+						<p>I also wrote a node script to integrate with our gulp build process that automated deployment and versioning of static assets to S3, as well as interpolating static asset references throughout the front end codebase to use S3-hosted assets in production.</p>
+						<p>The backend is Python + Django on AWS, using EC2, S3 and ELB. The backend image processing is handled by dedicated instances running OpenCV 2 on Python, with ReportLab to generate PDFs. The entire backend is configured to auto-scale based on user traffic to keep response times low (full calendar - 12 months + 1 cover, would be generated and uploaded to S3 in under 5s on average) which was an essential prerequisite of the build as it was the target of a high-profile media drive.</p>
 					</div>
 					<div class="grid-item grid-item-large">
 						<div class="proj-img-wrap proj-img_1">
-							<span class="proj-img bg-image-wrapper" data-scroll-item data-lazyimage="{{ BASE_URL }}/wp-content/uploads/2015/01/proj-resonate2015-06_{{ RWD_SIZE }}.png">
+							<span class="proj-img bg-image-wrapper" data-scroll-item data-lazyimage="{{ BASE_URL }}/wp-content/uploads/2015/01/proj-calendarme-04_{{ RWD_SIZE }}.png">
 								<span class="bg-image"></span>
 							</span>
 						</div>
 						<div class="proj-img-wrap proj-img_1">
-							<span class="proj-img proj-image-browser bg-image-wrapper" data-scroll-item data-lazyimage="{{ BASE_URL }}/wp-content/uploads/2015/01/proj-resonate2015-07_{{ RWD_SIZE }}.png">
+							<span class="proj-img proj-image-browser bg-image-wrapper" data-scroll-item data-lazyimage="{{ BASE_URL }}/wp-content/uploads/2015/01/proj-calendarme-05_{{ RWD_SIZE }}.png">
 								<span class="bg-image"></span>
 							</span>
 						</div>
 						<div class="proj-img-wrap proj-img_1">
-							<span class="proj-img bg-image-wrapper" data-scroll-item data-lazyimage="{{ BASE_URL }}/wp-content/uploads/2015/01/proj-resonate2015-09_{{ RWD_SIZE }}.png">
+							<span class="proj-img bg-image-wrapper" data-scroll-item data-lazyimage="{{ BASE_URL }}/wp-content/uploads/2015/01/proj-calendarme-06_{{ RWD_SIZE }}.png">
 								<span class="bg-image"></span>
 							</span>
 						</div>
+					</div>
+				</div>
+
+				<div class="row cf">
+					<div class="grid-item grid-item-large">
+						<div class="proj-img-wrap proj-img_1">
+							<span class="proj-img bg-image-wrapper" data-scroll-item data-lazyimage="{{ BASE_URL }}/wp-content/uploads/2015/01/proj-calendarme-07_{{ RWD_SIZE }}.png">
+								<span class="bg-image"></span>
+							</span>
+						</div>
+						<div class="proj-img-wrap proj-img_1">
+							<span class="proj-img proj-image-browser bg-image-wrapper" data-scroll-item data-lazyimage="{{ BASE_URL }}/wp-content/uploads/2015/01/proj-calendarme-08_{{ RWD_SIZE }}.png">
+								<span class="bg-image"></span>
+							</span>
+						</div>
+						<div class="proj-img-wrap proj-img_1">
+							<span class="proj-img bg-image-wrapper" data-scroll-item data-lazyimage="{{ BASE_URL }}/wp-content/uploads/2015/01/proj-calendarme-09_{{ RWD_SIZE }}.png">
+								<span class="bg-image"></span>
+							</span>
+						</div>
+					</div>
+					<div class="grid-item grid-item-small" data-scroll-item>
+						<h3>Credits</h3>
+						<ul class="credit-list">
+							<li class="label">Client</li>
+							<li>Three</li>
+							<li class="label">Agency</li>
+							<li>Wieden+Kennedy London</li>
+							<li class="label">Production Company</li>
+							<li>UNIT9</li>
+							<li class="label">Producer</li>
+							<li>Richard Rowe</li>
+							<li class="label">Project Manager</li>
+							<li>Josselin Milon</li>
+							<li class="label">UX</li>
+							<li>Quentin Gauvrit</li>
+							<li class="label">Creative</li>
+							<li>Dirk van Ginkel</li>
+							<li class="label">Design</li>
+							<li>Sean Hobman</li>
+							<li>Steve McGeorge</li>
+							<li class="label">Motion design</li>
+							<li>Godart Raets</li>
+							<li class="label">Tech lead</li>
+							<li>Neil Carpenter</li>
+							<li class="label">Lead backend developer</li>
+							<li>Dominique Peretti</li>
+							<li class="label">Backend developer</li>
+							<li>Krzysztof Skoracki</li>
+							<li class="label">Developer</li>
+							<li>Damien Mortini</li>
+							<li class="label">Frontend developers</li>
+							<li>Fabio Azevedo</li>
+							<li>Michal Kleszcz</li>
+							<li>Damien Seguin</li>
+							<li>Edgard Zavarezzi</li>
+							<li>Jaroslaw Wulnikowski</li>
+						</ul>
 					</div>
 				</div>
 
 				<div class="row cf">
 					<div class="grid-item grid-item-full">
 						<div class="proj-img-wrap proj-img_1">
-							<span class="proj-img bg-image-wrapper" data-scroll-item data-lazyimage="{{ BASE_URL }}/wp-content/uploads/2015/01/proj-resonate2015-08_{{ RWD_SIZE }}.png">
-								<span class="bg-image"></span>
-							</span>
-						</div>
-						<div class="proj-img-wrap proj-img_3">
-							<span class="proj-img proj-img-iphone bg-image-wrapper" data-scroll-item data-lazyimage="{{ BASE_URL }}/wp-content/uploads/2015/01/proj-resonate2015-10_{{ RWD_SIZE }}.png">
-								<span class="bg-image"></span>
-							</span>
-							<span class="proj-img proj-img-iphone bg-image-wrapper" data-scroll-item data-lazyimage="{{ BASE_URL }}/wp-content/uploads/2015/01/proj-resonate2015-11_{{ RWD_SIZE }}.png">
-								<span class="bg-image"></span>
-							</span>
-							<span class="proj-img proj-img-iphone bg-image-wrapper" data-scroll-item data-lazyimage="{{ BASE_URL }}/wp-content/uploads/2015/01/proj-resonate2015-12_{{ RWD_SIZE }}.png">
-								<span class="bg-image"></span>
-							</span>
-						</div>
-						<div class="proj-img-wrap proj-img_1">
-							<span class="proj-img proj-image-browser bg-image-wrapper" data-scroll-item data-lazyimage="{{ BASE_URL }}/wp-content/uploads/2015/01/proj-resonate2015-13_{{ RWD_SIZE }}.png">
-								<span class="bg-image"></span>
-							</span>
-						</div>
-						<div class="proj-img-wrap proj-img_1">
-							<span class="proj-img bg-image-wrapper" data-scroll-item data-lazyimage="{{ BASE_URL }}/wp-content/uploads/2015/01/proj-resonate2015-14_{{ RWD_SIZE }}.png">
-								<span class="bg-image"></span>
-							</span>
-						</div>
-						<div class="proj-img-wrap proj-img_1">
-							<span class="proj-img proj-image-browser bg-image-wrapper" data-scroll-item data-lazyimage="{{ BASE_URL }}/wp-content/uploads/2015/01/proj-resonate2015-15_{{ RWD_SIZE }}.png">
-								<span class="bg-image"></span>
-							</span>
-						</div>
-						<div class="proj-img-wrap proj-img_1">
-							<span class="proj-img bg-image-wrapper" data-scroll-item data-lazyimage="{{ BASE_URL }}/wp-content/uploads/2015/01/proj-resonate2015-16_{{ RWD_SIZE }}.png">
-								<span class="bg-image"></span>
-							</span>
-						</div>
-						<div class="proj-img-wrap proj-img_1">
-							<span class="proj-img proj-image-browser bg-image-wrapper" data-scroll-item data-lazyimage="{{ BASE_URL }}/wp-content/uploads/2015/01/proj-resonate2015-17_{{ RWD_SIZE }}.png">
-								<span class="bg-image"></span>
-							</span>
-						</div>
-						<div class="proj-img-wrap proj-img_1">
-							<span class="proj-img bg-image-wrapper" data-scroll-item data-lazyimage="{{ BASE_URL }}/wp-content/uploads/2015/01/proj-resonate2015-18_{{ RWD_SIZE }}.png">
+							<span class="proj-img bg-image-wrapper" data-scroll-item data-lazyimage="{{ BASE_URL }}/wp-content/uploads/2015/01/proj-calendarme-10_{{ RWD_SIZE }}.png">
 								<span class="bg-image"></span>
 							</span>
 						</div>
 					</div>
 				</div>
 
-				<?/**/  ?>
+				*/  ?>
 
 				<nav class="proj-nav-bottom cf">
 					<? if ($prevProject) { ?>
