@@ -47,15 +47,15 @@
 
 				<? /* here just for reference
 
-				<div class="proj-intro" data-scroll-item>
-					<p>Create a calendar all about you, as a gift. You’re so thoughtful.</p>
-					<p><a href="http://three.co.uk/CalendarMe" target="_blank">Visit site</a></p>
+				<div class="proj-intro">
+					<p data-scroll-item>Desafio tudo ou nada - a daily treasure hunt within Google maps / street view throughout the 2014 FIFA World Cup.</p>
+					<p data-scroll-item><a href="http://brazucadidas.appspot.com/" target="_blank">Visit site</a></p>
 				</div>
 
 				<div class="row cf">
 					<div class="grid-item grid-item-full" data-post-intro>
 						<div class="proj-img-wrap proj-img_1">
-							<span class="proj-img bg-image-wrapper" data-scroll-item data-lazyimage="{{ BASE_URL }}/wp-content/uploads/2015/01/proj-calendarme-01_{{ RWD_SIZE }}.png">
+							<span class="proj-img bg-image-wrapper" data-scroll-item data-lazyimage="{{ BASE_URL }}/wp-content/uploads/2015/01/proj-brazuca-01_{{ RWD_SIZE }}.png">
 								<span class="bg-image"></span>
 							</span>
 						</div>
@@ -63,50 +63,17 @@
 				</div>
 
 				<div class="row cf">
-					<div class="grid-item grid-item-small" data-scroll-item>
-						<p>UNIT9 were tasked with building Three's Christmas 2014 campaign, which allows users to upload / take a photo of themselves, and create a personalised annual calendar, which they can then share, or download as a PDF. They also had chance to enter daily competition to have a printed version delivered to them.</p>
+					<div class="grid-item grid-item-small">
+						<p data-scroll-item>The site allows users to complete a Google maps / street view "treasure hunt" every day for the 2014 World Cup. Each day there are prize winners based on the player's score for that day's quest, and there are also prizes at the end of the World Cup for the players with the highest overall scores.</p>
 					</div>
 					<div class="grid-item grid-item-large">
 						<div class="proj-img-wrap proj-img_1">
-							<span class="proj-img bg-image-wrapper" data-scroll-item data-lazyimage="{{ BASE_URL }}/wp-content/uploads/2015/01/proj-calendarme-02_{{ RWD_SIZE }}.png">
-								<span class="bg-image"></span>
-							</span>
-						</div>
-					</div>
-				</div>
-
-				<div class="row cf">
-					<div class="grid-item grid-item-large">
-						<div class="proj-img-wrap proj-img_1">
-							<span class="proj-img bg-image-wrapper" data-scroll-item data-lazyimage="{{ BASE_URL }}/wp-content/uploads/2015/01/proj-calendarme-03_{{ RWD_SIZE }}.png">
-								<span class="bg-image"></span>
-							</span>
-						</div>
-					</div>
-					<div class="grid-item grid-item-small" data-scroll-item>
-						<p>I was tech lead on the project at UNIT9, responsible for managing team of up to 9 developers, guiding technical decisions and liaising internally and with client throughout the course of the tight-timeline project (5 week production).</p>
-					</div>
-				</div>
-
-				<div class="row cf">
-					<div class="grid-item grid-item-small" data-scroll-item>
-						<p>The site is fully responsive, working across desktop, mobile, tablet. Front end is a Backbone app based on UNIT9's coffee-bone boilerplate, which uses Backbone, Underscore, jQuery, TweenLite, Modernizr, CoffeeScript, Sass, Gulp, Browserify. The FE also uses some JS plugins such as Fabric image editor, and slick.js carousel.</p>
-						<p>I also wrote a node script to integrate with our gulp build process that automated deployment and versioning of static assets to S3, as well as interpolating static asset references throughout the front end codebase to use S3-hosted assets in production.</p>
-						<p>The backend is Python + Django on AWS, using EC2, S3 and ELB. The backend image processing is handled by dedicated instances running OpenCV 2 on Python, with ReportLab to generate PDFs. The entire backend is configured to auto-scale based on user traffic to keep response times low (full calendar - 12 months + 1 cover, would be generated and uploaded to S3 in under 5s on average) which was an essential prerequisite of the build as it was the target of a high-profile media drive.</p>
-					</div>
-					<div class="grid-item grid-item-large">
-						<div class="proj-img-wrap proj-img_1">
-							<span class="proj-img bg-image-wrapper" data-scroll-item data-lazyimage="{{ BASE_URL }}/wp-content/uploads/2015/01/proj-calendarme-04_{{ RWD_SIZE }}.png">
+							<span class="proj-img bg-image-wrapper" data-scroll-item data-lazyimage="{{ BASE_URL }}/wp-content/uploads/2015/01/proj-brazuca-02_{{ RWD_SIZE }}.png">
 								<span class="bg-image"></span>
 							</span>
 						</div>
 						<div class="proj-img-wrap proj-img_1">
-							<span class="proj-img proj-image-browser bg-image-wrapper" data-scroll-item data-lazyimage="{{ BASE_URL }}/wp-content/uploads/2015/01/proj-calendarme-05_{{ RWD_SIZE }}.png">
-								<span class="bg-image"></span>
-							</span>
-						</div>
-						<div class="proj-img-wrap proj-img_1">
-							<span class="proj-img bg-image-wrapper" data-scroll-item data-lazyimage="{{ BASE_URL }}/wp-content/uploads/2015/01/proj-calendarme-06_{{ RWD_SIZE }}.png">
+							<span class="proj-img proj-image-browser bg-image-wrapper" data-scroll-item data-lazyimage="{{ BASE_URL }}/wp-content/uploads/2015/01/proj-brazuca-03_{{ RWD_SIZE }}.png">
 								<span class="bg-image"></span>
 							</span>
 						</div>
@@ -116,65 +83,140 @@
 				<div class="row cf">
 					<div class="grid-item grid-item-large">
 						<div class="proj-img-wrap proj-img_1">
-							<span class="proj-img bg-image-wrapper" data-scroll-item data-lazyimage="{{ BASE_URL }}/wp-content/uploads/2015/01/proj-calendarme-07_{{ RWD_SIZE }}.png">
+							<span class="proj-img proj-image-browser bg-image-wrapper" data-scroll-item data-lazyimage="{{ BASE_URL }}/wp-content/uploads/2015/01/proj-brazuca-04_{{ RWD_SIZE }}.png">
 								<span class="bg-image"></span>
 							</span>
 						</div>
 						<div class="proj-img-wrap proj-img_1">
-							<span class="proj-img proj-image-browser bg-image-wrapper" data-scroll-item data-lazyimage="{{ BASE_URL }}/wp-content/uploads/2015/01/proj-calendarme-08_{{ RWD_SIZE }}.png">
-								<span class="bg-image"></span>
-							</span>
-						</div>
-						<div class="proj-img-wrap proj-img_1">
-							<span class="proj-img bg-image-wrapper" data-scroll-item data-lazyimage="{{ BASE_URL }}/wp-content/uploads/2015/01/proj-calendarme-09_{{ RWD_SIZE }}.png">
+							<span class="proj-img bg-image-wrapper" data-scroll-item data-lazyimage="{{ BASE_URL }}/wp-content/uploads/2015/01/proj-brazuca-05_{{ RWD_SIZE }}.png">
 								<span class="bg-image"></span>
 							</span>
 						</div>
 					</div>
-					<div class="grid-item grid-item-small" data-scroll-item>
-						<h3>Credits</h3>
-						<ul class="credit-list">
-							<li class="label">Client</li>
-							<li>Three</li>
-							<li class="label">Agency</li>
-							<li>Wieden+Kennedy London</li>
-							<li class="label">Production Company</li>
-							<li>UNIT9</li>
-							<li class="label">Producer</li>
-							<li>Richard Rowe</li>
-							<li class="label">Project Manager</li>
-							<li>Josselin Milon</li>
-							<li class="label">UX</li>
-							<li>Quentin Gauvrit</li>
-							<li class="label">Creative</li>
-							<li>Dirk van Ginkel</li>
-							<li class="label">Design</li>
-							<li>Sean Hobman</li>
-							<li>Steve McGeorge</li>
-							<li class="label">Motion design</li>
-							<li>Godart Raets</li>
-							<li class="label">Tech lead</li>
-							<li>Neil Carpenter</li>
-							<li class="label">Lead backend developer</li>
-							<li>Dominique Peretti</li>
-							<li class="label">Backend developer</li>
-							<li>Krzysztof Skoracki</li>
-							<li class="label">Developer</li>
-							<li>Damien Mortini</li>
-							<li class="label">Frontend developers</li>
-							<li>Fabio Azevedo</li>
-							<li>Michal Kleszcz</li>
-							<li>Damien Seguin</li>
-							<li>Edgard Zavarezzi</li>
-							<li>Jaroslaw Wulnikowski</li>
-						</ul>
+					<div class="grid-item grid-item-small">
+						<p data-scroll-item>I was lead Front End developer at UNIT9. There was a super tight timeline on the project, with 6 weeks from initial idea brainstorming to full product release - just in time for the World Cup kick off. The dev team grew exponentially as the project progressed - from 3, to 6, and up to a max of 14 active developers at one point.</p>
+						<p data-scroll-item>We had to be extremely agile in our build as the UX and project scope was still in flux, which meant a very abstract, and loosely-coupled approach to development. I was responsible for core site architecture, front end data management and API integration, and the user gameplay mechanic, including the Google maps / street view components, and gameplay UI.</p>
 					</div>
 				</div>
 
 				<div class="row cf">
 					<div class="grid-item grid-item-full">
+						<div class="proj-img-wrap proj-img_3">
+							<span class="proj-img proj-img-iphone bg-image-wrapper" data-scroll-item data-lazyimage="{{ BASE_URL }}/wp-content/uploads/2015/01/proj-brazuca-06_{{ RWD_SIZE }}.png">
+								<span class="bg-image"></span>
+							</span>
+							<span class="proj-img proj-img-iphone bg-image-wrapper" data-scroll-item data-lazyimage="{{ BASE_URL }}/wp-content/uploads/2015/01/proj-brazuca-07_{{ RWD_SIZE }}.png">
+								<span class="bg-image"></span>
+							</span>
+							<span class="proj-img proj-img-iphone bg-image-wrapper" data-scroll-item data-lazyimage="{{ BASE_URL }}/wp-content/uploads/2015/01/proj-brazuca-08_{{ RWD_SIZE }}.png">
+								<span class="bg-image"></span>
+							</span>
+						</div>
 						<div class="proj-img-wrap proj-img_1">
-							<span class="proj-img bg-image-wrapper" data-scroll-item data-lazyimage="{{ BASE_URL }}/wp-content/uploads/2015/01/proj-calendarme-10_{{ RWD_SIZE }}.png">
+							<span class="proj-img bg-image-wrapper" data-scroll-item data-lazyimage="{{ BASE_URL }}/wp-content/uploads/2015/01/proj-brazuca-09_{{ RWD_SIZE }}.png">
+								<span class="bg-image"></span>
+							</span>
+						</div>
+					</div>
+				</div>
+
+				<div class="row cf">
+					<div class="grid-item grid-item-small">
+						<p data-scroll-item>The site is a fully responsive single-page web app, built on Backbone, jQuery, Underscore, CoffeeScript, Sass, Grunt and Google App Engine (Python). We also make use of a series of third party APIs such as Facebook API, Google+ API, Google Maps API.</p>
+						<p data-scroll-item>The site gameplay data is powered by a fully-customised CMS which allows authors to interact with Google maps / street view to easily create each day's "quest".</p>
+					</div>
+					<div class="grid-item grid-item-large">
+						<div class="proj-img-wrap proj-img_1">
+							<span class="proj-img bg-image-wrapper" data-scroll-item data-lazyimage="{{ BASE_URL }}/wp-content/uploads/2015/01/proj-brazuca-10_{{ RWD_SIZE }}.png">
+								<span class="bg-image"></span>
+							</span>
+						</div>
+						<div class="proj-img-wrap proj-img_1">
+							<span class="proj-img proj-image-browser bg-image-wrapper" data-scroll-item data-lazyimage="{{ BASE_URL }}/wp-content/uploads/2015/01/proj-brazuca-11_{{ RWD_SIZE }}.png">
+								<span class="bg-image"></span>
+							</span>
+						</div>
+					</div>
+				</div>
+
+				<div class="row cf">
+					<div class="grid-item grid-item-large">
+						<div class="proj-img-wrap proj-img_1">
+							<span class="proj-img bg-image-wrapper" data-scroll-item data-lazyimage="{{ BASE_URL }}/wp-content/uploads/2015/01/proj-brazuca-12_{{ RWD_SIZE }}.png">
+								<span class="bg-image"></span>
+							</span>
+						</div>
+						<div class="proj-img-wrap proj-img_1">
+							<span class="proj-img proj-image-browser bg-image-wrapper" data-scroll-item data-lazyimage="{{ BASE_URL }}/wp-content/uploads/2015/01/proj-brazuca-13_{{ RWD_SIZE }}.png">
+								<span class="bg-image"></span>
+							</span>
+						</div>
+						<div class="proj-img-wrap proj-img_1">
+							<span class="proj-img bg-image-wrapper" data-scroll-item data-lazyimage="{{ BASE_URL }}/wp-content/uploads/2015/01/proj-brazuca-14_{{ RWD_SIZE }}.png">
+								<span class="bg-image"></span>
+							</span>
+						</div>
+					</div>
+					<div class="grid-item grid-item-small" data-scroll-item>
+						<h3 class="credit-title">Credits</h3>
+						<ul class="credit-list">
+							<li class="label">Client</li>
+							<li>Adidas Brasil</li>
+							<li class="label">Agency</li>
+							<li>Google Zoo</li>
+							<li class="label">Production Company</li>
+							<li>UNIT9</li>
+							<li class="label">Director</li>
+							<li>Takayoshi Kishimoto</li>
+							<li class="label">Executive producer</li>
+							<li>Marc D'Souza</li>
+							<li class="label">Technical director</li>
+							<li>Yates Buckley</li>
+							<li class="label">Project managers</li>
+							<li>Cyriele Piancastelli</li>
+							<li>Frederic Mouniguet </li>
+							<li class="label">UX</li>
+							<li>Quentin Gauvrit</li>
+							<li class="label">Designers</li>
+							<li>Karol Góreczny</li>
+							<li>Steven Mengin</li>
+							<li class="label">Technical lead</li>
+							<li>Silvio Paganini</li>
+							<li class="label">Lead frontend developer</li>
+							<li>Neil Carpenter</li>
+							<li class="label">Frontend developers</li>
+							<li>William Mapan</li>
+							<li>Michal Kleszcz</li>
+							<li>Damien Mortini</li>
+							<li>Sam Brown</li>
+							<li>Edgard Zavarezzi</li>
+							<li>Andy Kenward</li>
+							<li class="label">Backend developers</li>
+							<li>Krzysztof Kokoszka</li>
+							<li>Krzysztof Skoracki</li>
+							<li>Darko Stankovski</li>
+							<li>Adrian Lolo</li>
+							<li class="label">QA</li>
+							<li>Peter Law</li>
+							<li>zoonou</li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="row cf">
+					<div class="grid-item grid-item-full" data-post-intro>
+						<div class="proj-img-wrap proj-img_1">
+							<span class="proj-img bg-image-wrapper" data-scroll-item data-lazyimage="{{ BASE_URL }}/wp-content/uploads/2015/01/proj-brazuca-15_{{ RWD_SIZE }}.png">
+								<span class="bg-image"></span>
+							</span>
+						</div>
+						<div class="proj-img-wrap proj-img_1">
+							<span class="proj-img proj-image-browser bg-image-wrapper" data-scroll-item data-lazyimage="{{ BASE_URL }}/wp-content/uploads/2015/01/proj-brazuca-16_{{ RWD_SIZE }}.png">
+								<span class="bg-image"></span>
+							</span>
+						</div>
+						<div class="proj-img-wrap proj-img_1">
+							<span class="proj-img bg-image-wrapper" data-scroll-item data-lazyimage="{{ BASE_URL }}/wp-content/uploads/2015/01/proj-brazuca-17_{{ RWD_SIZE }}.png">
 								<span class="bg-image"></span>
 							</span>
 						</div>
