@@ -14,3 +14,6 @@ dploy.yaml
 wordpress/.rev
 wordpress/wp-content/uploads
 wordpress/wp-content/plugins/wordpress-importer/
+
+# project images
+wordpress/wp-content/themes/neil-v2/static/img/projects
