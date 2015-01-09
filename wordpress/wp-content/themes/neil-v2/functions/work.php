@@ -9,7 +9,6 @@
 function nc_get_all_projects() {
 
 	$projects = get_field('work_projects');
-	$count    = count($projects);
 
 	foreach ($projects as $idx => $project) {
 
