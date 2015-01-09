@@ -19,7 +19,8 @@
 
 			<?
 				$count = count($projects);
-				foreach ($projects as $idx => $project) {
+				foreach ($projects as $idx => $_project) {
+					$project = $_project['post_object'];
 					echo ($idx % 2 == 0) ? "<div class=\"row cf\">" : "";
 			?>
 					<article class="grid-item grid-item-<?= $project->grid_size ?>" data-scroll-item>
