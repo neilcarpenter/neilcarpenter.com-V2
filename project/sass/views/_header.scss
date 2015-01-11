@@ -5,6 +5,7 @@
 	width: 100%;
 	padding: 18px $side-padding-desktop;
 	z-index: 4;
+	overflow: hidden;
 	transform: translate(-100%, 0);
 	transform: translate3d(-100%, 0, 0);
 	transition: all .4s $easeOutCubic;
@@ -76,43 +77,83 @@
 		display: none;
 		position: fixed;
 		z-index: 2;
-		right: $side-padding-small;
+		right: 14px;
 		top: 14px;
 		width: 25px;
 		height: 25px;
-		background: red;
+
+		.bar {
+			position: absolute;
+			left: 0;
+			width: 100%;
+			height: 3px;
+			background: $nc-primary;
+			transition: all .3s $easeOutCubic;
+
+			&.bar-1 {
+				top: 2px;
+				transform-origin: center left;
+			}
+
+			&.bar-2 {
+				top: 11px;
+			}
+
+			&.bar-3 {
+				bottom: 2px;
+				transform-origin: center left;
+			}
+		}
 	}
 
 	@include respond-to(smallest) {
 
 		&.menu-open {
+			overflow: visible;
 
 			.logo {
 				transform: translate(-50%, 0);
 			}
 
 			nav {
-				opacity: 1;
-            	visibility: visible;
+				background-color: $nc-secondary;
             	transform: translate(-100%, 0);
             	transform: translate3d(-100%, 0, 0);
 			}
+
+			.bar {
+
+				&.bar-1 {
+					transform: rotate(45deg);
+				}
+
+				&.bar-2 {
+					width: 0;
+					left: 50%;
+				}
+
+				&.bar-3 {
+					transform: rotate(-45deg);
+				}
+			}
+		}
+
+		&.menu-closing {
+			overflow: visible;
 		}
 
 		nav {
 			display: block;
 			text-align: center;
-            background: $nc-secondary;
+            background-color: $nc-primary-0-05-solid;
             top: 0;
             margin: 0;
             position: fixed;
             left: 100%;
             height: 100%;
             width: 100%;
-            opacity: 0;
-            visibility: hidden;
             z-index: 1;
-            transition: all .3s $easeOutCubic;
+            transition: background-color .3s $easeOutCubic, transform .3s $easeOutCubic;
 
             ul {
             	position: absolute;
@@ -133,6 +174,12 @@
             		&.active {
             			border-width: 0;
             			background: $nc-primary-0-05;
+            		}
+
+            		&:active {
+            			color: $nc-secondary;
+            			background: $nc-primary;
+            			transition: none;
             		}
             	}
             }

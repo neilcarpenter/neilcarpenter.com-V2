@@ -7,13 +7,16 @@ class Header extends AbstractView
 	template : 'site-header'
 
 	classNames :
-		ANIM_IN    : 'anim-in'
-		MENU_OPEN  : 'menu-open'
-		NAV_ACTIVE : 'active'
+		ANIM_IN      : 'anim-in'
+		MENU_OPEN    : 'menu-open'
+		MENU_CLOSING : 'menu-closing'
+		NAV_ACTIVE   : 'active'
 
 	sizes :
 		DESKTOP : 76
 		MOBILE  : 65
+
+	MENU_TRANSITION_DURATION : 300
 
 	menuOpen : false
 
@@ -56,10 +59,17 @@ class Header extends AbstractView
 
 	closeMenu : =>
 
-		@$el.removeClass(@classNames.MENU_OPEN)
+		@$el.addClass(@classNames.MENU_CLOSING).removeClass(@classNames.MENU_OPEN)
 		@NC().appView.enableTouch()
+		setTimeout @onMenuClosed, @MENU_TRANSITION_DURATION
 
 		@menuOpen = false
+
+		null
+
+	onMenuClosed : =>
+
+		@$el.removeClass(@classNames.MENU_CLOSING)
 
 		null
 
