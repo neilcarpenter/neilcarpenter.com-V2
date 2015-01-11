@@ -1,3 +1,4 @@
+AppView             = require '../AppView'
 AbstractView        = require '../view/AbstractView'
 Wrapper             = require '../view/base/Wrapper'
 LazyImageCollection = require '../collections/images/LazyImageCollection'
@@ -26,6 +27,7 @@ class LazyImageLoader extends AbstractView
 
 	bindEvents : =>
 
+		@NC().appView.on AppView.EVENT_UPDATE_DIMENSIONS, @onViewUpdated
 		@NC().appView.wrapper.on Wrapper.VIEW_UPDATED, @onViewUpdated
 
 		null
@@ -40,8 +42,7 @@ class LazyImageLoader extends AbstractView
 
 		img = @_getImageFromEl $el
 
-		return unless img.src and !img.$el.data('loading')
-		img.$el.data('loading', true)
+		return unless img.src
 
 		@images.addImage img
 
