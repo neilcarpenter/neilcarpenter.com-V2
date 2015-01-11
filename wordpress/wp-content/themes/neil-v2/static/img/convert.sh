@@ -2,7 +2,7 @@
 # MED -> ~1440
 # SML -> ~650
 
-for file in projects/*.png
+for file in */*/*.png
 do
 	echo ${file}
 	convert ${file} -resize 73% -quality 100 ${file//_LRG/_MED}
