@@ -27,8 +27,9 @@ class LazyImageModel extends Backbone.Model
 
 	start : =>
 
-		if 'FormData' of window then @_loadImageNoXHR()
 		@preareBgs()
+
+		if 'FormData' of window then @_loadImageXHR() else @_loadImageNoXHR()
 
 		null
 
