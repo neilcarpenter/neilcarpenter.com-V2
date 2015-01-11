@@ -34,6 +34,7 @@ class Header extends AbstractView
 
 	bindEvents : =>
 
+		@NC().appView.on @NC().appView.EVENT_UPDATE_DIMENSIONS, @setDims
 		@NC().router.on Router.EVENT_HASH_CHANGED, @onHashChange
 
 		@$el.find('[data-mobile-menu]').on window.touchEndInteraction, @toggleMenu
@@ -87,7 +88,11 @@ class Header extends AbstractView
 
 	setDims : =>
 
-		if MediaQueries.getBreakpoint() is 'Small' then @sizeMobileMenu() else @unSizeMobileMenu()
+		if MediaQueries.getBreakpoint() is 'Smallest'
+			@sizeMobileMenu()
+		else
+			@unSizeMobileMenu()
+			@closeMenu()
 
 		null
 

@@ -19,11 +19,13 @@ class MediaQueries
 
     @setup : =>
 
-        MediaQueries.SMALL_BREAKPOINT  = {name: "Small", breakpoints: [MediaQueries.SMALLEST, MediaQueries.SMALL]}
-        MediaQueries.MEDIUM_BREAKPOINT = {name: "Medium", breakpoints: [MediaQueries.MEDIUM]}
-        MediaQueries.LARGE_BREAKPOINT  = {name: "Large", breakpoints: [MediaQueries.IPAD, MediaQueries.LARGE, MediaQueries.EXTRA_LARGE]}
+        MediaQueries.SMALLEST_BREAKPOINT = {name: "Smallest", breakpoints: [MediaQueries.SMALLEST]}
+        MediaQueries.SMALL_BREAKPOINT    = {name: "Small", breakpoints: [MediaQueries.SMALLEST, MediaQueries.SMALL]}
+        MediaQueries.MEDIUM_BREAKPOINT   = {name: "Medium", breakpoints: [MediaQueries.MEDIUM]}
+        MediaQueries.LARGE_BREAKPOINT    = {name: "Large", breakpoints: [MediaQueries.IPAD, MediaQueries.LARGE, MediaQueries.EXTRA_LARGE]}
 
         MediaQueries.BREAKPOINTS = [
+            MediaQueries.SMALLEST_BREAKPOINT
             MediaQueries.SMALL_BREAKPOINT
             MediaQueries.MEDIUM_BREAKPOINT
             MediaQueries.LARGE_BREAKPOINT
