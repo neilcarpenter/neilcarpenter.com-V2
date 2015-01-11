@@ -145,6 +145,10 @@
 			}
 		}
 	}
+
+	.bg-image {
+		filter: grayscale(1) brightness(0.5);
+	}
 }
 
 .proj-subtitle {

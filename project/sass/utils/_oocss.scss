@@ -136,7 +136,8 @@
 	visibility: hidden;
 	transition: transform .6s $easeOutCubic, opacity .6s $easeOutCubic, filter 1.6s $easeOutCubic;
 	transition: transform .6s $easeOutCubic, opacity .6s $easeOutCubic, -webkit-filter 1.6s $easeOutCubic;
-	filter: grayscale(1) brightness(0.5);
+	// too janky with scrolling... :(
+	// filter: grayscale(1) brightness(0.5);
 	transform: scale(1.05) translate(-10%, 0);
 	transform: scale(1.05) translate3d(-10%, 0, 0);
 	background-repeat: no-repeat;
