@@ -27,9 +27,8 @@ class LazyImageModel extends Backbone.Model
 
 	start : =>
 
-		@preareBgs()
-
-		if 'FormData' of window then @_loadImageXHR() else @_loadImageNoXHR()
+		# if 'FormData' of window then @_loadImageXHR() else @_loadImageNoXHR()
+		@_loadImageNoXHR()
 
 		null
 
@@ -38,16 +37,6 @@ class LazyImageModel extends Backbone.Model
 		$els = @get('$els')
 		$els.push $el
 		@set '$els', $els
-
-		@preareBgs()
-
-		null
-
-	preareBgs : =>
-
-		for $el in @get('$els')
-			$el.find(".#{@classNames.BG_IMAGE}")
-					.css('background-image', "url(#{@get('src')})")
 
 		null
 
@@ -67,9 +56,8 @@ class LazyImageModel extends Backbone.Model
 		# @preloader.show()
 
 		r = $.ajax
-			type  : 'GET'
-			url   : @get('src')
-			cache : true
+			type : 'GET'
+			url  : @get('src')
 			xhr  : =>
 				xhr = new window.XMLHttpRequest()
 				xhr.addEventListener "progress", (evt) =>
@@ -89,10 +77,6 @@ class LazyImageModel extends Backbone.Model
 		if (evt.lengthComputable)
 
 			percentComplete = (evt.loaded / evt.total) * 100
-
-			for $el in @get('$els')
-				$el.find(".#{@classNames.BG_IMAGE}")
-					.text("#{percentComplete}%")
 			# @preloader.goTo percentComplete
 
 		# console.log "percentComplete - #{percentComplete}% for #{@get('src')}"
@@ -135,7 +119,11 @@ class LazyImageModel extends Backbone.Model
 		console.log "animIn : =>", @get('src')
 
 		for $el in @get('$els')
-			$el.addClass @classNames.LOADED
+			$el
+				.find(".#{@classNames.BG_IMAGE}")
+					.css('background-image', "url(#{@get('src')})")
+					.end()
+				.addClass @classNames.LOADED
 
 		null
 
