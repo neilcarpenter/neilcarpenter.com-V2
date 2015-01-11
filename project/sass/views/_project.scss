@@ -422,6 +422,13 @@
 
 	@include respond-to(smallest) {
 		max-width: 75%;
+
+		p {
+
+			a {
+				display: inline-block;
+			}
+		}
 	}
 }
 
