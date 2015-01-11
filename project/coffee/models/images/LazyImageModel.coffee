@@ -1,3 +1,4 @@
+Preloader     = require '../../view/base/Preloader'
 AbstractModel = require '../AbstractModel'
 
 class LazyImageModel extends Backbone.Model
@@ -13,6 +14,7 @@ class LazyImageModel extends Backbone.Model
 	defaults :
 		src      : ""
 		$els     : []
+		loaders  : []
 		state    : ""
 		progress : 0
 		canShow  : false
@@ -27,8 +29,24 @@ class LazyImageModel extends Backbone.Model
 
 	start : =>
 
+		@addLoaders()
 		# if 'FormData' of window then @_loadImageXHR() else @_loadImageNoXHR()
 		@_loadImageNoXHR()
+
+		null
+
+	addLoaders : =>
+
+		for $el in @get('$els')
+
+			if !$el.find('.preloader').length
+				p = new Preloader('image')
+				$el.append p.$el
+				p.show()
+
+				loaders = @get('loaders')
+				loaders.push p
+				@set 'loaders', loaders
 
 		null
 
@@ -37,6 +55,8 @@ class LazyImageModel extends Backbone.Model
 		$els = @get('$els')
 		$els.push $el
 		@set '$els', $els
+
+		@addLoaders()
 
 		null
 
@@ -117,6 +137,8 @@ class LazyImageModel extends Backbone.Model
 	animIn : =>
 
 		# console.log "animIn : =>", @get('src')
+
+		(p.hide()) for p in @get('loaders')
 
 		for $el in @get('$els')
 			$el

@@ -1,3 +1,8 @@
+$preloader-inner-width-large  : 30px;
+$preloader-inner-width-medium : 20px;
+$preloader-outer-width-large  : 36px;
+$preloader-outer-width-medium : 24px;
+
 .preloader {
 	opacity: 0;
 	visibility: hidden;
@@ -37,6 +42,38 @@
 				animation: none;
 			}
 		}
+
+		.preloader-inner,
+		.preloader-inner .mask:after {
+			width: $preloader-inner-width-large;
+			height: $preloader-inner-width-large;
+		}
+
+		.preloader-outer,
+		.preloader-outer .mask:after {
+			width: $preloader-outer-width-large;
+			height: $preloader-outer-width-large;
+		}
+	}
+
+	&.preloader-image {
+		z-index: 0;
+
+		.preloader-inner,
+		.preloader-inner .mask:after {
+			width: $preloader-inner-width-medium;
+			height: $preloader-inner-width-medium;
+		}
+
+		.preloader-outer,
+		.preloader-outer .mask:after {
+			width: $preloader-outer-width-medium;
+			height: $preloader-outer-width-medium;
+		}
+
+		.preloader-outer .mask:after {
+			border-width: 2px;
+		}
 	}
 
 	.preloader-inner,
@@ -64,8 +101,6 @@
 	}
 	
 	.preloader-inner {
-		width: 30px;
-		height: 30px;
 		left: 50%;
 
 		.mask {
@@ -74,8 +109,6 @@
 			animation: preloader-inner-anim 1s infinite alternate $easeInOutQuint;
 
 			&:after {
-				width: 30px;
-				height: 30px;
 				left: 0;
 				background: $nc-primary;
 			}
@@ -83,8 +116,6 @@
 	}
 
 	.preloader-outer {
-		width: 36px;
-		height: 36px;
 
 		.mask {
 			right: 0;
@@ -92,8 +123,6 @@
 			animation: preloader-outer-anim 1s infinite alternate $easeInOutQuint;
 
 			&:after {
-				width: 36px;
-				height: 36px;
 				right: 0;
 				border: 3px solid $nc-primary;
 				background: transparent;

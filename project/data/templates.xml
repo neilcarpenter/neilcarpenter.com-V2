@@ -7,7 +7,10 @@
 
     <template id="preloader">
         <![CDATA[
-            <div class="preloader preloader-<%= type %>"></div>
+            <div class="preloader preloader-<%= type %>">
+				<span class="preloader-inner"><span class="mask" data-preloader-mask="inner"></span></span>
+				<span class="preloader-outer"><span class="mask" data-preloader-mask="outer"></span></span>
+			</div>
         ]]>
     </template>
 

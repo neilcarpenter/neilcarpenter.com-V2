@@ -132,6 +132,7 @@
 	width: 100%;
 	height: 100%;
 	opacity: 0;
+	z-index: 1;
 	visibility: hidden;
 	transition: transform .6s $easeOutCubic, opacity .6s $easeOutCubic, filter 1.6s $easeOutCubic;
 	transition: transform .6s $easeOutCubic, opacity .6s $easeOutCubic, -webkit-filter 1.6s $easeOutCubic;

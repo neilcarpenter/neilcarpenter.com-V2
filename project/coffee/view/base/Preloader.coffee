@@ -86,7 +86,8 @@ class Preloader extends AbstractView
 		@cb?()
 		@reset()
 
-		@$el.addClass(@classNames.SHOWN).removeClass(@classNames.HIDING)
+		@$el.removeClass(@classNames.HIDING)
+		if @type is 'site' then @$el.addClass(@classNames.SHOWN)
 
 		null
 
