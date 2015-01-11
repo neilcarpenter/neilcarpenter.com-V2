@@ -1,23 +1,30 @@
 AbstractView = require '../AbstractView'
 Router       = require '../../router/Router'
+MediaQueries = require '../../utils/MediaQueries'
 
 class Header extends AbstractView
 
 	template : 'site-header'
 
 	classNames :
-		ANIM_IN : 'anim-in'
+		ANIM_IN    : 'anim-in'
+		MENU_OPEN  : 'menu-open'
+		NAV_ACTIVE : 'active'
 
 	sizes :
 		DESKTOP : 76
 		MOBILE  : 65
 
+	menuOpen : false
+
 	constructor : ->
 
 		super()
 
-		@$navLinks = @$el.find('nav a')
+		@$nav      = @$el.find('nav ')
+		@$navLinks = @$nav.find('a')
 
+		@setDims()
 		@bindEvents()
 
 		return null
@@ -25,6 +32,52 @@ class Header extends AbstractView
 	bindEvents : =>
 
 		@NC().router.on Router.EVENT_HASH_CHANGED, @onHashChange
+
+		@$el.find('[data-mobile-menu]').on window.touchEndInteraction, @toggleMenu
+
+		null
+
+	toggleMenu : =>
+
+		if @menuOpen then @closeMenu() else @openMenu()
+
+		return false
+
+	openMenu : =>
+
+		@sizeMobileMenu()
+
+		@$el.addClass(@classNames.MENU_OPEN)
+		@NC().appView.disableTouch()
+
+		@menuOpen = true
+
+		null
+
+	closeMenu : =>
+
+		@$el.removeClass(@classNames.MENU_OPEN)
+		@NC().appView.enableTouch()
+
+		@menuOpen = false
+
+		null
+
+	sizeMobileMenu : =>
+
+		@$nav.css "height" : @NC().appView.dims.h
+
+		null
+
+	unSizeMobileMenu : =>
+
+		@$nav.css "height" : "auto"
+
+		null
+
+	setDims : =>
+
+		if MediaQueries.getBreakpoint() is 'Small' then @sizeMobileMenu() else @unSizeMobileMenu()
 
 		null
 
@@ -36,15 +89,17 @@ class Header extends AbstractView
 
 	onHashChange : =>
 
+		@closeMenu() if @menuOpen
+
 		area = @NC().router.area
 		url  = @_getLinkURL area
 
 		@$navLinks
 			.not("[href=\"#{url}\"]")
-				.removeClass('active')
+				.removeClass(@classNames.NAV_ACTIVE)
 				.end()
 			.filter("[href=\"#{url}\"]")
-				.addClass('active')
+				.addClass(@classNames.NAV_ACTIVE)
 
 		null
 

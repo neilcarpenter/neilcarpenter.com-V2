@@ -8,6 +8,9 @@
                 <li><a href="<?= get_site_url(); ?>/contact">Contact</a></li>
             </ul>
         </nav>
+        <span data-mobile-menu class="mobile-menu-btn">
+            <span class="bar bar-1"></span><span class="bar bar-2"></span><span class="bar bar-3"></span>
+        </span>
 
 	</header>
 
