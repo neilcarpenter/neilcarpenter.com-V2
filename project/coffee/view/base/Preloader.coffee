@@ -14,10 +14,10 @@ class Preloader extends AbstractView
 
 	templateName : 'preloader'
 
-	constructor : (@type, @className) ->
+	constructor : (@type, $el, @className) ->
 
-		if @type is 'site'
-			@setElement $('#preloader')
+		if $el isnt null
+			@setElement $el
 		else
 			@setElFromTemplate()
 

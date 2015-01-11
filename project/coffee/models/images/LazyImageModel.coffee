@@ -41,8 +41,7 @@ class LazyImageModel extends Backbone.Model
 
 		$el = @get('$els')[0]
 
-		p = new Preloader('image')
-		$el.append p.$el
+		p = new Preloader('image', $el.find('.preloader'))
 		p.show()
 
 		@set 'loaders', [p]

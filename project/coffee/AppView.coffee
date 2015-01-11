@@ -72,7 +72,7 @@ class AppView extends AbstractView
 
         @bindEvents()
 
-        @preloader        = new Preloader('site')
+        @preloader        = new Preloader('site', @$body.find('#preloader'))
         @modalManager     = new ModalManager
         @scrollItemInView = new ScrollItemInView
         @lazyImageLoader  = new LazyImageLoader

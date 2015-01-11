@@ -27,6 +27,10 @@
 						<a href="<?= get_site_url(); ?>/work/<?= $project->post_name ?>/">
 							<span class="work-preview-thumb bg-image-wrapper" data-lazyimage="<?= $project->thumbnail ?>">
 								<span class="bg-image"></span>
+								<div class="preloader preloader-image">
+									<span class="preloader-inner"><span class="mask" data-preloader-mask="inner"></span></span>
+									<span class="preloader-outer"><span class="mask" data-preloader-mask="outer"></span></span>
+								</div>
 							</span>
 							<h2 class="work-preview-client"><span class="wo"><span class="wi"><? the_field('project_client', $project->ID) ?></span></span></h2>
 							<h1 class="work-preview-name"><span class="wo"><span class="wi"><?= $project->post_title ?></span></span></h1>
