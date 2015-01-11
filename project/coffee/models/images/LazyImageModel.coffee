@@ -55,8 +55,9 @@ class LazyImageModel extends Backbone.Model
 		# @preloader.show()
 
 		r = $.ajax
-			type : 'GET'
-			url  : @get('src')
+			type  : 'GET'
+			url   : @get('src')
+			cache : true
 			xhr  : =>
 				xhr = new window.XMLHttpRequest()
 				xhr.addEventListener "progress", (evt) =>
@@ -90,10 +91,6 @@ class LazyImageModel extends Backbone.Model
 
 		console.log "onLoadComplete : (res) =>", @get('src')
 
-		for $el in @get('$els')
-			$el.find(".#{@classNames.BG_IMAGE}")
-				.css('background-image', "url(#{@get('src')})")
-
 		if @get('canShow') then @animIn()
 
 		null
@@ -121,8 +118,14 @@ class LazyImageModel extends Backbone.Model
 
 		console.log "animIn : =>", @get('src')
 
-		for $el in @get('$els')
-			$el.addClass @classNames.LOADED
+		setTimeout =>
+			for $el in @get('$els')
+				$el
+					.find(".#{@classNames.BG_IMAGE}")
+						.css('background-image', "url(#{@get('src')})")
+						.end()
+					.addClass @classNames.LOADED
+		, 1500
 
 		null
 
