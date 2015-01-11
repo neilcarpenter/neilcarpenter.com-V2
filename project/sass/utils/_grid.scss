@@ -1,5 +1,9 @@
 .row {
 	margin-bottom: 30px;
+
+	@include respond-to(small) {
+		margin-bottom: 15px;
+	}
 }
 
 .grid-item {

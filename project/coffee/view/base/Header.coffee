@@ -10,7 +10,7 @@ class Header extends AbstractView
 
 	sizes :
 		DESKTOP : 76
-		MOBILE  : 61
+		MOBILE  : 65
 
 	constructor : ->
 

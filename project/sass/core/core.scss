@@ -63,6 +63,10 @@ p {
     a {
         @extend .content-link;
     }
+
+    @include respond-to(smallest) {
+        @include font-size(1.2);
+    }
 }
 
 a {

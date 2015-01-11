@@ -2,6 +2,30 @@
 
 	.row {
 		margin-bottom: 100px;
+
+		@include respond-to(medium) {
+			margin-bottom: 50px;
+		}
+
+		@include respond-to(small) {
+			margin-bottom: 0;
+		}
+
+		&:nth-child(6) {
+
+			.grid-item {
+
+				p {
+					@include respond-to(small) {
+						margin-bottom: 30px;
+					}
+
+					@include respond-to(smallest) {
+						margin-bottom: 20px;
+					}
+				}
+			}
+		}
 	}
 
 	.grid-item {
@@ -36,6 +60,22 @@
 
 			&:last-child {
 				margin-bottom: 0;
+
+				@include respond-to(small) {
+					margin-bottom: 30px;
+				}
+
+				@include respond-to(smallest) {
+					margin-bottom: 20px;
+				}
+			}
+
+			@include respond-to(small) {
+				margin-bottom: 30px;
+			}
+
+			@include respond-to(smallest) {
+				margin-bottom: 20px;
 			}
 		}
 
@@ -45,6 +85,10 @@
 			margin-right: auto;
 			max-width: 375px;
 			clear: both;
+
+			@include respond-to(small) {
+				margin-bottom: 20px;
+			}
 		}
 
 		h3 {
@@ -66,6 +110,11 @@
 		.bg-image-wrapper {
 			// background: none;
 		}
+
+		@include respond-to(small) {
+			width: 100%;
+			margin-right: 0;
+		}
 	}
 }
 
@@ -78,6 +127,10 @@
 	margin-right: auto;
 	max-width: 250px;
 	clear: both;
+
+	@include respond-to(smallest) {
+        @include font-size(1.2);
+    }
 
 	.label {
 		color: $nc-primary-0-6;
@@ -97,6 +150,16 @@
 	overflow: hidden;
 	transform-origin: bottom center;
 
+	@include respond-to(medium) {
+		margin-bottom: 100px;
+	}
+
+	@include respond-to(small) {
+		margin-bottom: 50px;
+	}
+
+	@include respond-to(smallest) {}
+
 	.proj-img-wrap {
 		position: absolute;
 		top: 0;
@@ -110,10 +173,28 @@
 		left: 15px;
 		bottom: 5px;
 		z-index: 2;
+		max-width: 85%;
+
+		@include respond-to(small) {
+			left: 10px;
+			max-width: 75%;
+		}
 
 		.proj-client {
 			margin: 0;
 			text-transform: uppercase;
+
+			@include respond-to(medium) {
+				@include font-size(1.3);
+			}
+
+			@include respond-to(small) {
+				@include font-size(1.2);
+
+				.wo:after {
+					height: 2px;
+				}
+			}
 
 			.wo:after {
 				height: 3px;
@@ -123,6 +204,18 @@
 		.proj-name {
 			margin: 0;
 			@include font-size(5);
+
+			@include respond-to(medium) {
+				@include font-size(4);
+			}
+
+			@include respond-to(small) {
+				@include font-size(3);
+
+				.wo:after {
+					height: 3px;
+				}
+			}
 
 			.wo:after {
 				height: 5px;
@@ -136,6 +229,11 @@
 		bottom: 20px;
 		right: 20px;
 		cursor: pointer;
+
+		@include respond-to(small) {
+			bottom: 10px;
+			right: 10px;
+		}
 
 		.no-touch & {
 
@@ -156,6 +254,20 @@
 	@include font-size(4);
 	margin: 40px auto 50px;
 	max-width: 90%;
+
+	@include respond-to(medium) {
+		@include font-size(3);
+	}
+
+	@include respond-to(small) {
+		@include font-size(2.5);
+		margin: 30px auto;
+	}
+
+	@include respond-to(smallest) {
+		@include font-size(2);
+		max-width: 100%;
+	}
 }
 
 .proj-nav-top {
@@ -163,6 +275,14 @@
 	z-index: 0;
 	margin:0 auto;
 	width: 80%;
+
+	@include respond-to(small) {
+		width: 90%;
+	}
+
+	@include respond-to(smallest) {
+		width: 100%;
+	}
 
 	.prev-proj {
 		float: left;
@@ -195,6 +315,20 @@
 	width: 80%;
 	text-align: center;
 
+	@include respond-to(medium) {
+		margin-bottom: 50px;
+	}
+
+	@include respond-to(small) {
+		margin-bottom: 10px;
+		width: 90%;
+	}
+
+	@include respond-to(smallest) {
+		margin-bottom: 0;
+		width: 85%;
+	}
+
 	.prev-proj,
 	.next-proj {
 		position: relative;
@@ -203,6 +337,11 @@
 		line-height: 1.5;
 		border-bottom: 0 solid $nc-primary;
 		transition: all .15s $easeInOutCubic;
+
+		@include respond-to(small) {
+			width: 50%;
+			@include font-size(1.2);
+		}
 
 		.arrow {
 			position: absolute;
@@ -220,6 +359,10 @@
 
 	.prev-proj {
 		float: left;
+
+		@include respond-to(small) {
+			text-align: left;
+		}
 
 		.arrow {
 			left: -30px;
@@ -239,6 +382,10 @@
 
 	.next-proj {
 		float: right;
+
+		@include respond-to(small) {
+			text-align: right;
+		}
 
 		.arrow {
 			right: -30px;
@@ -263,6 +410,19 @@
 	max-width: 50%;
 	position: relative;
 	z-index: 1;
+
+	@include respond-to(medium) {
+		margin-bottom: 100px;
+	}
+
+	@include respond-to(small) {
+		margin-bottom: 50px;
+		max-width: 60%;
+	}
+
+	@include respond-to(smallest) {
+		max-width: 75%;
+	}
 }
 
 .proj-img-wrap {

@@ -36,6 +36,11 @@
 				}
 			}
 		}
+
+		@include respond-to(smallest) {
+			width: 100%;
+			margin-right: 0;
+		}
 	}
 
 	.work-preview-thumb {
@@ -43,6 +48,16 @@
 		display: block;
 		width: 100%;
 		height: 400px;
+
+		@include respond-to(medium) {
+			height: 300px;
+		}
+		
+		@include respond-to(small) {
+			height: 200px;
+		}
+
+		@include respond-to(smallest) {}
 
 		.bg-image {
 			// background-image: url(../static/img/_tmp/any.jpg);
@@ -55,11 +70,31 @@
 		@include font-size(1.1);
 		font-weight: 800;
 		margin-top: 11px;
+
+		@include respond-to(small) {
+			@include font-size(0.9);
+		}
 	}
 
 	.work-preview-name {
 		@include font-size(2);
 		margin-top: 5px;
 		margin-bottom: 10px;
+
+		@include respond-to(small) {
+			margin-top: 2px;
+			@include font-size(1.7);
+		}
+
+		@include respond-to(smallest) {
+			margin-bottom: 15px;
+		}
+	}
+
+	.row {
+
+		@include respond-to(smallest) {
+			margin-bottom: 0;
+		}
 	}
 }

@@ -2,8 +2,15 @@
 
 	.content {
 		float: right;
-		width: 40%;
+		width: 60%;
 		text-align: right;
+		max-width: 600px;
+
+		@include respond-to(small) {
+			width: 100%;
+			float: none;
+			text-align: left;
+		}
 	}
 
 	.social-account-list {
@@ -19,5 +26,9 @@
 		a {
 			@extend .content-link;
 		}
+
+		@include respond-to(smallest) {
+	        @include font-size(1.2);
+	    }
 	}
 }

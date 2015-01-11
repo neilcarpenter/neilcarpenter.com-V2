@@ -14,7 +14,7 @@
 	}
 
 	@include respond-to(small) {
-		padding: $side-padding-small;
+		padding: 14px $side-padding-small;
 	}
 
 	.logo {
