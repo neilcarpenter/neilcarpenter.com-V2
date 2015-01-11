@@ -89,6 +89,10 @@ class LazyImageModel extends Backbone.Model
 		if (evt.lengthComputable)
 
 			percentComplete = (evt.loaded / evt.total) * 100
+
+			for $el in @get('$els')
+				$el.find(".#{@classNames.BG_IMAGE}")
+					.text("#{percentComplete}%")
 			# @preloader.goTo percentComplete
 
 		# console.log "percentComplete - #{percentComplete}% for #{@get('src')}"
