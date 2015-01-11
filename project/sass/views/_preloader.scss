@@ -1,11 +1,24 @@
 .preloader {
 	opacity: 0;
 	visibility: hidden;
-	transition: all .3s $easeInOutCubic;
+	transition: all .6s $easeInOutCubic;
 
 	&.show {
 		opacity: 1;
 		visibility: visible;
+
+		.preloader-inner,
+		.preloader-outer {
+			left: 50%;
+		}
+	}
+
+	&.hiding {
+
+		.preloader-inner,
+		.preloader-outer {
+			left: 51%;
+		}
 	}
 
 	&.preloader-site {
@@ -30,8 +43,9 @@
 	.preloader-outer {
 		position: absolute;
 		top: 50%;
-		left: 50%;
+		left: 49%;
 		transform: translate(-50%, -50%);
+		transition: all .5s linear;
 
 		.mask {
 			position: absolute;

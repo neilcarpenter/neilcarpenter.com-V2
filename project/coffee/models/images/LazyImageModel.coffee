@@ -89,7 +89,7 @@ class LazyImageModel extends Backbone.Model
 
 		@set 'state', LazyImageModel.states.LOADED
 
-		console.log "onLoadComplete : (res) =>", @get('src')
+		# console.log "onLoadComplete : (res) =>", @get('src')
 
 		if @get('canShow') then @animIn()
 
@@ -106,7 +106,7 @@ class LazyImageModel extends Backbone.Model
 
 	show : =>
 
-		console.log "show : =>", @get('src')
+		# console.log "show : =>", @get('src')
 
 		@set 'canShow', true
 
@@ -116,7 +116,7 @@ class LazyImageModel extends Backbone.Model
 
 	animIn : =>
 
-		console.log "animIn : =>", @get('src')
+		# console.log "animIn : =>", @get('src')
 
 		for $el in @get('$els')
 			$el
