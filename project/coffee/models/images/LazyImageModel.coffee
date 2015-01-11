@@ -49,7 +49,7 @@ class LazyImageModel extends Backbone.Model
 
 	_loadImageXHR : =>
 
-		console.log "LOADING ", @get('src')
+		# console.log "LOADING ", @get('src')
 
 		# @preloader = new Preloader('header')
 		# @preloader.show()
@@ -78,7 +78,7 @@ class LazyImageModel extends Backbone.Model
 			percentComplete = (evt.loaded / evt.total) * 100
 			# @preloader.goTo percentComplete
 
-		console.log "percentComplete - #{percentComplete}% for #{@get('src')}"
+		# console.log "percentComplete - #{percentComplete}% for #{@get('src')}"
 
 		null
 
@@ -88,7 +88,7 @@ class LazyImageModel extends Backbone.Model
 
 		@set 'state', LazyImageModel.states.LOADED
 
-		console.log "onLoadComplete : (res) =>", @get('src')
+		# console.log "onLoadComplete : (res) =>", @get('src')
 
 		if @get('canShow') then @animIn()
 

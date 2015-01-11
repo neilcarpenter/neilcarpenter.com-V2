@@ -31,11 +31,15 @@ class Preloader extends AbstractView
 
 	init : =>
 
-		@$progress = @$el.find('[data-progress]')
+		@$maskOuter = @$el.find('[data-preloader-mask="outer"]')
+		@$maskInner = @$el.find('[data-preloader-mask="inner"]')
 
 		null
 
 	reset : =>
+
+		@$maskOuter.css "width", "100%"
+		@$maskInner.css "width", "0%"
 
 		null
 
@@ -74,7 +78,12 @@ class Preloader extends AbstractView
 
 	goTo : (value) =>
 
-		value = if value > 100 then 1 else value/100
+		console.log "goTo : (value) =>", value
+
+		value = if value > 100 then 100 else value
+
+		@$maskOuter.css "width", "#{(100-value)}%"
+		@$maskInner.css "width", "#{(value)}%"
 
 		null
 

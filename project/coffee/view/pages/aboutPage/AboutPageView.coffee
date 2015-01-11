@@ -4,6 +4,8 @@ class AboutPageView extends AbstractViewPage
 
 	template : 'page-about'
 
+	pageSize : 6000
+
 	constructor : ->
 
 		###

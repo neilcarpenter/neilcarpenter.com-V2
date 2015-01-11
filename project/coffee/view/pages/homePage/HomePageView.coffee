@@ -12,6 +12,8 @@ class HomePageView extends AbstractViewPage
 	CHANGE_TAGLINE_INTERVAL : 5000
 	SHOW_DELAY              : 1000
 
+	pageSize : 5000
+
 	constructor : ->
 
 		@taglines = new HomeTaglinesCollection

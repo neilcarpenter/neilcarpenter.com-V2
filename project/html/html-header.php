@@ -55,5 +55,6 @@
 	<div id="main" data-template="main">
 
 		<div id="preloader" class="preloader preloader-site show">
-			<span class="preloader-inner"></span>
+			<span class="preloader-inner"><span class="mask" data-preloader-mask="inner"></span></span>
+			<span class="preloader-outer"><span class="mask" data-preloader-mask="outer"></span></span>
 		</div>

@@ -4,6 +4,8 @@ class ContactPageView extends AbstractViewPage
 
 	template : 'page-contact'
 
+	pageSize : 6000
+
 	constructor : ->
 
 		###

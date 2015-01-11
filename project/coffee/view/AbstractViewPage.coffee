@@ -19,7 +19,9 @@ class AbstractViewPage extends AbstractView
 		elDuration : 0.2
 
 	# use this in progress events, we can't get actual size from HTML in XHR2, so this will do instead
-	avPageSize : 14000
+	# use {pageSize} on per-page basis, or avPageSize will be used as default
+	avPageSize : 12000
+	pageSize   : null
 
 	constructor : (@area, @sub) ->
 
@@ -48,7 +50,7 @@ class AbstractViewPage extends AbstractView
 
 	_onLoadProgress : (evt) =>
 
-		percentComplete = (evt.loaded / @avPageSize) * 100
+		percentComplete = (evt.loaded / (@pageSize or @avPageSize)) * 100
 		@NC().appView.preloader.goTo percentComplete
 
 		console.log "percentComplete - #{percentComplete}% for page #{@area}, #{@sub}"
