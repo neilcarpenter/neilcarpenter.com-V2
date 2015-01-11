@@ -90,6 +90,10 @@ class LazyImageModel extends Backbone.Model
 
 		console.log "onLoadComplete : (res) =>", @get('src')
 
+		for $el in @get('$els')
+			$el.find(".#{@classNames.BG_IMAGE}")
+				.css('background-image', "url(#{@get('src')})")
+
 		if @get('canShow') then @animIn()
 
 		null
@@ -118,11 +122,7 @@ class LazyImageModel extends Backbone.Model
 		console.log "animIn : =>", @get('src')
 
 		for $el in @get('$els')
-			$el
-				.find(".#{@classNames.BG_IMAGE}")
-					.css('background-image', "url(#{@get('src')})")
-					.end()
-				.addClass @classNames.LOADED
+			$el.addClass @classNames.LOADED
 
 		null
 
