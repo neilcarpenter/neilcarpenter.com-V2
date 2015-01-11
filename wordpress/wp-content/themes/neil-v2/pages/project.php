@@ -27,7 +27,7 @@
 					<div class="proj-img-wrap proj-img_1">
 						<span class="proj-img bg-image-wrapper" data-scroll-item data-lazyimage="<?= $heroImgSrc[0] ?>">
 							<span class="bg-image"></span>
-							<div class="preloader preloader-image">
+							<div class="preloader preloader-image show">
 								<span class="preloader-inner"><span class="mask" data-preloader-mask="inner"></span></span>
 								<span class="preloader-outer"><span class="mask" data-preloader-mask="outer"></span></span>
 							</div>

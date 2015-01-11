@@ -4,29 +4,21 @@ $preloader-outer-width-large  : 36px;
 $preloader-outer-width-medium : 24px;
 
 .preloader {
-	opacity: 0;
-	visibility: hidden;
 	transition: all .6s $easeInOutCubic;
 
-	&.show {
-		opacity: 1;
-		visibility: visible;
-
-		.preloader-inner,
-		.preloader-outer {
-			left: 50%;
-		}
-	}
-
-	&.hiding {
+	.loaded & {
+		opacity: 0;
+		visibility: hidden;
 
 		.preloader-inner,
 		.preloader-outer {
 			left: 51%;
-		}
+		}		
 	}
 
 	&.preloader-site {
+		opacity: 0;
+		visibility: hidden;
 		z-index: 3;
 		position: fixed;
 		top: 0;
@@ -34,6 +26,16 @@ $preloader-outer-width-medium : 24px;
 		width: 100%;
 		height: 100%;
 		background: $nc-secondary;
+
+		&.show {
+			opacity: 1;
+			visibility: visible;
+
+			.preloader-inner,
+			.preloader-outer {
+				left: 50%;
+			}
+		}
 		
 		&.shown {
 			background: $nc-secondary-0-6;
@@ -41,6 +43,19 @@ $preloader-outer-width-medium : 24px;
 			.mask {
 				animation: none;
 			}
+		}
+
+		&.hiding {
+
+			.preloader-inner,
+			.preloader-outer {
+				left: 51%;
+			}
+		}
+
+		.preloader-inner,
+		.preloader-outer {
+			left: 49%;
 		}
 
 		.preloader-inner,
@@ -80,7 +95,7 @@ $preloader-outer-width-medium : 24px;
 	.preloader-outer {
 		position: absolute;
 		top: 50%;
-		left: 49%;
+		left: 50%;
 		transform: translate(-50%, -50%);
 		transition: all .5s linear;
 

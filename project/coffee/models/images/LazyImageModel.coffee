@@ -1,4 +1,3 @@
-Preloader     = require '../../view/base/Preloader'
 AbstractModel = require '../AbstractModel'
 
 class LazyImageModel extends Backbone.Model
@@ -14,7 +13,6 @@ class LazyImageModel extends Backbone.Model
 	defaults :
 		src      : ""
 		$els     : []
-		loaders  : []
 		state    : ""
 		progress : 0
 		canShow  : false
@@ -29,22 +27,8 @@ class LazyImageModel extends Backbone.Model
 
 	start : =>
 
-		@addFirstLoader()
 		# if 'FormData' of window then @_loadImageXHR() else @_loadImageNoXHR()
 		@_loadImageNoXHR()
-
-		null
-
-	addFirstLoader : =>
-
-		console.log "add loader for #{@get('src')}"
-
-		$el = @get('$els')[0]
-
-		p = new Preloader('image', $el.find('.preloader'))
-		p.show()
-
-		@set 'loaders', [p]
 
 		null
 
@@ -53,14 +37,6 @@ class LazyImageModel extends Backbone.Model
 		$els = @get('$els')
 		$els.push $el
 		@set '$els', $els
-
-		p = new Preloader('image')
-		$el.append p.$el
-		p.show()
-
-		loaders = @get('loaders')
-		loaders.push p
-		@set 'loaders', loaders
 
 		null
 
@@ -75,9 +51,6 @@ class LazyImageModel extends Backbone.Model
 	_loadImageXHR : =>
 
 		console.log "LOADING ", @get('src')
-
-		# @preloader = new Preloader('header')
-		# @preloader.show()
 
 		r = $.ajax
 			type : 'GET'
@@ -101,7 +74,6 @@ class LazyImageModel extends Backbone.Model
 		if (evt.lengthComputable)
 
 			percentComplete = (evt.loaded / evt.total) * 100
-			# @preloader.goTo percentComplete
 
 		# console.log "percentComplete - #{percentComplete}% for #{@get('src')}"
 
@@ -109,13 +81,9 @@ class LazyImageModel extends Backbone.Model
 
 	onLoadComplete : (res) =>
 
-		# @preloader?.hide()
-
 		@set 'state', LazyImageModel.states.LOADED
 
 		# console.log "onLoadComplete : (res) =>", @get('src')
-
-		(p.hide()) for p in @get('loaders')
 
 		if @get('canShow') then @animIn()
 
@@ -124,9 +92,6 @@ class LazyImageModel extends Backbone.Model
 	onLoadFail : (res) =>
 
 		console.error "onLoadFail : =>", res
-
-		# @$headerImage.addClass('image-loaded')
-		# @preloader?.hide()
 
 		null
 
