@@ -88,6 +88,8 @@ class Header extends AbstractView
 
 	setDims : =>
 
+		return unless @menuOpen
+
 		if MediaQueries.getBreakpoint() is 'Smallest'
 			@sizeMobileMenu()
 		else

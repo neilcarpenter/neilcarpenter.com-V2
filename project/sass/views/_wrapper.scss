@@ -2,6 +2,7 @@
 	padding: $header-height-desktop $side-padding-desktop 30px;
 	position: relative;
 	z-index: 2;
+	transition: all .3s $easeOutCubic;
 
 	@include respond-to(small) {
 		padding: $header-height-small $side-padding-small 20px;
