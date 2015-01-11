@@ -27,20 +27,23 @@ $nc-secondary-0-05 : rgba(26, 26, 26, 0.05);
 /*
  * layout-related
  */
-$side-padding-desktop  : 20px;
+$side-padding-desktop : 20px;
+$side-padding-small   : 12px;
+
 $header-height-desktop : 76px;
+$header-height-small   : 61px;
 
 /*
  * Media queries breakpoints
  */
 
 $breakpoints: (
-  small         'all and ( max-width: 874px )',
+  smallest      'all and ( max-width: 500px )',
+  small         'all and ( max-width: 700px )',
   ipad          'screen and (min-device-width : 768px) and (max-device-width : 1024px)',
-  medium        'all and (max-width: 959px) and (min-width: 875px)',
+  medium        'all and (max-width: 900px) and (min-width: 701px)',
   large         'all and ( min-width: 1024px ) and ( max-width: 1366px )',
   extra-large   'all and ( min-width: 1367px )',
-  short         'all and ( max-height: 450px )',
 );
 
 $MOBILE  : (small medium);

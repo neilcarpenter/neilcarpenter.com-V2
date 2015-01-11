@@ -13,6 +13,10 @@
 		transform: none;
 	}
 
+	@include respond-to(small) {
+		padding: $side-padding-small;
+	}
+
 	.logo {
 		margin: 0;
 		float: left;
@@ -22,10 +26,18 @@
 		@include font-size(2.1);
 		border-bottom: 3px solid $nc-primary;
 		padding-bottom: 16px;
+
+		@include respond-to(small) {
+			padding-bottom: 13px;
+		}
 	}
 
 	nav {
 		float: right;
+
+		@include respond-to(smallest) {
+			display: none;
+		}
 
 		ul {
 			list-style-type: none;

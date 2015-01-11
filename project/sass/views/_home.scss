@@ -17,4 +17,23 @@
 			height: 10px;
 		}
 	}
+
+	@include respond-to(medium) {
+		@include font-size(7);
+	}
+
+	@include respond-to(small) {
+		bottom: $side-padding-small;
+		right: $side-padding-small;
+		@include font-size(4);
+
+		.wo {
+			padding-bottom: 5px;
+			margin-bottom: -7px;
+
+			&:after {
+				height: 5px;
+			}
+		}
+	}
 }
