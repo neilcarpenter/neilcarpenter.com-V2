@@ -2,9 +2,10 @@ AbstractView = require '../AbstractView'
 
 class Preloader extends AbstractView
 	
-	cb              : null
+	cb : null
 	
 	TRANSITION_DURATION : 600
+	FIRST_HIDE_DELAY    : 500
 
 	classNames :
 		SHOW   : 'show'
@@ -64,8 +65,18 @@ class Preloader extends AbstractView
 
 		# console.log "!!! HIDING PRELOADER !!!"
 
+		@goTo 100
+
 		@$el.addClass(@classNames.HIDING).removeClass(@classNames.SHOW)
 		setTimeout @onHideComplete, @TRANSITION_DURATION
+
+		null
+
+	firstHide : (cb) =>
+
+		setTimeout =>
+			@hide cb
+		, @FIRST_HIDE_DELAY
 
 		null
 

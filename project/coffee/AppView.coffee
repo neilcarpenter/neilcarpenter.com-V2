@@ -148,7 +148,7 @@ class AppView extends AbstractView
 
         @updateMediaQueriesLog()
 
-        @preloader.hide =>
+        @preloader.firstHide =>
 
             @header.animateIn()
             @lazyImageLoader.onViewUpdated()

@@ -10,7 +10,7 @@ class HomePageView extends AbstractViewPage
 	taglineTimer     : null
 
 	CHANGE_TAGLINE_INTERVAL : 5000
-	SHOW_DELAY              : 1000
+	FIRST_SHOW_DELAY        : 1000
 
 	pageSize : 5000
 
@@ -31,7 +31,7 @@ class HomePageView extends AbstractViewPage
 				@showFirstTagline()
 				@getTaglines()
 				@startTaglineTimer()
-			, @SHOW_DELAY
+			, (if @NC().appView.wrapper.FIRST_VIEW then @FIRST_SHOW_DELAY else 0)
 
 		else
 
