@@ -29,24 +29,23 @@ class LazyImageModel extends Backbone.Model
 
 	start : =>
 
-		@addLoaders()
+		@addFirstLoader()
 		# if 'FormData' of window then @_loadImageXHR() else @_loadImageNoXHR()
 		@_loadImageNoXHR()
 
 		null
 
-	addLoaders : =>
+	addFirstLoader : =>
 
-		for $el in @get('$els')
+		console.log "add loader for #{@get('src')}"
 
-			if !$el.find('.preloader').length
-				p = new Preloader('image')
-				$el.append p.$el
-				p.show()
+		$el = @get('$els')[0]
 
-				loaders = @get('loaders')
-				loaders.push p
-				@set 'loaders', loaders
+		p = new Preloader('image')
+		$el.append p.$el
+		p.show()
+
+		@set 'loaders', [p]
 
 		null
 
@@ -56,7 +55,13 @@ class LazyImageModel extends Backbone.Model
 		$els.push $el
 		@set '$els', $els
 
-		@addLoaders()
+		p = new Preloader('image')
+		$el.append p.$el
+		p.show()
+
+		loaders = @get('loaders')
+		loaders.push p
+		@set 'loaders', loaders
 
 		null
 
