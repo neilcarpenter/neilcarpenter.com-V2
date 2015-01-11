@@ -10,16 +10,16 @@
 class MediaQueries
 
     # Breakpoints
+    @SMALLEST    : "smallest"
     @SMALL       : "small"
     @IPAD        : "ipad"
     @MEDIUM      : "medium"
     @LARGE       : "large"
     @EXTRA_LARGE : "extra-large"
-    @SHORT       : "short"
 
     @setup : =>
 
-        MediaQueries.SMALL_BREAKPOINT  = {name: "Small", breakpoints: [MediaQueries.SMALL, MediaQueries.SHORT]}
+        MediaQueries.SMALL_BREAKPOINT  = {name: "Small", breakpoints: [MediaQueries.SMALLEST, MediaQueries.SMALL]}
         MediaQueries.MEDIUM_BREAKPOINT = {name: "Medium", breakpoints: [MediaQueries.MEDIUM]}
         MediaQueries.LARGE_BREAKPOINT  = {name: "Large", breakpoints: [MediaQueries.IPAD, MediaQueries.LARGE, MediaQueries.EXTRA_LARGE]}
 

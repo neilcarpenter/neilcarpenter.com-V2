@@ -2,14 +2,18 @@ AppView          = require '../../../AppView'
 AbstractViewPage = require '../../AbstractViewPage'
 WordTransitioner = require '../../../utils/WordTransitioner'
 Scroller         = require '../../../utils/Scroller'
+MediaQueries     = require '../../../utils/MediaQueries'
 
 class ProjectPageView extends AbstractViewPage
 
 	template : 'page-project'
 
+	device : 'DESKTOP' # default
+
 	sizes : 
-		PADDING_DESKTOP      : 20
-		HIDE_HEADING_DESKTOP : 50
+		PADDING_DESKTOP : 20
+		PADDING_MOBILE  : 12
+		HIDE_HEADING    : 50
 
 	classNames : {}
 
@@ -44,20 +48,22 @@ class ProjectPageView extends AbstractViewPage
 
 	onResize : =>
 
-		@sizes.HIDE_HEADING_DESKTOP = @NC().appView.dims.h - @NC().appView.header.sizes.DESKTOP
+		@device = if MediaQueries.getBreakpoint() is 'Small' then 'MOBILE' else'DESKTOP'
 
-		@$hero.css 'height', @NC().appView.dims.h - @NC().appView.header.sizes.DESKTOP - @sizes.PADDING_DESKTOP
+		@sizes.HIDE_HEADING = @NC().appView.dims.h - @NC().appView.header.sizes[@device]
+
+		@$hero.css 'height', @NC().appView.dims.h - @NC().appView.header.sizes[@device] - @sizes["PADDING_#{@device}"]
 
 		null
 
 	onScroll : =>
 
-		if @NC().appView.lastScrollY > 0 and @NC().appView.lastScrollY < @sizes.HIDE_HEADING_DESKTOP
+		if @NC().appView.lastScrollY > 0 and @NC().appView.lastScrollY < @sizes.HIDE_HEADING
 
 			maxHeadingTranslate = 150
-			maxHeroScale        = (@NC().appView.dims.w/(@NC().appView.dims.w-(@sizes.PADDING_DESKTOP*2)))-1
+			maxHeroScale        = (@NC().appView.dims.w/(@NC().appView.dims.w-(@sizes["PADDING_#{@device}"]*2)))-1
 
-			state = (@NC().appView.lastScrollY / @sizes.HIDE_HEADING_DESKTOP)
+			state = (@NC().appView.lastScrollY / @sizes.HIDE_HEADING)
 
 			headingTranslate = state * maxHeadingTranslate
 			headingOpacity   = 1 - state
@@ -84,7 +90,7 @@ class ProjectPageView extends AbstractViewPage
 
 	scrollToContent : =>
 
-		target = @NC().appView.dims.h - @NC().appView.header.sizes.DESKTOP - @sizes.PADDING_DESKTOP
+		target = @NC().appView.dims.h - @NC().appView.header.sizes[@device] - @sizes["PADDING_#{@device}"]
 
 		Scroller.scrollTo target : target, =>
 
