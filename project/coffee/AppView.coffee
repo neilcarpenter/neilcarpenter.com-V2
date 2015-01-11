@@ -179,7 +179,7 @@ class AppView extends AbstractView
             h : h
             o : if h > w then 'portrait' else 'landscape'
             c : if w <= @MOBILE_WIDTH then @MOBILE else @NON_MOBILE
-            r : @getRwdSize w, h, window.devicePixelRatio
+            r : @getRwdSize w, h, (window.devicePixelRatio or 1)
 
         @trigger @EVENT_UPDATE_DIMENSIONS, @dims
 
@@ -187,7 +187,12 @@ class AppView extends AbstractView
 
     getRwdSize : (w, h, dpr) =>
 
-        size = @rwdSizes.LARGE
+        pw = w*dpr
+
+        size = switch true
+            when pw > 1440 then @rwdSizes.LARGE
+            when pw < 650 then @rwdSizes.SMALL
+            else @rwdSizes.MEDIUM
 
         size
 
