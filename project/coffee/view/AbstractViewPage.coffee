@@ -19,7 +19,7 @@ class AbstractViewPage extends AbstractView
 		elDuration : 0.2
 
 	# use this in progress events, we can't get actual size from HTML in XHR2, so this will do instead
-	avPageSize : 15000
+	avPageSize : 14000
 
 	constructor : (@area, @sub) ->
 

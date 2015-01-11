@@ -6,6 +6,7 @@ ModalManager     = require './view/modals/_ModalManager'
 MediaQueries     = require './utils/MediaQueries'
 Scroller         = require './utils/Scroller'
 ScrollItemInView = require './utils/ScrollItemInView'
+LazyImageLoader  = require './utils/LazyImageLoader'
 
 class AppView extends AbstractView
 
@@ -74,6 +75,7 @@ class AppView extends AbstractView
         @preloader        = new Preloader('site')
         @modalManager     = new ModalManager
         @scrollItemInView = new ScrollItemInView
+        @lazyImageLoader  = new LazyImageLoader
 
         @header  = new Header
         @wrapper = new Wrapper
@@ -149,6 +151,7 @@ class AppView extends AbstractView
         @preloader.hide =>
 
             @header.animateIn()
+            @lazyImageLoader.onViewUpdated()
             @scrollItemInView.getItems()
             @onScroll()
 

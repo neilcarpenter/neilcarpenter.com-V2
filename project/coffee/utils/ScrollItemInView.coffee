@@ -93,7 +93,7 @@ class ScrollItemInView extends AbstractView
 		$el.addClass @classNames.SHOW
 
 		WordTransitioner.in $el
-		LazyImageLoader.load $el
+		@NC().appView.lazyImageLoader.show $el
 
 		null
 
