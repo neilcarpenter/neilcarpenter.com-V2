@@ -28,6 +28,7 @@ class LazyImageModel extends Backbone.Model
 	start : =>
 
 		if 'FormData' of window then @_loadImageXHR() else @_loadImageNoXHR()
+		@preareBgs()
 
 		null
 
@@ -36,6 +37,16 @@ class LazyImageModel extends Backbone.Model
 		$els = @get('$els')
 		$els.push $el
 		@set '$els', $els
+
+		@preareBgs()
+
+		null
+
+	preareBgs : =>
+
+		for $el in @get('$els')
+			$el.find(".#{@classNames.BG_IMAGE}")
+					.css('background-image', "url(#{@get('src')})")
 
 		null
 
@@ -118,14 +129,8 @@ class LazyImageModel extends Backbone.Model
 
 		console.log "animIn : =>", @get('src')
 
-		setTimeout =>
-			for $el in @get('$els')
-				$el
-					.find(".#{@classNames.BG_IMAGE}")
-						.css('background-image', "url(#{@get('src')})")
-						.end()
-					.addClass @classNames.LOADED
-		, 1500
+		for $el in @get('$els')
+			$el.addClass @classNames.LOADED
 
 		null
 
