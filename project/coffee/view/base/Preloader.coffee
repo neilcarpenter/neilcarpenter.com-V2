@@ -78,7 +78,7 @@ class Preloader extends AbstractView
 
 	goTo : (value) =>
 
-		console.log "goTo : (value) =>", value
+		# console.log "goTo : (value) =>", value
 
 		value = if value > 100 then 100 else value
 

@@ -5,6 +5,8 @@ class WorkPageView extends AbstractViewPage
 
 	template : 'page-work'
 
+	pageSize : 10000
+
 	constructor : ->
 
 		super

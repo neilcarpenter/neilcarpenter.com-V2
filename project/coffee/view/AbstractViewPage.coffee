@@ -53,13 +53,13 @@ class AbstractViewPage extends AbstractView
 		percentComplete = (evt.loaded / (@pageSize or @avPageSize)) * 100
 		@NC().appView.preloader.goTo percentComplete
 
-		console.log "percentComplete - #{percentComplete}% for page #{@area}, #{@sub}"
+		# console.log "percentComplete - #{percentComplete}% for page #{@area}, #{@sub}"
 
 		null
 
 	_onLoadComplete : (res) =>
 
-		console.log "!!! GET VIEW CONTENT DONE !!!"
+		# console.log "!!! GET VIEW CONTENT DONE !!!"
 
 		$res       = $(res)
 		@pageTitle = $res.filter('title').eq(0).text()

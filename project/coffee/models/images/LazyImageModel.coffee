@@ -49,7 +49,7 @@ class LazyImageModel extends Backbone.Model
 
 	_loadImageXHR : =>
 
-		# console.log "LOADING ", @get('src')
+		console.log "LOADING ", @get('src')
 
 		# @preloader = new Preloader('header')
 		# @preloader.show()
@@ -88,7 +88,7 @@ class LazyImageModel extends Backbone.Model
 
 		@set 'state', LazyImageModel.states.LOADED
 
-		# console.log "onLoadComplete : (res) =>", @get('src')
+		console.log "onLoadComplete : (res) =>", @get('src')
 
 		if @get('canShow') then @animIn()
 
@@ -105,6 +105,8 @@ class LazyImageModel extends Backbone.Model
 
 	show : =>
 
+		console.log "show : =>", @get('src')
+
 		@set 'canShow', true
 
 		if @get('state') is LazyImageModel.states.LOADED then @animIn()
@@ -112,6 +114,8 @@ class LazyImageModel extends Backbone.Model
 		null
 
 	animIn : =>
+
+		console.log "animIn : =>", @get('src')
 
 		for $el in @get('$els')
 			$el
