@@ -65,7 +65,7 @@ class Preloader extends AbstractView
 
 		# console.log "!!! HIDING PRELOADER !!!"
 
-		@goTo 100
+		if @type is 'site' then @goTo 100
 
 		@$el.addClass(@classNames.HIDING).removeClass(@classNames.SHOW)
 		setTimeout @onHideComplete, @TRANSITION_DURATION
