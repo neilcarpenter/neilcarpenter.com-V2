@@ -40,17 +40,20 @@ class App
 
     init : =>
 
-        @initObjects()
+        # currently no objects to load here, so just start app
+        # @initObjects()
+
+        @initApp()
 
         null
 
-    initObjects : =>
+    # initObjects : =>
 
-        @templates = new Templates "#{@BASE_URL_ASSETS}/data/templates#{(if @LIVE then '.min' else '')}.xml", @objectComplete
+    #     @templates = new Templates "#{@BASE_URL_ASSETS}/data/templates#{(if @LIVE then '.min' else '')}.xml", @objectComplete
 
-        # if new objects are added don't forget to change the `@objectComplete` function
+    #     # if new objects are added don't forget to change the `@objectComplete` function
 
-        null
+    #     null
 
     initApp : =>
 

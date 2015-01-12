@@ -18,20 +18,20 @@ class Preloader extends AbstractView
 
 		if $el isnt null
 			@setElement $el
-		else
-			@setElFromTemplate()
+		# else
+		# 	@setElFromTemplate()
 
 		super()
 
 		return null
 
-	setElFromTemplate : =>
+	# setElFromTemplate : =>
 
-		tmpl = _.template @NC().templates.get(@templateName)
-		@setElement $ tmpl type : @type
-		@initialize true
+	# 	tmpl = _.template @NC().templates.get(@templateName)
+	# 	@setElement $ tmpl type : @type
+	# 	@initialize true
 
-		null
+	# 	null
 
 	init : =>
 
