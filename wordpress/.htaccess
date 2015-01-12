@@ -355,24 +355,24 @@ FileETag None
 # SOme legacy redirects
 
 # work
-Redirect 301 /work/responsive-kings/ http://v1.neilcarpenter.com/work/responsive-kings/
-Redirect 301 /work/london-a-cappella/ http://v1.neilcarpenter.com/work/london-a-cappella/
-Redirect 301 /work/kings-facebook/ http://v1.neilcarpenter.com/work/kings-facebook/
-Redirect 301 /work/ikings-multimedia-gateway/ http://v1.neilcarpenter.com/work/ikings-multimedia-gateway/
-Redirect 301 /work/freshers-facebook/ http://v1.neilcarpenter.com/work/freshers-facebook/
-Redirect 301 /work/got-fitness/ http://v1.neilcarpenter.com/work/got-fitness/
+Redirect 301 http://neilcarpenter.com/work/responsive-kings/ http://v1.neilcarpenter.com/work/responsive-kings/
+Redirect 301 http://neilcarpenter.com/work/london-a-cappella/ http://v1.neilcarpenter.com/work/london-a-cappella/
+Redirect 301 http://neilcarpenter.com/work/kings-facebook/ http://v1.neilcarpenter.com/work/kings-facebook/
+Redirect 301 http://neilcarpenter.com/work/ikings-multimedia-gateway/ http://v1.neilcarpenter.com/work/ikings-multimedia-gateway/
+Redirect 301 http://neilcarpenter.com/work/freshers-facebook/ http://v1.neilcarpenter.com/work/freshers-facebook/
+Redirect 301 http://neilcarpenter.com/work/got-fitness/ http://v1.neilcarpenter.com/work/got-fitness/
 
 # blog
-Redirect 301 /blog/ http://v1.neilcarpenter.com/blog/
-Redirect 301 /blog/thoughts/ http://v1.neilcarpenter.com/blog/thoughts/
-Redirect 301 /blog/snaps/ http://v1.neilcarpenter.com/blog/snaps/
-Redirect 301 /blog/sites/ http://v1.neilcarpenter.com/blog/sites/
+Redirect 301 http://neilcarpenter.com/blog/ http://v1.neilcarpenter.com/blog/
+Redirect 301 http://neilcarpenter.com/blog/thoughts/ http://v1.neilcarpenter.com/blog/thoughts/
+Redirect 301 http://neilcarpenter.com/blog/snaps/ http://v1.neilcarpenter.com/blog/snaps/
+Redirect 301 http://neilcarpenter.com/blog/sites/ http://v1.neilcarpenter.com/blog/sites/
 
 # labs
-Redirect 301 /labs/ http://v1.neilcarpenter.com/labs/
-Redirect 301 /labs/rainbowballz/ http://v1.neilcarpenter.com/labs/rainbowballz/
-Redirect 301 /labs/matrix-rain/ http://v1.neilcarpenter.com/labs/matrix-rain/
-Redirect 301 /labs/circle-warp/ http://v1.neilcarpenter.com/labs/circle-warp/
-Redirect 301 /labs/flip-menu/ http://v1.neilcarpenter.com/labs/flip-menu/
-Redirect 301 /labs/neon-writer/ http://v1.neilcarpenter.com/labs/neon-writer/
-Redirect 301 /labs/text-animations/ http://v1.neilcarpenter.com/labs/text-animations/
+Redirect 301 http://neilcarpenter.com/labs/ http://v1.neilcarpenter.com/labs/
+Redirect 301 http://neilcarpenter.com/labs/rainbowballz/ http://v1.neilcarpenter.com/labs/rainbowballz/
+Redirect 301 http://neilcarpenter.com/labs/matrix-rain/ http://v1.neilcarpenter.com/labs/matrix-rain/
+Redirect 301 http://neilcarpenter.com/labs/circle-warp/ http://v1.neilcarpenter.com/labs/circle-warp/
+Redirect 301 http://neilcarpenter.com/labs/flip-menu/ http://v1.neilcarpenter.com/labs/flip-menu/
+Redirect 301 http://neilcarpenter.com/labs/neon-writer/ http://v1.neilcarpenter.com/labs/neon-writer/
+Redirect 301 http://neilcarpenter.com/labs/text-animations/ http://v1.neilcarpenter.com/labs/text-animations/
