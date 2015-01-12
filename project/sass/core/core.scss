@@ -49,6 +49,10 @@ body {
     width: 100%;
 }
 
+#main {
+    overflow: hidden;
+}
+
 // h1, h2, h3, h4, h5, h6 {
 // 	font-weight: normal;
 // }
@@ -65,7 +69,7 @@ p {
     }
 
     @include respond-to(smallest) {
-        @include font-size(1.2);
+        @include font-size(1.4);
     }
 }
 
