@@ -36,7 +36,7 @@
 	<meta property="og:description"  content="<?= $meta['description'] ?>">
 	<meta property="og:site_name"    content="<?php bloginfo('name'); ?>">
 
-	<meta name="twitter:card"        content="summary">
+	<meta name="twitter:card"        content="summary_large_image">
 	<meta name="twitter:creator"     content="@neilcarpenter">
 	<meta name="twitter:url"         content="<?= $meta['url'] ?>">
 	<meta name="twitter:title"       content="<?= $meta['title'] ?>">
