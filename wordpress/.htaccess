@@ -10,6 +10,8 @@ RewriteRule . /index.php [L]
 
 # END WordPress
 
+Options -Indexes
+
 # All the following taken from H5BP
 
 # ----------------------------------------------------------------------
