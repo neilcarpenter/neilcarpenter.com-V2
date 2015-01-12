@@ -1,0 +1,13 @@
+{
+  "css/main.css": "css/main-6340be1d.css",
+  "js/main.js": "js/main-be00af51.js",
+  "js/vendor/modernizr-custom.js": "js/vendor/modernizr-custom-d3e1b6d0.js",
+  "js/vendor/modernizr-dev.js": "js/vendor/modernizr-dev-3f248adc.js",
+  "js/vendor/pixi.js": "js/vendor/pixi-e4a3e9a8.js",
+  "js/vendor/v.js": "js/vendor/v-82609bf7.js",
+  "static/fonts/OpenSans-ExtraBold/font.css": "static/fonts/OpenSans-ExtraBold/font-ebbcb05f.css",
+  "static/fonts/OpenSans-Italic/font.css": "static/fonts/OpenSans-Italic/font-c7b4ec1b.css",
+  "static/fonts/OpenSans-Regular/font.css": "static/fonts/OpenSans-Regular/font-c3ff0d3d.css",
+  "static/fonts/OpenSans-Semibold/font.css": "static/fonts/OpenSans-Semibold/font-dbddf6e4.css",
+  "static/fonts/OpenSans-SemiboldItalic/font.css": "static/fonts/OpenSans-SemiboldItalic/font-658c0672.css"
+}
