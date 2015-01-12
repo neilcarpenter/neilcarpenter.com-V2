@@ -52,6 +52,7 @@
     "tweenlite": "TweenLite.js",
     "easepack": "EasePack.js",
     "script": "script.js",
-    "pixi": "pixi.js"
+    "pixi": "pixi.js",
+    "dat.gui.min": "dat.gui.min.js"
   }
 }
