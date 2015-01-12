@@ -47,9 +47,11 @@
     "jquery": "jquery-2.1.0.js",
     "underscore": "underscore.js",
     "backbone": "backbone.js",
+    "backbone-deep-model": "backbone-deep-model.js",
     "plugins": "plugins.js",
     "tweenlite": "TweenLite.js",
     "easepack": "EasePack.js",
-    "script": "script.js"
+    "script": "script.js",
+    "pixi": "pixi.js"
   }
 }

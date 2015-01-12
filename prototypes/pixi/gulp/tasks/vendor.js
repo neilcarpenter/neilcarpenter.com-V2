@@ -2,7 +2,6 @@ var gulp   = require('gulp');
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
 var gutil  = require('gulp-util');
-var gzip   = require("gulp-gzip");
 var pkg    = require('../../package.json');
 
 gulp.task('vendor', function() {
@@ -15,7 +14,6 @@ gulp.task('vendor', function() {
 	return gulp.src(source)
 		.pipe(concat('v.js'))
 		.pipe(global.isWatching ? gutil.noop() : uglify())
-		.pipe(gzip({append: false}))
 		.pipe(gulp.dest(pkg.folders.dest+'/js/vendor/'));
 		
 });
