@@ -6,12 +6,15 @@
 	padding: 18px $side-padding-desktop;
 	z-index: 4;
 	overflow: hidden;
-	transform: translate(-100%, 0);
-	transform: translate3d(-100%, 0, 0);
 	transition: all .4s $easeOutCubic;
 
 	&.anim-in {
-		transform: none;
+		
+		.logo,
+		nav,
+		.mobile-menu-btn {
+			transform: none;
+		}
 	}
 
 	@include respond-to(small) {
@@ -27,7 +30,10 @@
 		@include font-size(2.1);
 		border-bottom: 3px solid $nc-primary;
 		padding-bottom: 16px;
+		transform: translate(0, 100px);
+		transform: translate3d(0, 100px, 0);
 		transition: all .3s $easeOutCubic;
+		transition-delay: 0.1s;
 
 		@include respond-to(small) {
 			padding-bottom: 13px;
@@ -36,6 +42,10 @@
 
 	nav {
 		float: right;
+		position: relative;
+		transform: translate(0, 100px);
+		transform: translate3d(0, 100px, 0);
+		transition: all .3s $easeOutCubic;
 
 		ul {
 			list-style-type: none;
@@ -81,6 +91,9 @@
 		top: 14px;
 		width: 25px;
 		height: 25px;
+		transform: translate(0, 100px);
+		transform: translate3d(0, 100px, 0);
+		transition: all .3s $easeOutCubic;
 
 		.bar {
 			position: absolute;
@@ -117,6 +130,7 @@
 			}
 	
 			.logo {
+				transition-delay: 0;
 				transform: translate(-200px, 0);
 				transform: translate3d(-200px, 0, 0);
 			}
@@ -147,6 +161,10 @@
 
 		&.menu-closing {
 			overflow: visible;
+
+			.logo {
+				transition-delay: 0;
+			}
 
 			nav {
 				opacity: 1;
