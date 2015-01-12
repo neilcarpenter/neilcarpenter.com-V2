@@ -66,13 +66,10 @@
     "underscore": "underscore.js",
     "backbone": "backbone.js",
     "backbone-deep-model": "backbone-deep-model.js",
-    "backbone-query-params": "backbone-query-params.js",
     "plugins": "plugins.js",
     "tweenlite": "TweenLite.js",
     "ScrollToPlugin": "ScrollToPlugin.min.js",
     "css-plugin": "CSSPlugin.js",
-    "slick": "slick.min.js",
-    "createjs": "createjs.min.js",
     "easepack": "EasePack.js",
     "script": "script.js"
   }

@@ -16,14 +16,14 @@ require('neil-v2-config.php');
 				base_url        : "<?= site_url(); ?>",
 				base_url_assets : "<? bloginfo('template_directory'); ?>",
 				dependencies : {
-					pixi : "<? bloginfo('template_directory');?>/js/vendor/pixi-e4a3e9a8.js"
+					pixi : "<? bloginfo('template_directory');?>/js/vendor/pixi.js"
 				}
 			};
 
 		</script>
 
-		<script src="<? bloginfo('template_directory');?>/js/vendor/v-82609bf7.js"></script>
-		<script src="<? bloginfo('template_directory');?>/js/main-cc2d6de7.js"></script>
+		<script src="<? bloginfo('template_directory');?>/js/vendor/v.js"></script>
+		<script src="<? bloginfo('template_directory');?>/js/main.js"></script>
 
 		<noscript>
 			<p>Sorry, JavaScript be needed</p>
