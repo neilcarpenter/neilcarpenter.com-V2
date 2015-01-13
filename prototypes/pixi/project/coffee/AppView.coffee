@@ -1,12 +1,5 @@
-AbstractView     = require './view/AbstractView'
-Preloader        = require './view/base/Preloader'
-Header           = require './view/base/Header'
-Wrapper          = require './view/base/Wrapper'
-ModalManager     = require './view/modals/_ModalManager'
-MediaQueries     = require './utils/MediaQueries'
-Scroller         = require './utils/Scroller'
-ScrollItemInView = require './utils/ScrollItemInView'
-LazyImageLoader  = require './utils/LazyImageLoader'
+AbstractView = require './view/AbstractView'
+MediaQueries = require './utils/MediaQueries'
 
 class AppView extends AbstractView
 
@@ -72,18 +65,6 @@ class AppView extends AbstractView
 
         @bindEvents()
 
-        @preloader        = new Preloader('site', @$body.find('#preloader'))
-        @modalManager     = new ModalManager
-        @scrollItemInView = new ScrollItemInView
-        @lazyImageLoader  = new LazyImageLoader
-
-        @header  = new Header
-        @wrapper = new Wrapper
-
-        @
-            .addChild @header
-            .addChild @wrapper
-
         @onAllRendered()
 
         return
@@ -97,8 +78,6 @@ class AppView extends AbstractView
         @onResize = _.debounce @onResize, 300
         @$window.on 'resize orientationchange', @onResize
         @$window.on "scroll", @onScroll
-
-        @$body.on 'click', 'a', @linkManager
 
         return
 
@@ -144,29 +123,14 @@ class AppView extends AbstractView
 
         @trigger 'start'
 
-        @NC().router.start()
-
-        @updateMediaQueriesLog()
-
-        @preloader.firstHide =>
-
-            @header.animateIn()
-            @lazyImageLoader.onViewUpdated()
-            @scrollItemInView.getItems()
-            @onScroll()
+        @onScroll()
 
         return
 
     onResize : =>
 
         @getDims()
-        @updateMediaQueriesLog()
 
-        return
-
-    updateMediaQueriesLog : =>
-
-        if @header then @header.$el.find(".breakpoint").html "<div class='l'>CURRENT BREAKPOINT:</div><div class='b'>#{MediaQueries.getBreakpoint()}</div>"
         return
 
     getDims : =>
@@ -195,47 +159,5 @@ class AppView extends AbstractView
             else @rwdSizes.MEDIUM
 
         size
-
-    linkManager : (e) =>
-
-        href = $(e.currentTarget).attr('href')
-
-        if href then @navigateToUrl href, e
-
-        null
-
-    navigateToUrl : ( href, e = null ) =>
-
-        route   = if href.match(@NC().BASE_URL) then href.split(@NC().BASE_URL)[1] else href
-        section = if route.indexOf('/') is 0 then route.split('/')[1] else route
-
-        console.log "route, section"
-        console.log route, section
-
-        if @NC().nav.getSection section
-            e?.preventDefault()
-            @NC().router.navigateTo route
-        else 
-            @handleExternalLink href
-
-        return
-
-    handleExternalLink : (data) => 
-
-        ###
-
-        bind tracking events if necessary
-
-        ###
-
-        return
-
-    trackPageView : =>
-
-        return unless window.ga
-
-        ga 'send', 'pageview', 'page' : window.location.href.split(@NC().BASE_URL)[1] or '/'
-
-        null
 
 module.exports = AppView

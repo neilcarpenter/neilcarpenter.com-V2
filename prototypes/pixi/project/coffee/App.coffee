@@ -1,6 +1,3 @@
-Templates    = require './data/Templates'
-Router       = require './router/Router'
-Nav          = require './router/Nav'
 AppData      = require './AppData'
 AppView      = require './AppView'
 MediaQueries = require './utils/MediaQueries'
@@ -62,8 +59,6 @@ class App
         ### Starts application ###
         @appData = new AppData
         @appView = new AppView
-        @router  = new Router
-        @nav     = new Nav
 
         @go()
 

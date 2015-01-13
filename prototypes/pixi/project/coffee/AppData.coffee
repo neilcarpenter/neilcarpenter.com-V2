@@ -1,6 +1,4 @@
-AbstractData      = require './data/AbstractData'
-Requester         = require './utils/Requester'
-API               = require './data/API'
+AbstractData = require './data/AbstractData'
 
 class AppData extends AbstractData
 
