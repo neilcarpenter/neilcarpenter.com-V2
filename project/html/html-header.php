@@ -54,6 +54,8 @@
 
 	<div id="main" data-template="main">
 
+		<div id="interactive-background" data-template="interactive-background"></div>
+
 		<div id="preloader" class="preloader preloader-site show">
 			<span class="preloader-inner"><span class="mask" data-preloader-mask="inner"></span></span>
 			<span class="preloader-outer"><span class="mask" data-preloader-mask="outer"></span></span>

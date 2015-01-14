@@ -1,9 +1,9 @@
 .page-contact {
 
 	.content {
-		float: right;
+		float: left;
 		width: 60%;
-		text-align: right;
+		text-align: left;
 		max-width: 600px;
 
 		@include respond-to(small) {
