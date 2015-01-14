@@ -11,9 +11,21 @@ class InteractiveBgConfig
 		'F2CA27'
 	]
 
+	@COLORS_BW : [
+		'E8E8E8',
+		'D1D1D1',
+		'B9B9B9',
+		'A3A3A3',
+		'8C8C8C',
+		'767676',
+		'5E5E5E'
+	]
+
+	@activePalette : @COLORS_BW
+
 	@getRandomColor : ->
 
-		return @COLORS[_.random(0, @COLORS.length-1)]
+		return @activePalette[_.random(0, @COLORS.length-1)]
 
 	@shapes :
 		MIN_WIDTH : 30
