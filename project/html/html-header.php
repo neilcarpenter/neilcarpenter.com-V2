@@ -52,6 +52,8 @@
 
 <body>
 
+	<span class="main-bg"></span>
+
 	<div id="main" data-template="main">
 
 		<div id="preloader" class="preloader preloader-site show">

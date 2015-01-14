@@ -45,12 +45,14 @@
 
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
 
-	<link rel="stylesheet" href="<? bloginfo('template_directory');?>/css/main-c110c63c.css">
-	<script src="<? bloginfo('template_directory');?>/js/vendor/modernizr-custom-d3e1b6d0.js"></script>
+	<link rel="stylesheet" href="<? bloginfo('template_directory');?>/css/main.css">
+	<script src="<? bloginfo('template_directory');?>/js/vendor/modernizr-custom.js"></script>
 
 </head>
 
 <body>
+
+	<span class="main-bg"></span>
 
 	<div id="main" data-template="main">
 
