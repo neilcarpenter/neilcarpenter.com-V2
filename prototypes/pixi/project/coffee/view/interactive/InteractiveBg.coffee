@@ -12,10 +12,14 @@ class InteractiveBg extends AbstractView
 	w : 0
 	h : 0
 
+	counter : null
+
 	EVENT_KILL_SHAPE : 'EVENT_KILL_SHAPE'
 
 	filters :
-		blur : null
+		blur  : null
+		RGB   : null
+		pixel : null
 
 	constructor : ->
 
@@ -42,7 +46,7 @@ class InteractiveBg extends AbstractView
 		@guiFolders.sizeFolder.add(InteractiveBgConfig.shapes, 'MAX_WIDTH', 5, 200).name('max width')
 
 		@guiFolders.countFolder = @gui.addFolder('Count')
-		@guiFolders.countFolder.add(InteractiveBgConfig.general, 'MAX_SHAPE_COUNT', 5, 500).name('max shapes')
+		@guiFolders.countFolder.add(InteractiveBgConfig.general, 'MAX_SHAPE_COUNT', 5, 1000).name('max shapes')
 
 		@guiFolders.blurFolder = @gui.addFolder('Blur')
 		@guiFolders.blurFolder.add(InteractiveBgConfig.filters, 'blur').name("enable")
@@ -74,40 +78,45 @@ class InteractiveBg extends AbstractView
 
 		null
 
-	init: =>
-
-		PIXI.dontSayHello = true
-
-		@w = @NC().appView.dims.w
-		@h = @NC().appView.dims.h
-
-		@w2 = @w/2
-		@h2 = @h/2
-
-		@w2 = @w/2
-		@h2 = @h/2
-
-		@w4 = @w/4
-		@h4 = @h/4
-
-		@shapes   = []
-		@stage    = new PIXI.Stage 0x1A1A1A
-		@renderer = PIXI.autoDetectRenderer @w, @h, antialias : true
+	addFilters : =>
 
 		@filters.blur  = new PIXI.BlurFilter
 		@filters.RGB   = new PIXI.RGBSplitFilter
 		@filters.pixel = new PIXI.PixelateFilter
 
-		@$el.append @renderer.view
+		@filters.blur.blur = InteractiveBgConfig.filterDefaults.blur.amount
 
+		@filters.RGB.uniforms.red.value   = InteractiveBgConfig.filterDefaults.RGB.red
+		@filters.RGB.uniforms.green.value = InteractiveBgConfig.filterDefaults.RGB.green
+		@filters.RGB.uniforms.blue.value  = InteractiveBgConfig.filterDefaults.RGB.blue
+
+		@filters.pixel.uniforms.pixelSize.value = InteractiveBgConfig.filterDefaults.pixel.amount
+
+		null
+
+	init: =>
+
+		PIXI.dontSayHello = true
+
+		@setDims()
+
+		@shapes   = []
+		@stage    = new PIXI.Stage 0x1A1A1A
+		@renderer = PIXI.autoDetectRenderer @w, @h, antialias : true
+
+		@addFilters()
 		@addGui()
 		@addStats()
+
+		@$el.append @renderer.view
 
 		@draw()
 
 		null
 
 	draw : =>
+
+		@counter = 0
 
 		@bindEvents()
 		@setDims()
@@ -116,7 +125,7 @@ class InteractiveBg extends AbstractView
 
 	show : =>
 
-		@addShapes InteractiveBgConfig.general.MAX_SHAPE_COUNT
+		@addShapes InteractiveBgConfig.general.INITIAL_SHAPE_COUNT
 		@update()
 
 		null
@@ -160,12 +169,15 @@ class InteractiveBg extends AbstractView
 
 		@stats.begin()
 
+		@counter++
+
+		if (@counter % 4 is 0) and (@stage.children.length < InteractiveBgConfig.general.MAX_SHAPE_COUNT) then @addShapes 1
+
 		@updateShapes()
 		@render()
 
 		filtersToApply = []
-		for filter, enabled of InteractiveBgConfig.filters
-			(filtersToApply.push @filters[filter] if enabled)
+		(filtersToApply.push @filters[filter] if enabled) for filter, enabled of InteractiveBgConfig.filters
 
 		@stage.filters = if filtersToApply.length then filtersToApply else null
 
@@ -199,7 +211,16 @@ class InteractiveBg extends AbstractView
 		@w = @NC().appView.dims.w
 		@h = @NC().appView.dims.h
 
-		@renderer.resize @w, @h
+		@w2 = @w/2
+		@h2 = @h/2
+
+		@w2 = @w/2
+		@h2 = @h/2
+
+		@w4 = @w/4
+		@h4 = @h/4
+
+		@renderer?.resize @w, @h
 
 		null
 

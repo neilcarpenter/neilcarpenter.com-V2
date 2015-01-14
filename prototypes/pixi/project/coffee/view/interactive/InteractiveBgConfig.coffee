@@ -32,12 +32,23 @@ class InteractiveBgConfig
 		MAX_BLUR : 10
 
 	@general : 
-		GLOBAL_SPEED    : 1
-		MAX_SHAPE_COUNT : 80
+		GLOBAL_SPEED        : 1
+		MAX_SHAPE_COUNT     : 80
+		INITIAL_SHAPE_COUNT : 10
 
 	@filters :
 		blur  : false
 		RGB   : false
 		pixel : false
+
+	@filterDefaults :
+		blur :
+			amount : 10
+		RGB :
+			red   : x : 2, y : 2
+			green : x : -2, y : 2
+			blue  : x : 2, y : -2
+		pixel :
+			amount : x : 4, y : 4
 
 module.exports = InteractiveBgConfig

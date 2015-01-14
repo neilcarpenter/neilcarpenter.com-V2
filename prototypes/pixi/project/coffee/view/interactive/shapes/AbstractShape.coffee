@@ -98,7 +98,7 @@ class AbstractShape
 
 		return unless !@dead
 
-		@s.blendMode = if InteractiveBgConfig.filters.RGB then PIXI.blendModes.NORMAL else PIXI.blendModes.ADD
+		# @s.blendMode = if InteractiveBgConfig.filters.RGB then PIXI.blendModes.NORMAL else PIXI.blendModes.ADD
 		# @s.alpha = window.alpha or 0.9
 
 		@s.position.x -= @speedMove*InteractiveBgConfig.general.GLOBAL_SPEED
