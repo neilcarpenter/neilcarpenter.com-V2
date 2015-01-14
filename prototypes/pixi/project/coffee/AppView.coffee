@@ -1,6 +1,6 @@
-AbstractView          = require './view/AbstractView'
-MediaQueries          = require './utils/MediaQueries'
-InteractiveBackground = require './view/background/InteractiveBackground'
+AbstractView  = require './view/AbstractView'
+MediaQueries  = require './utils/MediaQueries'
+InteractiveBg = require './view/interactive/InteractiveBg'
 
 class AppView extends AbstractView
 
@@ -66,7 +66,7 @@ class AppView extends AbstractView
 
         @bindEvents()
 
-        @interactiveBg = new InteractiveBackground
+        @interactiveBg = new InteractiveBg
 
         @addChild @interactiveBg
 

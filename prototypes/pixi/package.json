@@ -53,6 +53,7 @@
     "easepack": "EasePack.js",
     "script": "script.js",
     "pixi": "pixi.js",
-    "dat.gui.min": "dat.gui.min.js"
+    "dat.gui.min": "dat.gui.min.js",
+    "stats": "stats.js"
   }
 }
