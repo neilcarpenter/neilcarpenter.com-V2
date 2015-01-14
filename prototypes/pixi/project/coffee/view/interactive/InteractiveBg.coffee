@@ -38,8 +38,9 @@ class InteractiveBg extends AbstractView
 		# @gui.domElement.style.left = '10px'
 		# document.body.appendChild @gui.domElement
 
-		@guiFolders.speedFolder = @gui.addFolder('Speed')
-		@guiFolders.speedFolder.add(InteractiveBgConfig.general, 'GLOBAL_SPEED', 0.5, 5).name("global speed")
+		@guiFolders.generalFolder = @gui.addFolder('General')
+		@guiFolders.generalFolder.add(InteractiveBgConfig.general, 'GLOBAL_SPEED', 0.5, 5).name("global speed")
+		@guiFolders.generalFolder.add(InteractiveBgConfig.general, 'GLOBAL_ALPHA', 0, 1).name("global alpha")
 
 		@guiFolders.sizeFolder = @gui.addFolder('Size')
 		@guiFolders.sizeFolder.add(InteractiveBgConfig.shapes, 'MIN_WIDTH', 5, 200).name('min width')
@@ -65,6 +66,9 @@ class InteractiveBg extends AbstractView
 		@guiFolders.pixelateFolder.add(InteractiveBgConfig.filters, 'pixel').name("enable")
 		@guiFolders.pixelateFolder.add(@filters.pixel.size, 'x', 1, 32).name("pixel size x")
 		@guiFolders.pixelateFolder.add(@filters.pixel.size, 'y', 1, 32).name("pixel size y")
+
+		@guiFolders.paletteFolder = @gui.addFolder('Colour palette')
+		@guiFolders.paletteFolder.add(InteractiveBgConfig, 'activePalette', InteractiveBgConfig.palettes).name("palette")
 
 		null
 

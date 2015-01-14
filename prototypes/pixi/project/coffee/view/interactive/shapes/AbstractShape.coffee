@@ -6,9 +6,11 @@ class AbstractShape
 	g : null
 	s : null
 
-	maxWidth    : null
+	width       : null
 	speedMove   : null
 	speedRotate : null
+	blurValue   : null
+	alphaValue  : null
 
 	dead : false
 
@@ -99,7 +101,7 @@ class AbstractShape
 		return unless !@dead
 
 		# @s.blendMode = if InteractiveBgConfig.filters.RGB then PIXI.blendModes.NORMAL else PIXI.blendModes.ADD
-		# @s.alpha = window.alpha or 0.9
+		@s.alpha = @alphaValue*InteractiveBgConfig.general.GLOBAL_ALPHA
 
 		@s.position.x -= @speedMove*InteractiveBgConfig.general.GLOBAL_SPEED
 		@s.position.y += @speedMove*InteractiveBgConfig.general.GLOBAL_SPEED
