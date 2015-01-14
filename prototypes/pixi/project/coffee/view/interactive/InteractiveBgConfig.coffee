@@ -87,8 +87,8 @@ class InteractiveBgConfig
 		MAX_BLUR : 10
 
 	@general : 
-		GLOBAL_SPEED        : 1
-		GLOBAL_ALPHA        : 1
+		GLOBAL_SPEED        : 1.8
+		GLOBAL_ALPHA        : 0.7
 		MAX_SHAPE_COUNT     : 80
 		INITIAL_SHAPE_COUNT : 10
 
