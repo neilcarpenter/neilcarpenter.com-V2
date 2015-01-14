@@ -6,7 +6,9 @@ InteractiveBgConfig = require './InteractiveBgConfig'
 class InteractiveBg extends AbstractView
 
 	template : 'interactive-background'
-	stage    : null
+
+	stage : null
+
 	renderer : null
 	
 	w : 0
@@ -49,6 +51,10 @@ class InteractiveBg extends AbstractView
 		@guiFolders.countFolder = @gui.addFolder('Count')
 		@guiFolders.countFolder.add(InteractiveBgConfig.general, 'MAX_SHAPE_COUNT', 5, 1000).name('max shapes')
 
+		@guiFolders.shapesFolder = @gui.addFolder('Shapes')
+		for shape, i in InteractiveBgConfig.shapeTypes
+			@guiFolders.shapesFolder.add(InteractiveBgConfig.shapeTypes[i], 'active').name(shape.type)
+
 		@guiFolders.blurFolder = @gui.addFolder('Blur')
 		@guiFolders.blurFolder.add(InteractiveBgConfig.filters, 'blur').name("enable")
 		@guiFolders.blurFolder.add(@filters.blur, 'blur', 0, 32).name("blur amount")
@@ -82,13 +88,13 @@ class InteractiveBg extends AbstractView
 
 		null
 
-	addFilters : =>
+	createStageFilters : =>
 
 		@filters.blur  = new PIXI.BlurFilter
 		@filters.RGB   = new PIXI.RGBSplitFilter
 		@filters.pixel = new PIXI.PixelateFilter
 
-		@filters.blur.blur = InteractiveBgConfig.filterDefaults.blur.amount
+		@filters.blur.blur = InteractiveBgConfig.filterDefaults.blur.general
 
 		@filters.RGB.uniforms.red.value   = InteractiveBgConfig.filterDefaults.RGB.red
 		@filters.RGB.uniforms.green.value = InteractiveBgConfig.filterDefaults.RGB.green
@@ -108,7 +114,8 @@ class InteractiveBg extends AbstractView
 		@stage    = new PIXI.Stage 0x1A1A1A
 		@renderer = PIXI.autoDetectRenderer @w, @h, antialias : true
 
-		@addFilters()
+		@createStageFilters()
+
 		@addGui()
 		@addStats()
 

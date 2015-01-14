@@ -14,8 +14,6 @@ class AbstractShape
 
 	dead : false
 
-	_shapes : ['Circle', 'Square', 'Triangle']
-
 	constructor : (@interactiveBg) ->
 
 		_.extend @, Backbone.Events
@@ -30,7 +28,7 @@ class AbstractShape
 
 		@g.beginFill '0x'+InteractiveBgConfig.getRandomColor()
 
-		shapeToDraw = @_shapes[_.random(0, @_shapes.length-1)]
+		shapeToDraw = InteractiveBgConfig.getRandomShape()
 		@["_draw#{shapeToDraw}"]()
 
 		@g.endFill()

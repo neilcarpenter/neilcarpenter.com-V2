@@ -55,6 +55,21 @@ class InteractiveBgConfig
 	@palettes      : 'flat' : 'FLAT', 'b&w' : 'BW', 'red' : 'RED', 'blue' : 'BLUE', 'green' : 'GREEN', 'yellow' : 'YELLOW'
 	@activePalette : 'FLAT'
 
+	@shapeTypes: [
+		{
+			type   : 'Circle'
+			active : true
+		}
+		{
+			type   : 'Square'
+			active : true
+		}
+		{
+			type   : 'Triangle'
+			active : true
+		}
+	]
+
 	@shapes :
 		MIN_WIDTH : 30
 		MAX_WIDTH : 70
@@ -84,7 +99,7 @@ class InteractiveBgConfig
 
 	@filterDefaults :
 		blur :
-			amount : 10
+			general : 10
 		RGB :
 			red   : x : 2, y : 2
 			green : x : -2, y : 2
@@ -95,6 +110,12 @@ class InteractiveBgConfig
 	@getRandomColor : ->
 
 		return @colors[@activePalette][_.random(0, @colors[@activePalette].length-1)]
+
+	@getRandomShape : ->
+
+		activeShapes = _.filter @shapeTypes, (s) -> s.active
+
+		return activeShapes[_.random(0, activeShapes.length-1)].type
 
 window.InteractiveBgConfig=InteractiveBgConfig
 module.exports = InteractiveBgConfig
