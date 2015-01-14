@@ -2,7 +2,7 @@ AbstractView        = require '../AbstractView'
 AbstractShape       = require './shapes/AbstractShape'
 NumberUtils         = require '../../utils/NumberUtils'
 InteractiveBgConfig = require './InteractiveBgConfig'
-Router              = require '../../router/Router'
+Wrapper             = require '../base/Wrapper'
 
 class InteractiveBg extends AbstractView
 
@@ -141,12 +141,14 @@ class InteractiveBg extends AbstractView
 
 		@counter = 0
 
-		@bindEvents()
 		@setDims()
 
 		null
 
 	show : =>
+
+		@bindEvents()
+		@onViewUpdated()
 
 		@addShapes InteractiveBgConfig.general.INITIAL_SHAPE_COUNT
 		@update()
@@ -236,13 +238,13 @@ class InteractiveBg extends AbstractView
 	bindEvents : =>
 
 		@NC().appView.on @NC().appView.EVENT_UPDATE_DIMENSIONS, @setDims
-		@NC().router.on Router.EVENT_HASH_CHANGED, @onHashChange
+		@NC().appView.wrapper.on Wrapper.VIEW_UPDATED, @onViewUpdated
 
 		@on @EVENT_KILL_SHAPE, @removeShape
 
 		null
 
-	onHashChange : =>
+	onViewUpdated : =>
 
 		colorOptions    = ['RED', 'BLUE', 'GREEN', 'YELLOW']
 		currentColorIdx = colorOptions.indexOf InteractiveBgConfig.activePalette
@@ -258,6 +260,8 @@ class InteractiveBg extends AbstractView
 
 		InteractiveBgConfig.activePalette = palette
 		TweenLite.to InteractiveBgConfig.general, 1, 'GLOBAL_ALPHA' : alpha
+		TweenLite.to InteractiveBgConfig.general, 2, 'GLOBAL_SPEED' : InteractiveBgConfig.general.GLOBAL_SPEED*4, onComplete : =>
+			TweenLite.to InteractiveBgConfig.general, 2, 'GLOBAL_SPEED' : InteractiveBgConfig.general.GLOBAL_SPEED/4
 
 		null
 
