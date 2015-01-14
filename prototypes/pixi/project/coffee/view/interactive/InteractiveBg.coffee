@@ -7,7 +7,8 @@ class InteractiveBg extends AbstractView
 
 	template : 'interactive-background'
 
-	stage : null
+	stage  : null
+	layers : {}
 
 	renderer : null
 	
@@ -88,6 +89,14 @@ class InteractiveBg extends AbstractView
 
 		null
 
+	createLayers : =>
+
+		for layer, name of InteractiveBgConfig.layers
+			@layers[name] = new PIXI.DisplayObjectContainer
+			@stage.addChild @layers[name]
+
+		null
+
 	createStageFilters : =>
 
 		@filters.blur  = new PIXI.BlurFilter
@@ -114,6 +123,7 @@ class InteractiveBg extends AbstractView
 		@stage    = new PIXI.Stage 0x1A1A1A
 		@renderer = PIXI.autoDetectRenderer @w, @h, antialias : true
 
+		@createLayers()
 		@createStageFilters()
 
 		@addGui()
@@ -147,11 +157,14 @@ class InteractiveBg extends AbstractView
 
 			pos = @_getShapeStartPos()
 
-			shape = new AbstractShape @
-			shape.s.position.x = pos.x
-			shape.s.position.y = pos.y
+			shape  = new AbstractShape @
+			sprite = shape.getSprite()
+			layer  = shape.getLayer()
 
-			@stage.addChild shape.s
+			sprite.position.x = pos.x
+			sprite.position.y = pos.y
+
+			@layers[layer].addChild sprite
 
 			@shapes.push shape
 
@@ -164,15 +177,23 @@ class InteractiveBg extends AbstractView
 
 		return {x, y}
 
+	_getShapeCount : =>
+
+		count = 0
+		(count+=displayContainer.children.length) for layer, displayContainer of @layers
+
+		count
+
 	removeShape : (shape) =>
 
 		index = @shapes.indexOf shape
 		# @shapes.splice index, 1
 		@shapes[index] = null
 
-		@stage.removeChild shape.s
+		layerParent = @layers[shape.getLayer()]
+		layerParent.removeChild shape.s
 
-		if @stage.children.length < InteractiveBgConfig.general.MAX_SHAPE_COUNT then @addShapes 1
+		if @_getShapeCount() < InteractiveBgConfig.general.MAX_SHAPE_COUNT then @addShapes 1
 
 		null
 
@@ -182,7 +203,7 @@ class InteractiveBg extends AbstractView
 
 		@counter++
 
-		if (@counter % 4 is 0) and (@stage.children.length < InteractiveBgConfig.general.MAX_SHAPE_COUNT) then @addShapes 1
+		if (@counter % 4 is 0) and (@_getShapeCount() < InteractiveBgConfig.general.MAX_SHAPE_COUNT) then @addShapes 1
 
 		@updateShapes()
 		@render()

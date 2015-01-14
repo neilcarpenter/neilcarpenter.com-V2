@@ -92,6 +92,11 @@ class InteractiveBgConfig
 		MAX_SHAPE_COUNT     : 80
 		INITIAL_SHAPE_COUNT : 10
 
+	@layers :
+		BACKGROUND : 'BACKGROUND'
+		MIDGROUND  : 'MIDGROUND'
+		FOREGROUND : 'FOREGROUND'
+
 	@filters :
 		blur  : false
 		RGB   : false
@@ -99,7 +104,10 @@ class InteractiveBgConfig
 
 	@filterDefaults :
 		blur :
-			general : 10
+			general    : 10
+			foreground : 0
+			midground  : 0
+			background : 0
 		RGB :
 			red   : x : 2, y : 2
 			green : x : -2, y : 2
@@ -117,5 +125,4 @@ class InteractiveBgConfig
 
 		return activeShapes[_.random(0, activeShapes.length-1)].type
 
-window.InteractiveBgConfig=InteractiveBgConfig
 module.exports = InteractiveBgConfig

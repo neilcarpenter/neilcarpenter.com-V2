@@ -118,6 +118,21 @@ class AbstractShape
 
 		@interactiveBg.trigger @interactiveBg.EVENT_KILL_SHAPE, @
 
+	getSprite : =>
+
+		return @s
+
+	getLayer : =>
+
+		range = InteractiveBgConfig.shapes.MAX_WIDTH - InteractiveBgConfig.shapes.MIN_WIDTH
+
+		layer = switch true
+			when @width < (range / 3)+InteractiveBgConfig.shapes.MIN_WIDTH then InteractiveBgConfig.layers.BACKGROUND
+			when @width < ((range / 3) * 2)+InteractiveBgConfig.shapes.MIN_WIDTH then InteractiveBgConfig.layers.MIDGROUND
+			else InteractiveBgConfig.layers.FOREGROUND
+
+		layer
+
 	NC : =>
 
 		return window.NC
