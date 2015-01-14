@@ -14,6 +14,8 @@ class AbstractShape
 
 	dead : false
 
+	@triangleRatio = Math.cos(Math.PI/6)
+
 	constructor : (@interactiveBg) ->
 
 		_.extend @, Backbone.Events
@@ -50,9 +52,11 @@ class AbstractShape
 
 	_drawTriangle : =>
 
+		height = @width * AbstractShape.triangleRatio
+
 		@g.moveTo 0, 0
-		@g.lineTo -@width/2, @width
-		@g.lineTo @width/2, @width
+		@g.lineTo -@width/2, height
+		@g.lineTo @width/2, height
 
 		null
 
