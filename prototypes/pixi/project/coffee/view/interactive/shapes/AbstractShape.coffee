@@ -19,6 +19,8 @@ class AbstractShape
 
 	dead : false
 
+	displacement : 0
+
 	@triangleRatio : Math.cos(Math.PI/6)
 
 	constructor : (@interactiveBg) ->
@@ -44,6 +46,9 @@ class AbstractShape
 		@s.blendMode = PIXI.blendModes.ADD
 		@s.alpha     = @alphaValue
 		@s.anchor.x  = @s.anchor.y = 0.5
+
+		# track natural, non-displaced positioning
+		@s._position = x : 0, y : 0
 
 		return null
 
@@ -74,6 +79,28 @@ class AbstractShape
 
 		alpha
 
+	_getDisplacement : (axis) =>
+
+		return 0 unless @interactiveBg.mouse.enabled
+
+		dist = @interactiveBg.mouse.pos[axis]-@s.position[axis]
+		dist = if dist < 0 then -dist else dist
+
+		if dist < InteractiveBgConfig.interaction.MOUSE_RADIUS
+			strength = (InteractiveBgConfig.interaction.MOUSE_RADIUS - dist) / InteractiveBgConfig.interaction.MOUSE_RADIUS
+			value    = (InteractiveBgConfig.interaction.DISPLACEMENT_MAX_INC*InteractiveBgConfig.general.GLOBAL_SPEED*strength)
+			@displacement = if @s.position[axis] > @interactiveBg.mouse.pos[axis] then @displacement-value else @displacement+value
+		
+		if @displacement isnt 0
+			if @displacement > 0
+				@displacement-=InteractiveBgConfig.interaction.DISPLACEMENT_DECAY
+				@displacement = if @displacement < 0 then 0 else @displacement
+			else
+				@displacement+=InteractiveBgConfig.interaction.DISPLACEMENT_DECAY
+				@displacement = if @displacement > 0 then 0 else @displacement
+
+		@displacement
+
 	# _positionVariance_1 : (t) =>
 
 	# 	Math.cos t * 0.001 / InteractiveBgConfig.general.GLOBAL_SPEED
@@ -96,8 +123,12 @@ class AbstractShape
 
 		@s.alpha = @alphaValue*InteractiveBgConfig.general.GLOBAL_ALPHA
 
-		@s.position.x -= (@speedMove*InteractiveBgConfig.general.GLOBAL_SPEED)*InteractiveBgConfig.general.DIRECTION_RATIO.x
-		@s.position.y += (@speedMove*InteractiveBgConfig.general.GLOBAL_SPEED)*InteractiveBgConfig.general.DIRECTION_RATIO.y
+		@s._position.x -= (@speedMove*InteractiveBgConfig.general.GLOBAL_SPEED)*InteractiveBgConfig.general.DIRECTION_RATIO.x
+		@s._position.y += (@speedMove*InteractiveBgConfig.general.GLOBAL_SPEED)*InteractiveBgConfig.general.DIRECTION_RATIO.y
+
+		@s.position.x = @s._position.x+@_getDisplacement('x')
+		@s.position.y = @s._position.y+@_getDisplacement('y')
+
 		@s.rotation += @speedRotate*InteractiveBgConfig.general.GLOBAL_SPEED
 
 		if (@s.position.x + (@width/2) < 0) or (@s.position.y - (@width/2) > @NC().appView.dims.h) then @kill()

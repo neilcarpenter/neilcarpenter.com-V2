@@ -17,6 +17,10 @@ class InteractiveBg extends AbstractView
 
 	counter : null
 
+	mouse :
+		enabled : false
+		pos     : null
+
 	EVENT_KILL_SHAPE : 'EVENT_KILL_SHAPE'
 
 	filters :
@@ -189,8 +193,8 @@ class InteractiveBg extends AbstractView
 			sprite = shape.getSprite()
 			layer  = shape.getLayer()
 
-			sprite.position.x = pos.x
-			sprite.position.y = pos.y
+			sprite.position.x = sprite._position.x = pos.x
+			sprite.position.y = sprite._position.y = pos.y
 
 			@layers[layer].addChild sprite
 
@@ -265,8 +269,18 @@ class InteractiveBg extends AbstractView
 
 	bindEvents : =>
 
+		@NC().appView.$window.on 'mousemove', @onMouseMove
+
 		@NC().appView.on @NC().appView.EVENT_UPDATE_DIMENSIONS, @setDims
 		@on @EVENT_KILL_SHAPE, @removeShape
+
+		null
+
+	onMouseMove : (e) =>
+
+		@mouse.multiplier = 1
+		@mouse.pos        = x : e.pageX, y : e.pageY
+		@mouse.enabled    = true
 
 		null
 

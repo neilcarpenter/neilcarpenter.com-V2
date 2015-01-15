@@ -91,7 +91,7 @@ class InteractiveBgConfig
 		MAX_BLUR : 10
 
 	@general : 
-		GLOBAL_SPEED        : 1.8
+		GLOBAL_SPEED        : 1
 		GLOBAL_ALPHA        : 0.7
 		MAX_SHAPE_COUNT     : 200
 		INITIAL_SHAPE_COUNT : 10
@@ -119,6 +119,11 @@ class InteractiveBgConfig
 			blue  : x : 2, y : -2
 		pixel :
 			amount : x : 4, y : 4
+
+	@interaction :
+		MOUSE_RADIUS         : 800
+		DISPLACEMENT_MAX_INC : 0.2
+		DISPLACEMENT_DECAY   : 0.01
 
 	@getRandomColor : ->
 
