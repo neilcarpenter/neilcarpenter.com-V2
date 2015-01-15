@@ -89,7 +89,7 @@ class InteractiveBgConfig
 	@general : 
 		GLOBAL_SPEED        : 1.8
 		GLOBAL_ALPHA        : 0.7
-		MAX_SHAPE_COUNT     : 80
+		MAX_SHAPE_COUNT     : 200
 		INITIAL_SHAPE_COUNT : 10
 
 	@layers :

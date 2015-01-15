@@ -1,14 +1,18 @@
-AbstractView        = require '../AbstractView'
-AbstractShape       = require './shapes/AbstractShape'
-NumberUtils         = require '../../utils/NumberUtils'
-InteractiveBgConfig = require './InteractiveBgConfig'
+AbstractView          = require '../AbstractView'
+AbstractShape         = require './shapes/AbstractShape'
+NumberUtils           = require '../../utils/NumberUtils'
+InteractiveBgConfig   = require './InteractiveBgConfig'
+InteractiveShapeCache = require './InteractiveShapeCache'
 
 class InteractiveBg extends AbstractView
 
 	template : 'interactive-background'
 
-	stage  : null
-	layers : {}
+	stage      : null
+	layers     : {}
+	shapeCache : {
+		triangle : null
+	}
 
 	renderer : null
 	
@@ -25,6 +29,8 @@ class InteractiveBg extends AbstractView
 		pixel : null
 
 	constructor : ->
+
+		@DEBUG = true
 
 		super
 
@@ -89,6 +95,25 @@ class InteractiveBg extends AbstractView
 
 		null
 
+	addShapeCounter : =>
+
+		@shapeCounter = document.createElement 'div'
+		@shapeCounter.style.position = 'absolute'
+		@shapeCounter.style.left = '100px'
+		@shapeCounter.style.top = '15px'
+		@shapeCounter.style.color = '#fff'
+		@shapeCounter.style.textTransform = 'uppercase'
+		@shapeCounter.innerHTML = "0 shapes"
+		document.body.appendChild @shapeCounter
+
+		null
+
+	updateShapeCounter : =>
+
+		@shapeCounter.innerHTML = "#{@_getShapeCount()} shapes"
+
+		null
+
 	createLayers : =>
 
 		for layer, name of InteractiveBgConfig.layers
@@ -122,12 +147,17 @@ class InteractiveBg extends AbstractView
 		@shapes   = []
 		@stage    = new PIXI.Stage 0x1A1A1A
 		@renderer = PIXI.autoDetectRenderer @w, @h, antialias : true
+		@render()
+
+		InteractiveShapeCache.createCache()
 
 		@createLayers()
 		@createStageFilters()
 
-		@addGui()
-		@addStats()
+		if @DEBUG
+			@addGui()
+			@addStats()
+			@addShapeCounter()
 
 		@$el.append @renderer.view
 
@@ -139,12 +169,13 @@ class InteractiveBg extends AbstractView
 
 		@counter = 0
 
-		@bindEvents()
 		@setDims()
 
 		null
 
 	show : =>
+
+		@bindEvents()
 
 		@addShapes InteractiveBgConfig.general.INITIAL_SHAPE_COUNT
 		@update()
@@ -199,7 +230,9 @@ class InteractiveBg extends AbstractView
 
 	update : =>
 
-		@stats.begin()
+		if window.STOP then return requestAnimFrame @update
+
+		if @DEBUG then @stats.begin()
 
 		@counter++
 
@@ -215,7 +248,9 @@ class InteractiveBg extends AbstractView
 
 		requestAnimFrame @update
 
-		@stats.end()
+		if @DEBUG
+			@updateShapeCounter()
+			@stats.end()
 
 		null
 
