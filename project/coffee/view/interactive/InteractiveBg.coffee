@@ -291,7 +291,7 @@ class InteractiveBg extends AbstractView
 
 		if transitionIn
 			TweenLite.to InteractiveBgConfig.general, 1, 'GLOBAL_ALPHA' : alpha
-			TweenLite.to InteractiveBgConfig.general, 2, 'GLOBAL_SPEED' : InteractiveBgConfig.general.GLOBAL_SPEED*4, onComplete : =>
+			TweenLite.to InteractiveBgConfig.general, 2, 'GLOBAL_SPEED' : InteractiveBgConfig.general.GLOBAL_SPEED*4, ease : Back.easeInOut, onComplete : =>
 				TweenLite.to InteractiveBgConfig.general, 2, 'GLOBAL_SPEED' : InteractiveBgConfig.general.GLOBAL_SPEED/4
 		else
 			InteractiveBgConfig.general.GLOBAL_ALPHA = alpha
@@ -327,7 +327,7 @@ class InteractiveBg extends AbstractView
 
 		a = switch @NC().router.area
 			when @NC().nav.sections.HOME then 0.8
-			when @NC().nav.sections.WORK then 0.3
+			when @NC().nav.sections.WORK then 0.4
 			else 0.6
 
 		a
