@@ -27,7 +27,7 @@
 						<a href="<?= get_site_url(); ?>/work/<?= $project->post_name ?>/">
 							<span class="work-preview-thumb bg-image-wrapper" data-lazyimage="<?= $project->thumbnail ?>">
 								<span class="bg-image"></span>
-								<div class="preloader preloader-image show">
+								<div class="preloader preloader-image show" data-preloader-shape="<?= $project->preloader_shape ?>">
 									<span class="preloader-inner"><span class="mask" data-preloader-mask="inner"></span></span>
 									<span class="preloader-outer"><span class="mask" data-preloader-mask="outer"></span></span>
 								</div>
