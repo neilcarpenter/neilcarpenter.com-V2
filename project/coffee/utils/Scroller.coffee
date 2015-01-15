@@ -26,9 +26,10 @@ class Scroller
 
 		console.log "+++Scroller, distance to go: #{distToGo}, time to take it: #{time}"
 
-		TweenLite.to window, time,
-            scrollTo:{x: 0, y: target}, ease: Power3.easeInOut, onComplete: =>
-            	cb?()
+		params = scrollTo: {x: 0, y: target, autoKill: false}, ease: Power3.easeInOut
+		if typeof cb is 'function' then params.onComplete = cb
+
+		TweenLite.to window, time, params
 
 		null
 
