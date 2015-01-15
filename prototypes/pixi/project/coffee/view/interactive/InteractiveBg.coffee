@@ -1,21 +1,25 @@
-AbstractView        = require '../AbstractView'
-AbstractShape       = require './shapes/AbstractShape'
-NumberUtils         = require '../../utils/NumberUtils'
-InteractiveBgConfig = require './InteractiveBgConfig'
+AbstractView          = require '../AbstractView'
+AbstractShape         = require './shapes/AbstractShape'
+NumberUtils           = require '../../utils/NumberUtils'
+InteractiveBgConfig   = require './InteractiveBgConfig'
+InteractiveShapeCache = require './InteractiveShapeCache'
 
 class InteractiveBg extends AbstractView
 
 	template : 'interactive-background'
 
-	stage  : null
-	layers : {}
-
+	stage    : null
 	renderer : null
+	layers   : {}
 	
 	w : 0
 	h : 0
 
 	counter : null
+
+	mouse :
+		enabled : false
+		pos     : null
 
 	EVENT_KILL_SHAPE : 'EVENT_KILL_SHAPE'
 
@@ -25,6 +29,8 @@ class InteractiveBg extends AbstractView
 		pixel : null
 
 	constructor : ->
+
+		@DEBUG = true
 
 		super
 
@@ -89,6 +95,25 @@ class InteractiveBg extends AbstractView
 
 		null
 
+	addShapeCounter : =>
+
+		@shapeCounter = document.createElement 'div'
+		@shapeCounter.style.position = 'absolute'
+		@shapeCounter.style.left = '100px'
+		@shapeCounter.style.top = '15px'
+		@shapeCounter.style.color = '#fff'
+		@shapeCounter.style.textTransform = 'uppercase'
+		@shapeCounter.innerHTML = "0 shapes"
+		document.body.appendChild @shapeCounter
+
+		null
+
+	updateShapeCounter : =>
+
+		@shapeCounter.innerHTML = "#{@_getShapeCount()} shapes"
+
+		null
+
 	createLayers : =>
 
 		for layer, name of InteractiveBgConfig.layers
@@ -118,16 +143,22 @@ class InteractiveBg extends AbstractView
 		PIXI.dontSayHello = true
 
 		@setDims()
+		@setStreamDirection()
 
 		@shapes   = []
 		@stage    = new PIXI.Stage 0x1A1A1A
 		@renderer = PIXI.autoDetectRenderer @w, @h, antialias : true
+		@render()
+
+		InteractiveShapeCache.createCache()
 
 		@createLayers()
 		@createStageFilters()
 
-		@addGui()
-		@addStats()
+		if @DEBUG
+			@addGui()
+			@addStats()
+			@addShapeCounter()
 
 		@$el.append @renderer.view
 
@@ -139,12 +170,13 @@ class InteractiveBg extends AbstractView
 
 		@counter = 0
 
-		@bindEvents()
 		@setDims()
 
 		null
 
 	show : =>
+
+		@bindEvents()
 
 		@addShapes InteractiveBgConfig.general.INITIAL_SHAPE_COUNT
 		@update()
@@ -161,8 +193,8 @@ class InteractiveBg extends AbstractView
 			sprite = shape.getSprite()
 			layer  = shape.getLayer()
 
-			sprite.position.x = pos.x
-			sprite.position.y = pos.y
+			sprite.position.x = sprite._position.x = pos.x
+			sprite.position.y = sprite._position.y = pos.y
 
 			@layers[layer].addChild sprite
 
@@ -172,8 +204,8 @@ class InteractiveBg extends AbstractView
 
 	_getShapeStartPos : =>
 
-		x = (NumberUtils.getRandomFloat @w4, @w) + (@w4*3)
-		y = (NumberUtils.getRandomFloat 0, (@h4*3)) - @h4*3
+		x = (NumberUtils.getRandomFloat @w3, @w) + (@w3*2)
+		y = (NumberUtils.getRandomFloat 0, (@h3*2)) - @h3*2
 
 		return {x, y}
 
@@ -199,7 +231,9 @@ class InteractiveBg extends AbstractView
 
 	update : =>
 
-		@stats.begin()
+		if window.STOP then return requestAnimFrame @update
+
+		if @DEBUG then @stats.begin()
 
 		@counter++
 
@@ -215,7 +249,9 @@ class InteractiveBg extends AbstractView
 
 		requestAnimFrame @update
 
-		@stats.end()
+		if @DEBUG
+			@updateShapeCounter()
+			@stats.end()
 
 		null
 
@@ -233,8 +269,18 @@ class InteractiveBg extends AbstractView
 
 	bindEvents : =>
 
+		@NC().appView.$window.on 'mousemove', @onMouseMove
+
 		@NC().appView.on @NC().appView.EVENT_UPDATE_DIMENSIONS, @setDims
 		@on @EVENT_KILL_SHAPE, @removeShape
+
+		null
+
+	onMouseMove : (e) =>
+
+		@mouse.multiplier = 1
+		@mouse.pos        = x : e.pageX, y : e.pageY
+		@mouse.enabled    = true
 
 		null
 
@@ -243,16 +289,29 @@ class InteractiveBg extends AbstractView
 		@w = @NC().appView.dims.w
 		@h = @NC().appView.dims.h
 
-		@w2 = @w/2
-		@h2 = @h/2
+		@w3 = @w/3
+		@h3 = @h/3
 
-		@w2 = @w/2
-		@h2 = @h/2
+		# just use non-relative sizes for now
+		# InteractiveBgConfig.shapes.MIN_WIDTH = (InteractiveBgConfig.shapes.MIN_WIDTH_PERC/100)*@NC().appView.dims.w
+		# InteractiveBgConfig.shapes.MAX_WIDTH = (InteractiveBgConfig.shapes.MAX_WIDTH_PERC/100)*@NC().appView.dims.w
 
-		@w4 = @w/4
-		@h4 = @h/4
+		@setStreamDirection()
 
 		@renderer?.resize @w, @h
+
+		null
+
+	setStreamDirection : =>
+
+		if @w > @h
+			x = 1
+			y = @h / @w
+		else
+			y = 1
+			x = @w / @h
+
+		InteractiveBgConfig.general.DIRECTION_RATIO = {x, y}
 
 		null
 

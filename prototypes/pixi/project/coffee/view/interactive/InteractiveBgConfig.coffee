@@ -71,6 +71,10 @@ class InteractiveBgConfig
 	]
 
 	@shapes :
+		MIN_WIDTH_PERC : 3
+		MAX_WIDTH_PERC : 7
+
+		# set this depending on viewport size
 		MIN_WIDTH : 30
 		MAX_WIDTH : 70
 
@@ -87,10 +91,11 @@ class InteractiveBgConfig
 		MAX_BLUR : 10
 
 	@general : 
-		GLOBAL_SPEED        : 1.8
+		GLOBAL_SPEED        : 1
 		GLOBAL_ALPHA        : 0.7
-		MAX_SHAPE_COUNT     : 80
+		MAX_SHAPE_COUNT     : 200
 		INITIAL_SHAPE_COUNT : 10
+		DIRECTION_RATIO     : x : 1, y : 1
 
 	@layers :
 		BACKGROUND : 'BACKGROUND'
@@ -115,6 +120,11 @@ class InteractiveBgConfig
 		pixel :
 			amount : x : 4, y : 4
 
+	@interaction :
+		MOUSE_RADIUS         : 800
+		DISPLACEMENT_MAX_INC : 0.2
+		DISPLACEMENT_DECAY   : 0.01
+
 	@getRandomColor : ->
 
 		return @colors[@activePalette][_.random(0, @colors[@activePalette].length-1)]
@@ -125,4 +135,5 @@ class InteractiveBgConfig
 
 		return activeShapes[_.random(0, activeShapes.length-1)].type
 
+window.InteractiveBgConfig=InteractiveBgConfig
 module.exports = InteractiveBgConfig
