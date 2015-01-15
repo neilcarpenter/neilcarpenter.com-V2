@@ -8,6 +8,7 @@
 
 switch ($_SERVER['SERVER_NAME']) {
 	case 'localhost':
+	case '192.168.0.4':
 	case '192.168.168.192':
 	case '192.168.168.209':
 	case '192.168.168.212':
