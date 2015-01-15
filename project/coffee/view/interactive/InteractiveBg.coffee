@@ -1,22 +1,26 @@
-AbstractView        = require '../AbstractView'
-AbstractShape       = require './shapes/AbstractShape'
-NumberUtils         = require '../../utils/NumberUtils'
-InteractiveBgConfig = require './InteractiveBgConfig'
-Wrapper             = require '../base/Wrapper'
+AbstractView          = require '../AbstractView'
+AbstractShape         = require './shapes/AbstractShape'
+NumberUtils           = require '../../utils/NumberUtils'
+InteractiveBgConfig   = require './InteractiveBgConfig'
+InteractiveShapeCache = require './InteractiveShapeCache'
+Wrapper               = require '../base/Wrapper'
 
 class InteractiveBg extends AbstractView
 
 	template : 'interactive-background'
 
-	stage  : null
-	layers : {}
-
+	stage    : null
 	renderer : null
+	layers   : {}
 	
 	w : 0
 	h : 0
 
 	counter : null
+
+	mouse :
+		enabled : false
+		pos     : null
 
 	EVENT_KILL_SHAPE : 'EVENT_KILL_SHAPE'
 
@@ -25,7 +29,9 @@ class InteractiveBg extends AbstractView
 		RGB   : null
 		pixel : null
 
-	constructor : ->		
+	constructor : ->
+
+		@DEBUG = false
 
 		super
 
@@ -90,6 +96,25 @@ class InteractiveBg extends AbstractView
 
 		null
 
+	addShapeCounter : =>
+
+		@shapeCounter = document.createElement 'div'
+		@shapeCounter.style.position = 'absolute'
+		@shapeCounter.style.left = '100px'
+		@shapeCounter.style.top = '15px'
+		@shapeCounter.style.color = '#fff'
+		@shapeCounter.style.textTransform = 'uppercase'
+		@shapeCounter.innerHTML = "0 shapes"
+		document.body.appendChild @shapeCounter
+
+		null
+
+	updateShapeCounter : =>
+
+		@shapeCounter.innerHTML = "#{@_getShapeCount()} shapes"
+
+		null
+
 	createLayers : =>
 
 		for layer, name of InteractiveBgConfig.layers
@@ -119,17 +144,22 @@ class InteractiveBg extends AbstractView
 		PIXI.dontSayHello = true
 
 		@setDims()
+		@setStreamDirection()
 
 		@shapes   = []
 		@stage    = new PIXI.Stage 0x1A1A1A
 		@renderer = PIXI.autoDetectRenderer @w, @h, antialias : true
 		@render()
 
+		InteractiveShapeCache.createCache()
+
 		@createLayers()
 		@createStageFilters()
 
-		# @addGui()
-		# @addStats()
+		if @DEBUG
+			@addGui()
+			@addStats()
+			@addShapeCounter()
 
 		@$el.append @renderer.view
 
@@ -148,7 +178,7 @@ class InteractiveBg extends AbstractView
 	show : =>
 
 		@bindEvents()
-		@onViewUpdated()
+		@onViewUpdated false
 
 		@addShapes InteractiveBgConfig.general.INITIAL_SHAPE_COUNT
 		@update()
@@ -165,8 +195,8 @@ class InteractiveBg extends AbstractView
 			sprite = shape.getSprite()
 			layer  = shape.getLayer()
 
-			sprite.position.x = pos.x
-			sprite.position.y = pos.y
+			sprite.position.x = sprite._position.x = pos.x
+			sprite.position.y = sprite._position.y = pos.y
 
 			@layers[layer].addChild sprite
 
@@ -176,8 +206,8 @@ class InteractiveBg extends AbstractView
 
 	_getShapeStartPos : =>
 
-		x = (NumberUtils.getRandomFloat @w4, @w) + (@w4*3)
-		y = (NumberUtils.getRandomFloat 0, (@h4*3)) - @h4*3
+		x = (NumberUtils.getRandomFloat @w3, @w) + (@w3*2)
+		y = (NumberUtils.getRandomFloat 0, (@h3*2)) - @h3*2
 
 		return {x, y}
 
@@ -203,7 +233,9 @@ class InteractiveBg extends AbstractView
 
 	update : =>
 
-		@stats?.begin()
+		if window.STOP then return requestAnimFrame @update
+
+		if @DEBUG then @stats.begin()
 
 		@counter++
 
@@ -219,7 +251,9 @@ class InteractiveBg extends AbstractView
 
 		requestAnimFrame @update
 
-		@stats?.end()
+		if @DEBUG
+			@updateShapeCounter()
+			@stats.end()
 
 		null
 
@@ -237,6 +271,8 @@ class InteractiveBg extends AbstractView
 
 	bindEvents : =>
 
+		@NC().appView.$window.on 'mousemove', @onMouseMove
+
 		@NC().appView.on @NC().appView.EVENT_UPDATE_DIMENSIONS, @setDims
 		@NC().appView.wrapper.on Wrapper.VIEW_UPDATED, @onViewUpdated
 
@@ -244,24 +280,63 @@ class InteractiveBg extends AbstractView
 
 		null
 
-	onViewUpdated : =>
+	onViewUpdated : (transitionIn=true) =>
 
-		colorOptions    = ['RED', 'BLUE', 'GREEN', 'YELLOW']
-		currentColorIdx = colorOptions.indexOf InteractiveBgConfig.activePalette
-		currentColorIdx = if currentColorIdx > -1 then currentColorIdx else currentColorIdx
-		newColorIdx     = if currentColorIdx is colorOptions.length-1 then 0 else currentColorIdx+1
+		shapeCount = @_getViewShapeCount()
+		palette    = @_getViewPalette()
+		alpha      = @_getViewAlpha()
 
-		if @NC().router.area is @NC().nav.sections.HOME
-			alpha   = 0.9
-			palette = 'FLAT'
+		InteractiveBgConfig.activePalette           = palette
+		InteractiveBgConfig.general.MAX_SHAPE_COUNT = shapeCount
+
+		if transitionIn
+			TweenLite.to InteractiveBgConfig.general, 1, 'GLOBAL_ALPHA' : alpha
+			TweenLite.to InteractiveBgConfig.general, 2, 'GLOBAL_SPEED' : InteractiveBgConfig.general.GLOBAL_SPEED*4, onComplete : =>
+				TweenLite.to InteractiveBgConfig.general, 2, 'GLOBAL_SPEED' : InteractiveBgConfig.general.GLOBAL_SPEED/4
 		else
-			alpha = 0.5
-			palette = colorOptions[newColorIdx]
+			InteractiveBgConfig.general.GLOBAL_ALPHA = alpha
 
-		InteractiveBgConfig.activePalette = palette
-		TweenLite.to InteractiveBgConfig.general, 1, 'GLOBAL_ALPHA' : alpha
-		TweenLite.to InteractiveBgConfig.general, 2, 'GLOBAL_SPEED' : InteractiveBgConfig.general.GLOBAL_SPEED*4, onComplete : =>
-			TweenLite.to InteractiveBgConfig.general, 2, 'GLOBAL_SPEED' : InteractiveBgConfig.general.GLOBAL_SPEED/4
+		null
+
+	_getViewShapeCount : =>
+
+		s = switch @NC().router.area
+			when @NC().nav.sections.HOME then 300
+			when @NC().nav.sections.WORK then 80
+			else 200
+
+		s
+
+	_getViewPalette : =>
+
+		basePalettes    = InteractiveBgConfig.basePalettes
+		currentColorIdx = basePalettes.indexOf InteractiveBgConfig.activePalette
+		currentColorIdx = if currentColorIdx > -1 then currentColorIdx else currentColorIdx
+		newColorIdx     = if currentColorIdx is basePalettes.length-1 then 0 else currentColorIdx+1
+
+		if @NC().appView.wrapper.currentView.$el.find('[data-palette]').length
+			p = @NC().appView.wrapper.currentView.$el.find('[data-palette]').attr('data-palette')
+		else if @NC().router.area is @NC().nav.sections.HOME
+			p = 'FLAT'
+		else
+			p = basePalettes[newColorIdx]
+
+		p
+
+	_getViewAlpha : =>
+
+		a = switch @NC().router.area
+			when @NC().nav.sections.HOME then 0.8
+			when @NC().nav.sections.WORK then 0.3
+			else 0.6
+
+		a
+
+	onMouseMove : (e) =>
+
+		@mouse.multiplier = 1
+		@mouse.pos        = x : e.pageX, y : e.pageY
+		@mouse.enabled    = true
 
 		null
 
@@ -270,16 +345,29 @@ class InteractiveBg extends AbstractView
 		@w = @NC().appView.dims.w
 		@h = @NC().appView.dims.h
 
-		@w2 = @w/2
-		@h2 = @h/2
+		@w3 = @w/3
+		@h3 = @h/3
 
-		@w2 = @w/2
-		@h2 = @h/2
+		# just use non-relative sizes for now
+		# InteractiveBgConfig.shapes.MIN_WIDTH = (InteractiveBgConfig.shapes.MIN_WIDTH_PERC/100)*@NC().appView.dims.w
+		# InteractiveBgConfig.shapes.MAX_WIDTH = (InteractiveBgConfig.shapes.MAX_WIDTH_PERC/100)*@NC().appView.dims.w
 
-		@w4 = @w/4
-		@h4 = @h/4
+		@setStreamDirection()
 
 		@renderer?.resize @w, @h
+
+		null
+
+	setStreamDirection : =>
+
+		if @w > @h
+			x = 1
+			y = @h / @w
+		else
+			y = 1
+			x = @w / @h
+
+		InteractiveBgConfig.general.DIRECTION_RATIO = {x, y}
 
 		null
 

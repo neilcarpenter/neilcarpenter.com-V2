@@ -1,80 +1,68 @@
-InteractiveBgConfig = require '../InteractiveBgConfig'
-NumberUtils         = require '../../../utils/NumberUtils'
+InteractiveBgConfig   = require '../InteractiveBgConfig'
+InteractiveShapeCache = require '../InteractiveShapeCache'
+NumberUtils           = require '../../../utils/NumberUtils'
 
 class AbstractShape
 
-	g : null
 	s : null
+
+	_shape : null
+	_color : null
 
 	width       : null
 	speedMove   : null
 	speedRotate : null
-	blurValue   : null
 	alphaValue  : null
+
+	# _positionVarianceX : null
+	# _positionVarianceY : null
 
 	dead : false
 
-	@triangleRatio = Math.cos(Math.PI/6)
+	displacement : 0
+
+	@triangleRatio : Math.cos(Math.PI/6)
 
 	constructor : (@interactiveBg) ->
 
 		_.extend @, Backbone.Events
 
+		@_shape = InteractiveBgConfig.getRandomShape()
+		@_color = InteractiveBgConfig.getRandomColor()
+
 		@width       = @_getWidth()
+		@height      = @_getHeight @_shape, @width
 		@speedMove   = @_getSpeedMove()
 		@speedRotate = @_getSpeedRotate()
-		@blurValue   = @_getBlurValue()
 		@alphaValue  = @_getAlphaValue()
 
-		@g = new PIXI.Graphics
+		# @_positionVarianceX = @["_positionVariance_"+_.random(1,4)]
+		# @_positionVarianceY = @["_positionVariance_"+_.random(1,4)]
 
-		@g.beginFill '0x'+InteractiveBgConfig.getRandomColor()
+		@s = new PIXI.Sprite.fromImage InteractiveShapeCache.shapes[@_shape][@_color]
 
-		shapeToDraw = InteractiveBgConfig.getRandomShape()
-		@["_draw#{shapeToDraw}"]()
-
-		@g.endFill()
-
-		@g.boundsPadding = @width*1.2
-
-		@s = new PIXI.Sprite @g.generateTexture()
-
-		# @blurFilter = new PIXI.BlurFilter
-		# @blurFilter.blur = @blurValue
-
-		# @s.filters   = [@blurFilter]
-		@s.blendMode = window.blend or PIXI.blendModes.ADD
+		@s.width     = @width
+		@s.height    = @height
+		@s.blendMode = PIXI.blendModes.ADD
 		@s.alpha     = @alphaValue
+		@s.anchor.x  = @s.anchor.y = 0.5
 
-		@s.anchor.x = @s.anchor.y = 0.5
+		# track natural, non-displaced positioning
+		@s._position = x : 0, y : 0
 
 		return null
-
-	_drawTriangle : =>
-
-		height = @width * AbstractShape.triangleRatio
-
-		@g.moveTo 0, 0
-		@g.lineTo -@width/2, height
-		@g.lineTo @width/2, height
-
-		null
-
-	_drawCircle : =>
-
-		@g.drawCircle 0, 0, @width/2
-
-		null
-
-	_drawSquare : =>
-
-		@g.drawRect 0, 0, @width, @width
-
-		null
 
 	_getWidth : =>
 
 		NumberUtils.getRandomFloat InteractiveBgConfig.shapes.MIN_WIDTH, InteractiveBgConfig.shapes.MAX_WIDTH
+
+	_getHeight : (shape, width) =>
+
+		height = switch true
+			when shape is 'Triangle' then (width * AbstractShape.triangleRatio)
+			else width
+
+		height
 
 	_getSpeedMove : =>
 
@@ -84,13 +72,6 @@ class AbstractShape
 
 		NumberUtils.getRandomFloat InteractiveBgConfig.shapes.MIN_SPEED_ROTATE, InteractiveBgConfig.shapes.MAX_SPEED_ROTATE
 
-	_getBlurValue : =>
-
-		range = InteractiveBgConfig.shapes.MAX_BLUR - InteractiveBgConfig.shapes.MIN_BLUR
-		blur  = ((@width / InteractiveBgConfig.shapes.MAX_WIDTH) * range) + InteractiveBgConfig.shapes.MIN_BLUR
-
-		blur
-
 	_getAlphaValue : =>
 
 		range = InteractiveBgConfig.shapes.MAX_ALPHA - InteractiveBgConfig.shapes.MIN_ALPHA
@@ -98,19 +79,57 @@ class AbstractShape
 
 		alpha
 
+	_getDisplacement : (axis) =>
+
+		return 0 unless @interactiveBg.mouse.enabled
+
+		dist = @interactiveBg.mouse.pos[axis]-@s.position[axis]
+		dist = if dist < 0 then -dist else dist
+
+		if dist < InteractiveBgConfig.interaction.MOUSE_RADIUS
+			strength = (InteractiveBgConfig.interaction.MOUSE_RADIUS - dist) / InteractiveBgConfig.interaction.MOUSE_RADIUS
+			value    = (InteractiveBgConfig.interaction.DISPLACEMENT_MAX_INC*InteractiveBgConfig.general.GLOBAL_SPEED*strength)
+			@displacement = if @s.position[axis] > @interactiveBg.mouse.pos[axis] then @displacement-value else @displacement+value
+		
+		if @displacement isnt 0
+			if @displacement > 0
+				@displacement-=InteractiveBgConfig.interaction.DISPLACEMENT_DECAY
+				@displacement = if @displacement < 0 then 0 else @displacement
+			else
+				@displacement+=InteractiveBgConfig.interaction.DISPLACEMENT_DECAY
+				@displacement = if @displacement > 0 then 0 else @displacement
+
+		@displacement
+
+	# _positionVariance_1 : (t) =>
+
+	# 	Math.cos t * 0.001 / InteractiveBgConfig.general.GLOBAL_SPEED
+
+	# _positionVariance_2 : (t) =>
+
+	# 	Math.sin t * 0.001 / InteractiveBgConfig.general.GLOBAL_SPEED
+
+	# _positionVariance_3 : (t) =>
+
+	# 	Math.cos t * 0.005 / InteractiveBgConfig.general.GLOBAL_SPEED
+
+	# _positionVariance_4 : (t) =>
+
+	# 	Math.sin t * 0.005 / InteractiveBgConfig.general.GLOBAL_SPEED
+
 	callAnimate : =>
 
 		return unless !@dead
 
-		# @s.blendMode = if InteractiveBgConfig.filters.RGB then PIXI.blendModes.NORMAL else PIXI.blendModes.ADD
 		@s.alpha = @alphaValue*InteractiveBgConfig.general.GLOBAL_ALPHA
 
-		@s.position.x -= @speedMove*InteractiveBgConfig.general.GLOBAL_SPEED
-		@s.position.y += @speedMove*InteractiveBgConfig.general.GLOBAL_SPEED
-		@s.rotation += @speedRotate*InteractiveBgConfig.general.GLOBAL_SPEED
+		@s._position.x -= (@speedMove*InteractiveBgConfig.general.GLOBAL_SPEED)*InteractiveBgConfig.general.DIRECTION_RATIO.x
+		@s._position.y += (@speedMove*InteractiveBgConfig.general.GLOBAL_SPEED)*InteractiveBgConfig.general.DIRECTION_RATIO.y
 
-		# if (@s.position.x + (@width/2) < 0) then @s.position.x += @NC().appView.dims.w
-		# if (@s.position.y - (@width/2) > @NC().appView.dims.h) then @s.position.y -= @NC().appView.dims.h
+		@s.position.x = @s._position.x+@_getDisplacement('x')
+		@s.position.y = @s._position.y+@_getDisplacement('y')
+
+		@s.rotation += @speedRotate*InteractiveBgConfig.general.GLOBAL_SPEED
 
 		if (@s.position.x + (@width/2) < 0) or (@s.position.y - (@width/2) > @NC().appView.dims.h) then @kill()
 

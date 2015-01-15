@@ -11,6 +11,7 @@ switch ($_SERVER['SERVER_NAME']) {
 	case '192.168.168.192':
 	case '192.168.168.209':
 	case '192.168.168.212':
+	case '192.168.168.221':
 	case 'local.v2.neilcarpenter.com':
 		$db_name   = 'neil_v2_local';
 		$db_user   = 'root';

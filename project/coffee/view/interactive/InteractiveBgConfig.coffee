@@ -51,8 +51,49 @@ class InteractiveBgConfig
 			'F3D310',
 			'B8A006'
 		]
+		# http://paletton.com/#uid=10x0u0klAw0bLO3heEoq4tzthnT
+		ORANGE : [
+			'FFCEA1',
+			'FFB876',
+			'FFA653',
+			'EC882C',
+			'BE6410'
+		]
+		# http://paletton.com/#uid=14L0u0kgDKz64Y2bLS8kNBxoMuN
+		PURPLE : [
+			'EACAF7',
+			'D096E7',
+			'B56AD3',
+			'9A47BB',
+			'812AA3'
+		]
+		# http://paletton.com/#uid=13l0u0kpZE+fyPvl6JJwMBh-Fqj
+		TURQUOISE : [
+			'73CFDB',
+			'47BACA',
+			'26A9BB',
+			'26A9BB',
+			'027180'
+		]
+		# http://paletton.com/#uid=1020u0k4xiH1Tt-3enD5ZdG9g7E
+		RESONATE : [
+			'ECDEDE',
+			'BCAAA9',
+			'958180',
+			'6D5A59',
+			'3D2C2B'
+		]
+		# http://paletton.com/#uid=10K0u0kpspJfjxRkmsbrYkAx8f-
+		GOLD : [
+			'FFCC85',
+			'E1A552',
+			'CD892A',
+			'A46915',
+			'7C4900'
+		]
 
 	@palettes      : 'flat' : 'FLAT', 'b&w' : 'BW', 'red' : 'RED', 'blue' : 'BLUE', 'green' : 'GREEN', 'yellow' : 'YELLOW'
+	@basePalettes  : _.shuffle ['RED', 'BLUE', 'GREEN', 'YELLOW', 'ORANGE', 'PURPLE']
 	@activePalette : 'FLAT'
 
 	@shapeTypes: [
@@ -71,6 +112,10 @@ class InteractiveBgConfig
 	]
 
 	@shapes :
+		MIN_WIDTH_PERC : 3
+		MAX_WIDTH_PERC : 7
+
+		# set this depending on viewport size
 		MIN_WIDTH : 30
 		MAX_WIDTH : 70
 
@@ -88,9 +133,10 @@ class InteractiveBgConfig
 
 	@general : 
 		GLOBAL_SPEED        : 1
-		GLOBAL_ALPHA        : 1
-		MAX_SHAPE_COUNT     : 80
+		GLOBAL_ALPHA        : 0.8
+		MAX_SHAPE_COUNT     : 200
 		INITIAL_SHAPE_COUNT : 10
+		DIRECTION_RATIO     : x : 1, y : 1
 
 	@layers :
 		BACKGROUND : 'BACKGROUND'
@@ -115,6 +161,11 @@ class InteractiveBgConfig
 		pixel :
 			amount : x : 4, y : 4
 
+	@interaction :
+		MOUSE_RADIUS         : 800
+		DISPLACEMENT_MAX_INC : 0.2
+		DISPLACEMENT_DECAY   : 0.01
+
 	@getRandomColor : ->
 
 		return @colors[@activePalette][_.random(0, @colors[@activePalette].length-1)]
@@ -125,4 +176,5 @@ class InteractiveBgConfig
 
 		return activeShapes[_.random(0, activeShapes.length-1)].type
 
+window.InteractiveBgConfig=InteractiveBgConfig
 module.exports = InteractiveBgConfig
