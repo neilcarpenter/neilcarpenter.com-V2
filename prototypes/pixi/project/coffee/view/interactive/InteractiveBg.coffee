@@ -283,6 +283,9 @@ class InteractiveBg extends AbstractView
 		@w4 = @w/4
 		@h4 = @h/4
 
+		InteractiveBgConfig.shapes.MIN_WIDTH = (InteractiveBgConfig.shapes.MIN_WIDTH_PERC/100)*@NC().appView.dims.w
+		InteractiveBgConfig.shapes.MAX_WIDTH = (InteractiveBgConfig.shapes.MAX_WIDTH_PERC/100)*@NC().appView.dims.w
+
 		@renderer?.resize @w, @h
 
 		null

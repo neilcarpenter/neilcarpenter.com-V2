@@ -71,6 +71,10 @@ class InteractiveBgConfig
 	]
 
 	@shapes :
+		MIN_WIDTH_PERC : 3
+		MAX_WIDTH_PERC : 7
+
+		# set this depending on viewport size
 		MIN_WIDTH : 30
 		MAX_WIDTH : 70
 
@@ -125,4 +129,5 @@ class InteractiveBgConfig
 
 		return activeShapes[_.random(0, activeShapes.length-1)].type
 
+window.InteractiveBgConfig=InteractiveBgConfig
 module.exports = InteractiveBgConfig
