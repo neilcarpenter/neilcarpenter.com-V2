@@ -154,7 +154,7 @@ class InteractiveBg extends AbstractView
 		InteractiveShapeCache.createCache()
 
 		@createLayers()
-		@createStageFilters()
+		# @createStageFilters()
 
 		if @DEBUG
 			@addGui()
@@ -221,7 +221,6 @@ class InteractiveBg extends AbstractView
 	removeShape : (shape) =>
 
 		index = @shapes.indexOf shape
-		# @shapes.splice index, 1
 		@shapes[index] = null
 
 		layerParent = @layers[shape.getLayer()]
@@ -244,10 +243,10 @@ class InteractiveBg extends AbstractView
 		@updateShapes()
 		@render()
 
-		filtersToApply = []
-		(filtersToApply.push @filters[filter] if enabled) for filter, enabled of InteractiveBgConfig.filters
+		# filtersToApply = []
+		# (filtersToApply.push @filters[filter] if enabled) for filter, enabled of InteractiveBgConfig.filters
 
-		@stage.filters = if filtersToApply.length then filtersToApply else null
+		# @stage.filters = if filtersToApply.length then filtersToApply else null
 
 		requestAnimFrame @update
 
