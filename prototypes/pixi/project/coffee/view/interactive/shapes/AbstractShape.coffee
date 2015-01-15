@@ -14,6 +14,9 @@ class AbstractShape
 	speedRotate : null
 	alphaValue  : null
 
+	# _positionVarianceX : null
+	# _positionVarianceY : null
+
 	dead : false
 
 	@triangleRatio : Math.cos(Math.PI/6)
@@ -30,6 +33,9 @@ class AbstractShape
 		@speedMove   = @_getSpeedMove()
 		@speedRotate = @_getSpeedRotate()
 		@alphaValue  = @_getAlphaValue()
+
+		# @_positionVarianceX = @["_positionVariance_"+_.random(1,4)]
+		# @_positionVarianceY = @["_positionVariance_"+_.random(1,4)]
 
 		@s = new PIXI.Sprite.fromImage InteractiveShapeCache.shapes[@_shape][@_color]
 
@@ -68,14 +74,30 @@ class AbstractShape
 
 		alpha
 
+	# _positionVariance_1 : (t) =>
+
+	# 	Math.cos t * 0.001 / InteractiveBgConfig.general.GLOBAL_SPEED
+
+	# _positionVariance_2 : (t) =>
+
+	# 	Math.sin t * 0.001 / InteractiveBgConfig.general.GLOBAL_SPEED
+
+	# _positionVariance_3 : (t) =>
+
+	# 	Math.cos t * 0.005 / InteractiveBgConfig.general.GLOBAL_SPEED
+
+	# _positionVariance_4 : (t) =>
+
+	# 	Math.sin t * 0.005 / InteractiveBgConfig.general.GLOBAL_SPEED
+
 	callAnimate : =>
 
 		return unless !@dead
 
 		@s.alpha = @alphaValue*InteractiveBgConfig.general.GLOBAL_ALPHA
 
-		@s.position.x -= @speedMove*InteractiveBgConfig.general.GLOBAL_SPEED
-		@s.position.y += @speedMove*InteractiveBgConfig.general.GLOBAL_SPEED
+		@s.position.x -= (@speedMove*InteractiveBgConfig.general.GLOBAL_SPEED)*InteractiveBgConfig.general.DIRECTION_RATIO.x
+		@s.position.y += (@speedMove*InteractiveBgConfig.general.GLOBAL_SPEED)*InteractiveBgConfig.general.DIRECTION_RATIO.y
 		@s.rotation += @speedRotate*InteractiveBgConfig.general.GLOBAL_SPEED
 
 		if (@s.position.x + (@width/2) < 0) or (@s.position.y - (@width/2) > @NC().appView.dims.h) then @kill()

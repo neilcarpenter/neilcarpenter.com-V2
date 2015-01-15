@@ -139,6 +139,7 @@ class InteractiveBg extends AbstractView
 		PIXI.dontSayHello = true
 
 		@setDims()
+		@setStreamDirection()
 
 		@shapes   = []
 		@stage    = new PIXI.Stage 0x1A1A1A
@@ -199,8 +200,8 @@ class InteractiveBg extends AbstractView
 
 	_getShapeStartPos : =>
 
-		x = (NumberUtils.getRandomFloat @w4, @w) + (@w4*3)
-		y = (NumberUtils.getRandomFloat 0, (@h4*3)) - @h4*3
+		x = (NumberUtils.getRandomFloat @w3, @w) + (@w3*2)
+		y = (NumberUtils.getRandomFloat 0, (@h3*2)) - @h3*2
 
 		return {x, y}
 
@@ -274,19 +275,29 @@ class InteractiveBg extends AbstractView
 		@w = @NC().appView.dims.w
 		@h = @NC().appView.dims.h
 
-		@w2 = @w/2
-		@h2 = @h/2
+		@w3 = @w/3
+		@h3 = @h/3
 
-		@w2 = @w/2
-		@h2 = @h/2
+		# just use non-relative sizes for now
+		# InteractiveBgConfig.shapes.MIN_WIDTH = (InteractiveBgConfig.shapes.MIN_WIDTH_PERC/100)*@NC().appView.dims.w
+		# InteractiveBgConfig.shapes.MAX_WIDTH = (InteractiveBgConfig.shapes.MAX_WIDTH_PERC/100)*@NC().appView.dims.w
 
-		@w4 = @w/4
-		@h4 = @h/4
-
-		InteractiveBgConfig.shapes.MIN_WIDTH = (InteractiveBgConfig.shapes.MIN_WIDTH_PERC/100)*@NC().appView.dims.w
-		InteractiveBgConfig.shapes.MAX_WIDTH = (InteractiveBgConfig.shapes.MAX_WIDTH_PERC/100)*@NC().appView.dims.w
+		@setStreamDirection()
 
 		@renderer?.resize @w, @h
+
+		null
+
+	setStreamDirection : =>
+
+		if @w > @h
+			x = 1
+			y = @h / @w
+		else
+			y = 1
+			x = @w / @h
+
+		InteractiveBgConfig.general.DIRECTION_RATIO = {x, y}
 
 		null
 

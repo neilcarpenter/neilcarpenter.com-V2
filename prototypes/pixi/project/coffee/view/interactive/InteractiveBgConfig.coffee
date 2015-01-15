@@ -95,6 +95,7 @@ class InteractiveBgConfig
 		GLOBAL_ALPHA        : 0.7
 		MAX_SHAPE_COUNT     : 200
 		INITIAL_SHAPE_COUNT : 10
+		DIRECTION_RATIO     : x : 1, y : 1
 
 	@layers :
 		BACKGROUND : 'BACKGROUND'
