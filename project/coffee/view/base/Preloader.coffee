@@ -14,6 +14,9 @@ class Preloader extends AbstractView
 
 	templateName : 'preloader'
 
+	shapes       : ['circle', 'square', 'triangle']
+	currentShape : null
+
 	constructor : (@type, $el, @className) ->
 
 		if $el isnt null
@@ -38,12 +41,15 @@ class Preloader extends AbstractView
 		@$maskOuter = @$el.find('[data-preloader-mask="outer"]')
 		@$maskInner = @$el.find('[data-preloader-mask="inner"]')
 
+		@currentShape = @$el.attr('data-preloader-shape')
+
 		null
 
 	reset : =>
 
 		@$maskOuter.css "width", "100%"
 		@$maskInner.css "width", "0%"
+		@$el.attr 'data-preloader-shape', @getNextShape()
 
 		null
 
@@ -101,5 +107,14 @@ class Preloader extends AbstractView
 		@$maskInner.css "width", "#{(value)}%"
 
 		null
+
+	getNextShape : =>
+
+		currentIdx = @shapes.indexOf @currentShape
+		newIdx     = if currentIdx is @shapes.length-1 then 0 else currentIdx+1
+
+		@currentShape = @shapes[newIdx]
+
+		@currentShape
 
 module.exports = Preloader

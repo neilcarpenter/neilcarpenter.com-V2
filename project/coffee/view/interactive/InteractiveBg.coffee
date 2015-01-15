@@ -333,9 +333,8 @@ class InteractiveBg extends AbstractView
 
 	onMouseMove : (e) =>
 
-		@mouse.multiplier = 1
-		@mouse.pos        = x : e.pageX, y : e.pageY
-		@mouse.enabled    = true
+		@mouse.pos     = x : e.pageX, y : e.pageY
+		@mouse.enabled = true
 
 		null
 
