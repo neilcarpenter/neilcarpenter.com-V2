@@ -12,7 +12,6 @@ class AbstractShape
 	width       : null
 	speedMove   : null
 	speedRotate : null
-	blurValue   : null
 	alphaValue  : null
 
 	dead : false
@@ -30,7 +29,6 @@ class AbstractShape
 		@height      = @_getHeight @_shape, @width
 		@speedMove   = @_getSpeedMove()
 		@speedRotate = @_getSpeedRotate()
-		@blurValue   = @_getBlurValue()
 		@alphaValue  = @_getAlphaValue()
 
 		@s = new PIXI.Sprite.fromImage InteractiveShapeCache.shapes[@_shape][@_color]
@@ -62,13 +60,6 @@ class AbstractShape
 	_getSpeedRotate : =>
 
 		NumberUtils.getRandomFloat InteractiveBgConfig.shapes.MIN_SPEED_ROTATE, InteractiveBgConfig.shapes.MAX_SPEED_ROTATE
-
-	_getBlurValue : =>
-
-		range = InteractiveBgConfig.shapes.MAX_BLUR - InteractiveBgConfig.shapes.MIN_BLUR
-		blur  = ((@width / InteractiveBgConfig.shapes.MAX_WIDTH) * range) + InteractiveBgConfig.shapes.MIN_BLUR
-
-		blur
 
 	_getAlphaValue : =>
 
