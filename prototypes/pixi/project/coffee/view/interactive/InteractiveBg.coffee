@@ -8,13 +8,9 @@ class InteractiveBg extends AbstractView
 
 	template : 'interactive-background'
 
-	stage      : null
-	layers     : {}
-	shapeCache : {
-		triangle : null
-	}
-
+	stage    : null
 	renderer : null
+	layers   : {}
 	
 	w : 0
 	h : 0
