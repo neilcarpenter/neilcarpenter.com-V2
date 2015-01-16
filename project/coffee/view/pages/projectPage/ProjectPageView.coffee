@@ -41,12 +41,14 @@ class ProjectPageView extends AbstractViewPage
 		@$el.find('[data-scroll-to-content]')[setting] 'click', @scrollToContent
 
 		if setting is 'on'
-			@onResize()
+			@onResize force : true
 			@showTitle()
 
 		null
 
-	onResize : =>
+	onResize : (args={}) =>
+
+		return unless @NC().appView.dims.updateMobile or args.force
 
 		@device = if MediaQueries.getBreakpoint() is 'Small' then 'MOBILE' else'DESKTOP'
 

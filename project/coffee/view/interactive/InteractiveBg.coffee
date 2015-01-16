@@ -212,16 +212,24 @@ class InteractiveBg extends AbstractView
 	setDims : =>
 
 		@w = @NC().appView.dims.w
-		@h = @NC().appView.dims.h
+		@h = @NC().appView.dims.h*@_getHeightBuffer()
 
 		@w3 = @w/3
 		@h3 = @h/3
 
 		@setStreamDirection()
 
-		@renderer?.resize @w, @h
+		# prevent annoying resize changes on mobile when browser UI hides itself
+		if @NC().appView.dims.updateMobile
+			@renderer?.resize @w, @h
+
+		@_lastH = @h
 
 		null
+
+	_getHeightBuffer : =>
+
+		return if @NC().isMobile() then 1.2 else 1
 
 	setStreamDirection : =>
 

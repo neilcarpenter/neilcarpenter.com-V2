@@ -25,11 +25,16 @@ class App
 
         MediaQueries.setup();
 
-        # @IS_ANDROID    = ua.indexOf('android') > -1
+        @IS_IOS     = /(ipad|iphone|ipod)/g.test ua
+        @IS_ANDROID = ua.indexOf('android') > -1
         # @IS_FIREFOX    = ua.indexOf('firefox') > -1
         # @IS_CHROME_IOS = if ua.match('crios') then true else false # http://stackoverflow.com/a/13808053
 
         null
+
+    isMobile : =>
+
+        return @IS_IOS or @IS_ANDROID
 
     objectComplete : =>
 
