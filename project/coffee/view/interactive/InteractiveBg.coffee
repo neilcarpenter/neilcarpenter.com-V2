@@ -220,10 +220,7 @@ class InteractiveBg extends AbstractView
 		@setStreamDirection()
 
 		# prevent annoying resize changes on mobile when browser UI hides itself
-		if @NC().appView.dims.updateMobile
-			@renderer?.resize @w, @h
-
-		@_lastH = @h
+		if @NC().appView.dims.updateMobile then @renderer?.resize @w, @h
 
 		null
 
