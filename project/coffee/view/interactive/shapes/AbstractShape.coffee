@@ -14,9 +14,6 @@ class AbstractShape
 	speedRotate : null
 	alphaValue  : null
 
-	# _positionVarianceX : null
-	# _positionVarianceY : null
-
 	dead : false
 
 	displacement : 0
@@ -35,9 +32,6 @@ class AbstractShape
 		@speedMove   = @_getSpeedMove()
 		@speedRotate = @_getSpeedRotate()
 		@alphaValue  = @_getAlphaValue()
-
-		# @_positionVarianceX = @["_positionVariance_"+_.random(1,4)]
-		# @_positionVarianceY = @["_positionVariance_"+_.random(1,4)]
 
 		@s = new PIXI.Sprite.fromImage InteractiveShapeCache.shapes[@_shape][@_color]
 
@@ -101,22 +95,6 @@ class AbstractShape
 
 		@displacement
 
-	# _positionVariance_1 : (t) =>
-
-	# 	Math.cos t * 0.001 / InteractiveBgConfig.general.GLOBAL_SPEED
-
-	# _positionVariance_2 : (t) =>
-
-	# 	Math.sin t * 0.001 / InteractiveBgConfig.general.GLOBAL_SPEED
-
-	# _positionVariance_3 : (t) =>
-
-	# 	Math.cos t * 0.005 / InteractiveBgConfig.general.GLOBAL_SPEED
-
-	# _positionVariance_4 : (t) =>
-
-	# 	Math.sin t * 0.005 / InteractiveBgConfig.general.GLOBAL_SPEED
-
 	callAnimate : =>
 
 		return unless !@dead
@@ -144,17 +122,6 @@ class AbstractShape
 	getSprite : =>
 
 		return @s
-
-	getLayer : =>
-
-		range = InteractiveBgConfig.shapes.MAX_WIDTH - InteractiveBgConfig.shapes.MIN_WIDTH
-
-		layer = switch true
-			when @width < (range / 3)+InteractiveBgConfig.shapes.MIN_WIDTH then InteractiveBgConfig.layers.BACKGROUND
-			when @width < ((range / 3) * 2)+InteractiveBgConfig.shapes.MIN_WIDTH then InteractiveBgConfig.layers.MIDGROUND
-			else InteractiveBgConfig.layers.FOREGROUND
-
-		layer
 
 	NC : =>
 
