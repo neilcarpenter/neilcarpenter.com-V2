@@ -3,6 +3,7 @@ AbstractShape         = require './shapes/AbstractShape'
 NumberUtils           = require '../../utils/NumberUtils'
 InteractiveBgConfig   = require './InteractiveBgConfig'
 InteractiveShapeCache = require './InteractiveShapeCache'
+Router                = require '../../router/Router'
 Wrapper               = require '../base/Wrapper'
 
 class InteractiveBg extends AbstractView
@@ -65,6 +66,7 @@ class InteractiveBg extends AbstractView
 	show : =>
 
 		@bindEvents()
+		@onHashChange false
 		@onViewUpdated false
 
 		@addShapes InteractiveBgConfig.general.INITIAL_SHAPE_COUNT
@@ -144,27 +146,54 @@ class InteractiveBg extends AbstractView
 		@NC().appView.$window.on 'mousemove', @onMouseMove
 
 		@NC().appView.on @NC().appView.EVENT_UPDATE_DIMENSIONS, @setDims
+		@NC().router.on Router.EVENT_HASH_CHANGED, @onHashChange
 		@NC().appView.wrapper.on Wrapper.VIEW_UPDATED, @onViewUpdated
 
 		@on @EVENT_KILL_SHAPE, @removeShape
 
 		null
 
-	onViewUpdated : (transitionIn=true) =>
+	onHashChange : (route=false) =>
 
-		shapeCount = @_getViewShapeCount()
-		palette    = @_getViewPalette()
 		alpha      = @_getViewAlpha()
+		shapeCount = @_getViewShapeCount()
 
-		InteractiveBgConfig.activePalette           = palette
 		InteractiveBgConfig.general.MAX_SHAPE_COUNT = shapeCount
 
-		if transitionIn
-			TweenLite.to InteractiveBgConfig.general, 1, 'GLOBAL_ALPHA' : alpha
-			TweenLite.to InteractiveBgConfig.general, 2, 'GLOBAL_SPEED' : InteractiveBgConfig.general.GLOBAL_SPEED*4, ease : Back.easeInOut, onComplete : =>
-				TweenLite.to InteractiveBgConfig.general, 2, 'GLOBAL_SPEED' : InteractiveBgConfig.general.GLOBAL_SPEED/4
+		if typeof route is 'string'
+			@_transitionIn()
 		else
 			InteractiveBgConfig.general.GLOBAL_ALPHA = alpha
+
+		null
+
+	onViewUpdated : (transitionOut=true) =>
+
+		palette = @_getViewPalette()
+
+		InteractiveBgConfig.activePalette = palette
+
+		if transitionOut
+			@_transitionOut()
+
+		null
+
+	_transitionIn : =>
+
+		console.log "_transitionIn : =>"
+
+		alpha = @_getViewAlpha()
+
+		TweenLite.to InteractiveBgConfig.general, 1, 'GLOBAL_ALPHA' : alpha
+		TweenLite.to InteractiveBgConfig.general, 2, 'GLOBAL_SPEED' : InteractiveBgConfig.general.GLOBAL_SPEED_TRANSITION
+
+		null
+
+	_transitionOut : =>
+
+		console.log "_transitionOut : =>"
+
+		TweenLite.to InteractiveBgConfig.general, 2, delay : 1, 'GLOBAL_SPEED' : InteractiveBgConfig.general.GLOBAL_SPEED_NORMAL
 
 		null
 

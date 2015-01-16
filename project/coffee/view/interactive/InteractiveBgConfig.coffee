@@ -35,11 +35,13 @@ class InteractiveBgConfig
 		MAX_ALPHA : 1
 
 	@general : 
-		GLOBAL_SPEED        : 1
-		GLOBAL_ALPHA        : 0.8
-		MAX_SHAPE_COUNT     : 200
-		INITIAL_SHAPE_COUNT : 10
-		DIRECTION_RATIO     : x : 1, y : 1
+		GLOBAL_SPEED            : 1
+		GLOBAL_SPEED_NORMAL     : 1
+		GLOBAL_SPEED_TRANSITION : 4
+		GLOBAL_ALPHA            : 0.8
+		MAX_SHAPE_COUNT         : 200
+		INITIAL_SHAPE_COUNT     : 10
+		DIRECTION_RATIO         : x : 1, y : 1
 
 	@interaction :
 		MOUSE_RADIUS         : 800
