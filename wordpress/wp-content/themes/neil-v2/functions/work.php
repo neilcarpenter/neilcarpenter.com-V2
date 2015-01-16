@@ -8,6 +8,7 @@
 
 function nc_get_all_projects() {
 
+	$shapes   = array('circle', 'square', 'triangle');
 	$projects = get_field('work_projects');
 
 	foreach ($projects as $idx => $project) {
@@ -18,8 +19,11 @@ function nc_get_all_projects() {
 		$_imgSrc = wp_get_attachment_image_src( get_field('project_thumbnail', $project['post_object']->ID), 'large' );
 		$imgSrc  = $_imgSrc[0];
 
-		$project['post_object']->grid_size = $size;
-		$project['post_object']->thumbnail = $imgSrc;
+		$shape = $shapes[ $idx % 3 ];
+
+		$project['post_object']->grid_size       = $size;
+		$project['post_object']->thumbnail       = $imgSrc;
+		$project['post_object']->preloader_shape = $shape;
 
 	}
 

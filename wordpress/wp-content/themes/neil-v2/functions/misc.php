@@ -102,4 +102,13 @@ function _get_image( $id, $post_type ) {
 
 }
 
+function nc_get_preloader_shape() {
+
+	$shapes = array('circle', 'square', 'triangle');
+	shuffle($shapes);
+
+	return $shapes[0];
+
+}
+
 ?>

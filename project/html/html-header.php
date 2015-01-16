@@ -3,8 +3,9 @@
   * REMEBER to edit this in /project/html, not in WP template directory
   */
 
-	$id   = get_the_ID();
-	$meta = nc_get_meta( $id );
+	$id             = get_the_ID();
+	$meta           = nc_get_meta( $id );
+	$preloaderShape = nc_get_preloader_shape();
 ?>
 <!DOCTYPE html>
 <html class="no-js" lang="en-gb">
@@ -54,7 +55,9 @@
 
 	<div id="main" data-template="main">
 
-		<div id="preloader" class="preloader preloader-site show">
+		<div id="interactive-background" data-template="interactive-background"></div>
+
+		<div id="preloader" class="preloader preloader-site show" data-preloader-shape="<?= $preloaderShape ?>">
 			<span class="preloader-inner"><span class="mask" data-preloader-mask="inner"></span></span>
 			<span class="preloader-outer"><span class="mask" data-preloader-mask="outer"></span></span>
 		</div>

@@ -7,6 +7,7 @@ MediaQueries     = require './utils/MediaQueries'
 Scroller         = require './utils/Scroller'
 ScrollItemInView = require './utils/ScrollItemInView'
 LazyImageLoader  = require './utils/LazyImageLoader'
+InteractiveBg    = require './view/interactive/InteractiveBg'
 
 class AppView extends AbstractView
 
@@ -76,6 +77,7 @@ class AppView extends AbstractView
         @modalManager     = new ModalManager
         @scrollItemInView = new ScrollItemInView
         @lazyImageLoader  = new LazyImageLoader
+        @interactiveBg    = new InteractiveBg
 
         @header  = new Header
         @wrapper = new Wrapper
@@ -83,6 +85,7 @@ class AppView extends AbstractView
         @
             .addChild @header
             .addChild @wrapper
+            .addChild @interactiveBg
 
         @onAllRendered()
 
@@ -153,6 +156,7 @@ class AppView extends AbstractView
             @header.animateIn()
             @lazyImageLoader.onViewUpdated()
             @scrollItemInView.getItems()
+            @interactiveBg.show()
             @onScroll()
 
         return
