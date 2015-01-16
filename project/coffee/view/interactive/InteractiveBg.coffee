@@ -78,17 +78,23 @@ class InteractiveBg extends AbstractView
 
 		for i in [0...count]
 
-			pos = @_getShapeStartPos()
-
 			shape  = new AbstractShape @
-			sprite = shape.getSprite()
 
-			sprite.position.x = sprite._position.x = pos.x
-			sprite.position.y = sprite._position.y = pos.y
+			@_positionShape shape
 
-			@container.addChild sprite
+			@container.addChild shape.getSprite()
 
 			@shapes.push shape
+
+		null
+
+	_positionShape : (shape) =>
+
+		pos = @_getShapeStartPos()
+
+		sprite            = shape.getSprite()
+		sprite.position.x = sprite._position.x = pos.x
+		sprite.position.y = sprite._position.y = pos.y
 
 		null
 
@@ -103,14 +109,28 @@ class InteractiveBg extends AbstractView
 
 		@container.children.length
 
+	onShapeDie : (shape) =>
+
+		if @_getShapeCount() > InteractiveBgConfig.general.MAX_SHAPE_COUNT
+			@removeShape shape
+		else
+			@resetShape shape
+
+		null
+
+	resetShape : (shape) =>
+
+		shape.reset()
+		@_positionShape shape
+
+		null
+
 	removeShape : (shape) =>
 
 		index = @shapes.indexOf shape
 		@shapes[index] = null
 
 		@container.removeChild shape.getSprite()
-
-		if @_getShapeCount() < InteractiveBgConfig.general.MAX_SHAPE_COUNT then @addShapes 1
 
 		null
 
@@ -149,7 +169,7 @@ class InteractiveBg extends AbstractView
 		@NC().router.on Router.EVENT_HASH_CHANGED, @onHashChange
 		@NC().appView.wrapper.on Wrapper.VIEW_UPDATED, @onViewUpdated
 
-		@on @EVENT_KILL_SHAPE, @removeShape
+		@on @EVENT_KILL_SHAPE, @onShapeDie
 
 		null
 

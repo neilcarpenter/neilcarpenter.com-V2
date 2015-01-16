@@ -18,7 +18,7 @@ class InteractiveShapeCache
 			for color in paletteColors
 				for shape, colors of @shapes
 					# counter++
-					@shapes[shape][color] = @_createShape shape, color
+					@shapes[shape][color] = new PIXI.Texture.fromImage @_createShape shape, color
 
 
 		# timeTaken = Date.now()-startTime
@@ -80,4 +80,5 @@ class InteractiveShapeCache
 
 		height
 
+window.InteractiveShapeCache=InteractiveShapeCache
 module.exports = InteractiveShapeCache

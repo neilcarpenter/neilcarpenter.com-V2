@@ -24,6 +24,12 @@ class AbstractShape
 
 		_.extend @, Backbone.Events
 
+		@setProps true
+
+		return null
+
+	setProps : (firstInit=false) =>
+
 		@_shape = InteractiveBgConfig.getRandomShape()
 		@_color = InteractiveBgConfig.getRandomColor()
 
@@ -33,7 +39,10 @@ class AbstractShape
 		@speedRotate = @_getSpeedRotate()
 		@alphaValue  = @_getAlphaValue()
 
-		@s = new PIXI.Sprite.fromImage InteractiveShapeCache.shapes[@_shape][@_color]
+		if firstInit
+			@s = new PIXI.Sprite InteractiveShapeCache.shapes[@_shape][@_color]
+		else
+			@s.setTexture InteractiveShapeCache.shapes[@_shape][@_color]
 
 		@s.width     = @width
 		@s.height    = @height
@@ -44,7 +53,14 @@ class AbstractShape
 		# track natural, non-displaced positioning
 		@s._position = x : 0, y : 0
 
-		return null
+		null
+
+	reset : =>
+
+		@setProps()
+		@dead = false
+
+		null
 
 	_getWidth : =>
 
