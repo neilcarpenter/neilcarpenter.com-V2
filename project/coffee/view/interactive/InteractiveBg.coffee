@@ -10,6 +10,9 @@ class InteractiveBg extends AbstractView
 
 	template : 'interactive-background'
 
+	_device     : null
+	_population : null
+
 	stage     : null
 	renderer  : null
 	container : null
@@ -25,6 +28,13 @@ class InteractiveBg extends AbstractView
 
 	EVENT_KILL_SHAPE : 'EVENT_KILL_SHAPE'
 
+	DEVICE_MOBILE  : 'mobile'
+	DEVICE_DESKTOP : 'desktop'
+
+	POPULATION_FULL   : 'FULL'
+	POPULATION_MEDIUM : 'MED'
+	POPULATION_SPARSE : 'SPARSE'
+
 	constructor : ->
 
 		super
@@ -35,10 +45,11 @@ class InteractiveBg extends AbstractView
 
 		PIXI.dontSayHello = true
 
+		@setDevice()
 		@setDims()
 		@setStreamDirection()
 
-		InteractiveShapeCache.createCache()
+		InteractiveShapeCache.createCache @
 
 		@shapes   = []
 		@stage    = new PIXI.Stage 0x1A1A1A
@@ -111,7 +122,7 @@ class InteractiveBg extends AbstractView
 
 	onShapeDie : (shape) =>
 
-		if @_getShapeCount() > InteractiveBgConfig.general.MAX_SHAPE_COUNT
+		if @_getShapeCount() > @_getViewShapeCount()
 			@removeShape shape
 		else
 			@resetShape shape
@@ -140,7 +151,7 @@ class InteractiveBg extends AbstractView
 
 		@counter++
 
-		if (@counter % 4 is 0) and (@_getShapeCount() < InteractiveBgConfig.general.MAX_SHAPE_COUNT) then @addShapes 1
+		if (@counter % 4 is 0) and (@_getShapeCount() < @_getViewShapeCount()) then @addShapes 1
 
 		@updateShapes()
 		@render()
@@ -175,10 +186,9 @@ class InteractiveBg extends AbstractView
 
 	onHashChange : (route=false) =>
 
-		alpha      = @_getViewAlpha()
-		shapeCount = @_getViewShapeCount()
+		@setPopulation()
 
-		InteractiveBgConfig.general.MAX_SHAPE_COUNT = shapeCount
+		alpha = @_getViewAlpha()
 
 		if typeof route is 'string'
 			@_transitionIn()
@@ -219,12 +229,7 @@ class InteractiveBg extends AbstractView
 
 	_getViewShapeCount : =>
 
-		s = switch @NC().router.area
-			when @NC().nav.sections.HOME then 300
-			when @NC().nav.sections.WORK then 80
-			else 200
-
-		s
+		InteractiveBgConfig.count[@_device]["MAX_SHAPE_COUNT_#{@_population}"]
 
 	_getViewPalette : =>
 
@@ -244,17 +249,27 @@ class InteractiveBg extends AbstractView
 
 	_getViewAlpha : =>
 
-		a = switch @NC().router.area
-			when @NC().nav.sections.HOME then 0.8
-			when @NC().nav.sections.WORK then 0.4
-			else 0.6
-
-		a
+		InteractiveBgConfig.alpha[@_device][@_population]
 
 	onMouseMove : (e) =>
 
 		@mouse.pos     = x : e.pageX, y : e.pageY
 		@mouse.enabled = true
+
+		null
+
+	setDevice : =>
+
+		@_device = if @NC().isMobile() then @DEVICE_MOBILE else @DEVICE_DESKTOP
+
+		null
+
+	setPopulation : =>
+
+		@_population = switch @NC().router.area
+			when @NC().nav.sections.HOME then @POPULATION_FULL
+			when @NC().nav.sections.WORK then @POPULATION_SPARSE
+			else @POPULATION_MEDIUM
 
 		null
 

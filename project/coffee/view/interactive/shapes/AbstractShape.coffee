@@ -64,7 +64,7 @@ class AbstractShape
 
 	_getWidth : =>
 
-		NumberUtils.getRandomFloat InteractiveBgConfig.shapes.MIN_WIDTH, InteractiveBgConfig.shapes.MAX_WIDTH
+		NumberUtils.getRandomFloat InteractiveBgConfig.shapes[@interactiveBg._device].MIN_WIDTH, InteractiveBgConfig.shapes[@interactiveBg._device].MAX_WIDTH
 
 	_getHeight : (shape, width) =>
 
@@ -76,16 +76,16 @@ class AbstractShape
 
 	_getSpeedMove : =>
 
-		NumberUtils.getRandomFloat InteractiveBgConfig.shapes.MIN_SPEED_MOVE, InteractiveBgConfig.shapes.MAX_SPEED_MOVE
+		NumberUtils.getRandomFloat InteractiveBgConfig.shapes[@interactiveBg._device].MIN_SPEED_MOVE, InteractiveBgConfig.shapes[@interactiveBg._device].MAX_SPEED_MOVE
 
 	_getSpeedRotate : =>
 
-		NumberUtils.getRandomFloat InteractiveBgConfig.shapes.MIN_SPEED_ROTATE, InteractiveBgConfig.shapes.MAX_SPEED_ROTATE
+		NumberUtils.getRandomFloat InteractiveBgConfig.shapes[@interactiveBg._device].MIN_SPEED_ROTATE, InteractiveBgConfig.shapes[@interactiveBg._device].MAX_SPEED_ROTATE
 
 	_getAlphaValue : =>
 
-		range = InteractiveBgConfig.shapes.MAX_ALPHA - InteractiveBgConfig.shapes.MIN_ALPHA
-		alpha = ((@width / InteractiveBgConfig.shapes.MAX_WIDTH) * range) + InteractiveBgConfig.shapes.MIN_ALPHA
+		range = InteractiveBgConfig.shapes[@interactiveBg._device].MAX_ALPHA - InteractiveBgConfig.shapes[@interactiveBg._device].MIN_ALPHA
+		alpha = ((@width / InteractiveBgConfig.shapes[@interactiveBg._device].MAX_WIDTH) * range) + InteractiveBgConfig.shapes[@interactiveBg._device].MIN_ALPHA
 
 		alpha
 
