@@ -10,9 +10,10 @@
 	<? get_template_part( 'parts/shared/header' ); ?>
 
 		<?
-		$prevProject = nc_get_project_nav($id, 'previous');
-		$nextProject = nc_get_project_nav($id, 'next');
-		$heroImgSrc  = wp_get_attachment_image_src( get_field('project_thumbnail'), 'original' );
+		$prevProject    = nc_get_project_nav($id, 'previous');
+		$nextProject    = nc_get_project_nav($id, 'next');
+		$heroImgSrc     = wp_get_attachment_image_src( get_field('project_thumbnail'), 'original' );
+		$preloaderShape = nc_get_preloader_shape();
 		?>
 
 		<div class="page page-project" data-template="page-project">
@@ -27,7 +28,7 @@
 					<div class="proj-img-wrap proj-img_1">
 						<span class="proj-img bg-image-wrapper" data-scroll-item data-lazyimage="<?= $heroImgSrc[0] ?>">
 							<span class="bg-image"></span>
-							<div class="preloader preloader-image show">
+							<div class="preloader preloader-image show" data-preloader-shape="<?= $preloaderShape ?>">
 								<span class="preloader-inner"><span class="mask" data-preloader-mask="inner"></span></span>
 								<span class="preloader-outer"><span class="mask" data-preloader-mask="outer"></span></span>
 							</div>

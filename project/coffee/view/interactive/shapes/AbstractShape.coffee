@@ -14,9 +14,6 @@ class AbstractShape
 	speedRotate : null
 	alphaValue  : null
 
-	# _positionVarianceX : null
-	# _positionVarianceY : null
-
 	dead : false
 
 	displacement : 0
@@ -27,6 +24,12 @@ class AbstractShape
 
 		_.extend @, Backbone.Events
 
+		@setProps true
+
+		return null
+
+	setProps : (firstInit=false) =>
+
 		@_shape = InteractiveBgConfig.getRandomShape()
 		@_color = InteractiveBgConfig.getRandomColor()
 
@@ -36,10 +39,10 @@ class AbstractShape
 		@speedRotate = @_getSpeedRotate()
 		@alphaValue  = @_getAlphaValue()
 
-		# @_positionVarianceX = @["_positionVariance_"+_.random(1,4)]
-		# @_positionVarianceY = @["_positionVariance_"+_.random(1,4)]
-
-		@s = new PIXI.Sprite.fromImage InteractiveShapeCache.shapes[@_shape][@_color]
+		if firstInit
+			@s = new PIXI.Sprite InteractiveShapeCache.shapes[@_shape][@_color]
+		else
+			@s.setTexture InteractiveShapeCache.shapes[@_shape][@_color]
 
 		@s.width     = @width
 		@s.height    = @height
@@ -50,11 +53,18 @@ class AbstractShape
 		# track natural, non-displaced positioning
 		@s._position = x : 0, y : 0
 
-		return null
+		null
+
+	reset : =>
+
+		@setProps()
+		@dead = false
+
+		null
 
 	_getWidth : =>
 
-		NumberUtils.getRandomFloat InteractiveBgConfig.shapes.MIN_WIDTH, InteractiveBgConfig.shapes.MAX_WIDTH
+		NumberUtils.getRandomFloat InteractiveBgConfig.shapes[@interactiveBg._device].MIN_WIDTH, InteractiveBgConfig.shapes[@interactiveBg._device].MAX_WIDTH
 
 	_getHeight : (shape, width) =>
 
@@ -66,16 +76,16 @@ class AbstractShape
 
 	_getSpeedMove : =>
 
-		NumberUtils.getRandomFloat InteractiveBgConfig.shapes.MIN_SPEED_MOVE, InteractiveBgConfig.shapes.MAX_SPEED_MOVE
+		NumberUtils.getRandomFloat InteractiveBgConfig.shapes[@interactiveBg._device].MIN_SPEED_MOVE, InteractiveBgConfig.shapes[@interactiveBg._device].MAX_SPEED_MOVE
 
 	_getSpeedRotate : =>
 
-		NumberUtils.getRandomFloat InteractiveBgConfig.shapes.MIN_SPEED_ROTATE, InteractiveBgConfig.shapes.MAX_SPEED_ROTATE
+		NumberUtils.getRandomFloat InteractiveBgConfig.shapes[@interactiveBg._device].MIN_SPEED_ROTATE, InteractiveBgConfig.shapes[@interactiveBg._device].MAX_SPEED_ROTATE
 
 	_getAlphaValue : =>
 
-		range = InteractiveBgConfig.shapes.MAX_ALPHA - InteractiveBgConfig.shapes.MIN_ALPHA
-		alpha = ((@width / InteractiveBgConfig.shapes.MAX_WIDTH) * range) + InteractiveBgConfig.shapes.MIN_ALPHA
+		range = InteractiveBgConfig.shapes[@interactiveBg._device].MAX_ALPHA - InteractiveBgConfig.shapes[@interactiveBg._device].MIN_ALPHA
+		alpha = ((@width / InteractiveBgConfig.shapes[@interactiveBg._device].MAX_WIDTH) * range) + InteractiveBgConfig.shapes[@interactiveBg._device].MIN_ALPHA
 
 		alpha
 
@@ -100,22 +110,6 @@ class AbstractShape
 				@displacement = if @displacement > 0 then 0 else @displacement
 
 		@displacement
-
-	# _positionVariance_1 : (t) =>
-
-	# 	Math.cos t * 0.001 / InteractiveBgConfig.general.GLOBAL_SPEED
-
-	# _positionVariance_2 : (t) =>
-
-	# 	Math.sin t * 0.001 / InteractiveBgConfig.general.GLOBAL_SPEED
-
-	# _positionVariance_3 : (t) =>
-
-	# 	Math.cos t * 0.005 / InteractiveBgConfig.general.GLOBAL_SPEED
-
-	# _positionVariance_4 : (t) =>
-
-	# 	Math.sin t * 0.005 / InteractiveBgConfig.general.GLOBAL_SPEED
 
 	callAnimate : =>
 
@@ -144,17 +138,6 @@ class AbstractShape
 	getSprite : =>
 
 		return @s
-
-	getLayer : =>
-
-		range = InteractiveBgConfig.shapes.MAX_WIDTH - InteractiveBgConfig.shapes.MIN_WIDTH
-
-		layer = switch true
-			when @width < (range / 3)+InteractiveBgConfig.shapes.MIN_WIDTH then InteractiveBgConfig.layers.BACKGROUND
-			when @width < ((range / 3) * 2)+InteractiveBgConfig.shapes.MIN_WIDTH then InteractiveBgConfig.layers.MIDGROUND
-			else InteractiveBgConfig.layers.FOREGROUND
-
-		layer
 
 	NC : =>
 

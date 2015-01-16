@@ -7,6 +7,7 @@ MediaQueries     = require './utils/MediaQueries'
 Scroller         = require './utils/Scroller'
 ScrollItemInView = require './utils/ScrollItemInView'
 LazyImageLoader  = require './utils/LazyImageLoader'
+InteractiveBg    = require './view/interactive/InteractiveBg'
 
 class AppView extends AbstractView
 
@@ -23,6 +24,8 @@ class AppView extends AbstractView
         o : null
         c : null
         r : null
+        updateMobile : true
+        lastHeight   : null
 
     rwdSizes :
         LARGE  : 'LRG'
@@ -76,6 +79,7 @@ class AppView extends AbstractView
         @modalManager     = new ModalManager
         @scrollItemInView = new ScrollItemInView
         @lazyImageLoader  = new LazyImageLoader
+        @interactiveBg    = new InteractiveBg
 
         @header  = new Header
         @wrapper = new Wrapper
@@ -83,6 +87,7 @@ class AppView extends AbstractView
         @
             .addChild @header
             .addChild @wrapper
+            .addChild @interactiveBg
 
         @onAllRendered()
 
@@ -153,6 +158,7 @@ class AppView extends AbstractView
             @header.animateIn()
             @lazyImageLoader.onViewUpdated()
             @scrollItemInView.getItems()
+            @interactiveBg.show()
             @onScroll()
 
         return
@@ -174,12 +180,16 @@ class AppView extends AbstractView
         w = window.innerWidth or document.documentElement.clientWidth or document.body.clientWidth
         h = window.innerHeight or document.documentElement.clientHeight or document.body.clientHeight
 
+        change = h / @dims.lastHeight
+
         @dims =
             w : w
             h : h
             o : if h > w then 'portrait' else 'landscape'
             c : if w <= @MOBILE_WIDTH then @MOBILE else @NON_MOBILE
             r : @getRwdSize w, h, (window.devicePixelRatio or 1)
+            updateMobile : !@NC().isMobile() or change < 0.8 or change > 1.2
+            lastHeight   : h
 
         @trigger @EVENT_UPDATE_DIMENSIONS, @dims
 

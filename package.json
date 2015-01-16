@@ -71,6 +71,9 @@
     "ScrollToPlugin": "ScrollToPlugin.min.js",
     "css-plugin": "CSSPlugin.js",
     "easepack": "EasePack.js",
-    "script": "script.js"
+    "script": "script.js",
+    "pixi": "pixi.js",
+    "dat.gui.min": "dat.gui.min.js",
+    "stats": "stats.js"
   }
 }

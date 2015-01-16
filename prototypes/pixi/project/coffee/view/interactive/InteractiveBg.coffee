@@ -1,23 +1,36 @@
-AbstractView        = require '../AbstractView'
-AbstractShape       = require './shapes/AbstractShape'
-NumberUtils         = require '../../utils/NumberUtils'
-InteractiveBgConfig = require './InteractiveBgConfig'
+AbstractView          = require '../AbstractView'
+AbstractShape         = require './shapes/AbstractShape'
+NumberUtils           = require '../../utils/NumberUtils'
+InteractiveBgConfig   = require './InteractiveBgConfig'
+InteractiveShapeCache = require './InteractiveShapeCache'
 
 class InteractiveBg extends AbstractView
 
 	template : 'interactive-background'
+
 	stage    : null
 	renderer : null
+	layers   : {}
 	
 	w : 0
 	h : 0
 
+	counter : null
+
+	mouse :
+		enabled : false
+		pos     : null
+
 	EVENT_KILL_SHAPE : 'EVENT_KILL_SHAPE'
 
 	filters :
-		blur : null
+		blur  : null
+		RGB   : null
+		pixel : null
 
 	constructor : ->
+
+		@DEBUG = true
 
 		super
 
@@ -34,15 +47,20 @@ class InteractiveBg extends AbstractView
 		# @gui.domElement.style.left = '10px'
 		# document.body.appendChild @gui.domElement
 
-		@guiFolders.speedFolder = @gui.addFolder('Speed')
-		@guiFolders.speedFolder.add(InteractiveBgConfig.general, 'GLOBAL_SPEED', 0.5, 5).name("global speed")
+		@guiFolders.generalFolder = @gui.addFolder('General')
+		@guiFolders.generalFolder.add(InteractiveBgConfig.general, 'GLOBAL_SPEED', 0.5, 5).name("global speed")
+		@guiFolders.generalFolder.add(InteractiveBgConfig.general, 'GLOBAL_ALPHA', 0, 1).name("global alpha")
 
 		@guiFolders.sizeFolder = @gui.addFolder('Size')
 		@guiFolders.sizeFolder.add(InteractiveBgConfig.shapes, 'MIN_WIDTH', 5, 200).name('min width')
 		@guiFolders.sizeFolder.add(InteractiveBgConfig.shapes, 'MAX_WIDTH', 5, 200).name('max width')
 
 		@guiFolders.countFolder = @gui.addFolder('Count')
-		@guiFolders.countFolder.add(InteractiveBgConfig.general, 'MAX_SHAPE_COUNT', 5, 500).name('max shapes')
+		@guiFolders.countFolder.add(InteractiveBgConfig.general, 'MAX_SHAPE_COUNT', 5, 1000).name('max shapes')
+
+		@guiFolders.shapesFolder = @gui.addFolder('Shapes')
+		for shape, i in InteractiveBgConfig.shapeTypes
+			@guiFolders.shapesFolder.add(InteractiveBgConfig.shapeTypes[i], 'active').name(shape.type)
 
 		@guiFolders.blurFolder = @gui.addFolder('Blur')
 		@guiFolders.blurFolder.add(InteractiveBgConfig.filters, 'blur').name("enable")
@@ -62,6 +80,9 @@ class InteractiveBg extends AbstractView
 		@guiFolders.pixelateFolder.add(@filters.pixel.size, 'x', 1, 32).name("pixel size x")
 		@guiFolders.pixelateFolder.add(@filters.pixel.size, 'y', 1, 32).name("pixel size y")
 
+		@guiFolders.paletteFolder = @gui.addFolder('Colour palette')
+		@guiFolders.paletteFolder.add(InteractiveBgConfig, 'activePalette', InteractiveBgConfig.palettes).name("palette")
+
 		null
 
 	addStats : =>
@@ -74,34 +95,72 @@ class InteractiveBg extends AbstractView
 
 		null
 
-	init: =>
+	addShapeCounter : =>
 
-		PIXI.dontSayHello = true
+		@shapeCounter = document.createElement 'div'
+		@shapeCounter.style.position = 'absolute'
+		@shapeCounter.style.left = '100px'
+		@shapeCounter.style.top = '15px'
+		@shapeCounter.style.color = '#fff'
+		@shapeCounter.style.textTransform = 'uppercase'
+		@shapeCounter.innerHTML = "0 shapes"
+		document.body.appendChild @shapeCounter
 
-		@w = @NC().appView.dims.w
-		@h = @NC().appView.dims.h
+		null
 
-		@w2 = @w/2
-		@h2 = @h/2
+	updateShapeCounter : =>
 
-		@w2 = @w/2
-		@h2 = @h/2
+		@shapeCounter.innerHTML = "#{@_getShapeCount()} shapes"
 
-		@w4 = @w/4
-		@h4 = @h/4
+		null
 
-		@shapes   = []
-		@stage    = new PIXI.Stage 0x1A1A1A
-		@renderer = PIXI.autoDetectRenderer @w, @h, antialias : true
+	createLayers : =>
+
+		for layer, name of InteractiveBgConfig.layers
+			@layers[name] = new PIXI.DisplayObjectContainer
+			@stage.addChild @layers[name]
+
+		null
+
+	createStageFilters : =>
 
 		@filters.blur  = new PIXI.BlurFilter
 		@filters.RGB   = new PIXI.RGBSplitFilter
 		@filters.pixel = new PIXI.PixelateFilter
 
-		@$el.append @renderer.view
+		@filters.blur.blur = InteractiveBgConfig.filterDefaults.blur.general
 
-		@addGui()
-		@addStats()
+		@filters.RGB.uniforms.red.value   = InteractiveBgConfig.filterDefaults.RGB.red
+		@filters.RGB.uniforms.green.value = InteractiveBgConfig.filterDefaults.RGB.green
+		@filters.RGB.uniforms.blue.value  = InteractiveBgConfig.filterDefaults.RGB.blue
+
+		@filters.pixel.uniforms.pixelSize.value = InteractiveBgConfig.filterDefaults.pixel.amount
+
+		null
+
+	init: =>
+
+		PIXI.dontSayHello = true
+
+		@setDims()
+		@setStreamDirection()
+
+		@shapes   = []
+		@stage    = new PIXI.Stage 0x1A1A1A
+		@renderer = PIXI.autoDetectRenderer @w, @h, antialias : true
+		@render()
+
+		InteractiveShapeCache.createCache()
+
+		@createLayers()
+		@createStageFilters()
+
+		if @DEBUG
+			@addGui()
+			@addStats()
+			@addShapeCounter()
+
+		@$el.append @renderer.view
 
 		@draw()
 
@@ -109,14 +168,17 @@ class InteractiveBg extends AbstractView
 
 	draw : =>
 
-		@bindEvents()
+		@counter = 0
+
 		@setDims()
 
 		null
 
 	show : =>
 
-		@addShapes InteractiveBgConfig.general.MAX_SHAPE_COUNT
+		@bindEvents()
+
+		@addShapes InteractiveBgConfig.general.INITIAL_SHAPE_COUNT
 		@update()
 
 		null
@@ -127,11 +189,14 @@ class InteractiveBg extends AbstractView
 
 			pos = @_getShapeStartPos()
 
-			shape = new AbstractShape @
-			shape.s.position.x = pos.x
-			shape.s.position.y = pos.y
+			shape  = new AbstractShape @
+			sprite = shape.getSprite()
+			layer  = shape.getLayer()
 
-			@stage.addChild shape.s
+			sprite.position.x = sprite._position.x = pos.x
+			sprite.position.y = sprite._position.y = pos.y
+
+			@layers[layer].addChild sprite
 
 			@shapes.push shape
 
@@ -139,10 +204,17 @@ class InteractiveBg extends AbstractView
 
 	_getShapeStartPos : =>
 
-		x = (NumberUtils.getRandomFloat @w4, @w) + (@w4*3)
-		y = (NumberUtils.getRandomFloat 0, (@h4*3)) - @h4*3
+		x = (NumberUtils.getRandomFloat @w3, @w) + (@w3*2)
+		y = (NumberUtils.getRandomFloat 0, (@h3*2)) - @h3*2
 
 		return {x, y}
+
+	_getShapeCount : =>
+
+		count = 0
+		(count+=displayContainer.children.length) for layer, displayContainer of @layers
+
+		count
 
 	removeShape : (shape) =>
 
@@ -150,28 +222,36 @@ class InteractiveBg extends AbstractView
 		# @shapes.splice index, 1
 		@shapes[index] = null
 
-		@stage.removeChild shape.s
+		layerParent = @layers[shape.getLayer()]
+		layerParent.removeChild shape.s
 
-		if @stage.children.length < InteractiveBgConfig.general.MAX_SHAPE_COUNT then @addShapes 1
+		if @_getShapeCount() < InteractiveBgConfig.general.MAX_SHAPE_COUNT then @addShapes 1
 
 		null
 
 	update : =>
 
-		@stats.begin()
+		if window.STOP then return requestAnimFrame @update
+
+		if @DEBUG then @stats.begin()
+
+		@counter++
+
+		if (@counter % 4 is 0) and (@_getShapeCount() < InteractiveBgConfig.general.MAX_SHAPE_COUNT) then @addShapes 1
 
 		@updateShapes()
 		@render()
 
 		filtersToApply = []
-		for filter, enabled of InteractiveBgConfig.filters
-			(filtersToApply.push @filters[filter] if enabled)
+		(filtersToApply.push @filters[filter] if enabled) for filter, enabled of InteractiveBgConfig.filters
 
 		@stage.filters = if filtersToApply.length then filtersToApply else null
 
 		requestAnimFrame @update
 
-		@stats.end()
+		if @DEBUG
+			@updateShapeCounter()
+			@stats.end()
 
 		null
 
@@ -189,8 +269,18 @@ class InteractiveBg extends AbstractView
 
 	bindEvents : =>
 
+		@NC().appView.$window.on 'mousemove', @onMouseMove
+
 		@NC().appView.on @NC().appView.EVENT_UPDATE_DIMENSIONS, @setDims
 		@on @EVENT_KILL_SHAPE, @removeShape
+
+		null
+
+	onMouseMove : (e) =>
+
+		@mouse.multiplier = 1
+		@mouse.pos        = x : e.pageX, y : e.pageY
+		@mouse.enabled    = true
 
 		null
 
@@ -199,7 +289,29 @@ class InteractiveBg extends AbstractView
 		@w = @NC().appView.dims.w
 		@h = @NC().appView.dims.h
 
-		@renderer.resize @w, @h
+		@w3 = @w/3
+		@h3 = @h/3
+
+		# just use non-relative sizes for now
+		# InteractiveBgConfig.shapes.MIN_WIDTH = (InteractiveBgConfig.shapes.MIN_WIDTH_PERC/100)*@NC().appView.dims.w
+		# InteractiveBgConfig.shapes.MAX_WIDTH = (InteractiveBgConfig.shapes.MAX_WIDTH_PERC/100)*@NC().appView.dims.w
+
+		@setStreamDirection()
+
+		@renderer?.resize @w, @h
+
+		null
+
+	setStreamDirection : =>
+
+		if @w > @h
+			x = 1
+			y = @h / @w
+		else
+			y = 1
+			x = @w / @h
+
+		InteractiveBgConfig.general.DIRECTION_RATIO = {x, y}
 
 		null
 

@@ -3,8 +3,9 @@
   * REMEBER to edit this in /project/html, not in WP template directory
   */
 
-	$id   = get_the_ID();
-	$meta = nc_get_meta( $id );
+	$id             = get_the_ID();
+	$meta           = nc_get_meta( $id );
+	$preloaderShape = nc_get_preloader_shape();
 ?>
 <!DOCTYPE html>
 <html class="no-js" lang="en-gb">
@@ -45,7 +46,7 @@
 
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
 
-	<link rel="stylesheet" href="<? bloginfo('template_directory');?>/css/main-c110c63c.css">
+	<link rel="stylesheet" href="<? bloginfo('template_directory');?>/css/main-819efcc4.css">
 	<script src="<? bloginfo('template_directory');?>/js/vendor/modernizr-custom-d3e1b6d0.js"></script>
 
 </head>
@@ -54,7 +55,9 @@
 
 	<div id="main" data-template="main">
 
-		<div id="preloader" class="preloader preloader-site show">
+		<div id="interactive-background" data-template="interactive-background"></div>
+
+		<div id="preloader" class="preloader preloader-site show" data-preloader-shape="<?= $preloaderShape ?>">
 			<span class="preloader-inner"><span class="mask" data-preloader-mask="inner"></span></span>
 			<span class="preloader-outer"><span class="mask" data-preloader-mask="outer"></span></span>
 		</div>
