@@ -79,7 +79,7 @@ class AppView extends AbstractView
         @modalManager     = new ModalManager
         @scrollItemInView = new ScrollItemInView
         @lazyImageLoader  = new LazyImageLoader
-        @interactiveBg    = new InteractiveBg
+        @interactiveBg    = new InteractiveBg if @NC().HAZ_INTERACTIVE
 
         @header  = new Header
         @wrapper = new Wrapper
@@ -87,7 +87,7 @@ class AppView extends AbstractView
         @
             .addChild @header
             .addChild @wrapper
-            .addChild @interactiveBg
+            .addChild @interactiveBg if @NC().HAZ_INTERACTIVE
 
         @onAllRendered()
 
@@ -158,7 +158,7 @@ class AppView extends AbstractView
             @header.animateIn()
             @lazyImageLoader.onViewUpdated()
             @scrollItemInView.getItems()
-            @interactiveBg.show()
+            @interactiveBg?.show()
             @onScroll()
 
         return

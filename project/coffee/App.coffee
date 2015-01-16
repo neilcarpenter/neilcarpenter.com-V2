@@ -11,6 +11,7 @@ class App
     BASE_PATH       : window.config.base_path
     BASE_URL        : window.config.base_url
     BASE_URL_ASSETS : window.config.base_url_assets
+    HAZ_INTERACTIVE : !(window.location.search and window.location.search.split('?')[1] is 'clean')
     objReady        : 0
 
     _toClean   : ['objReady', 'setFlags', 'objectComplete', 'init', 'initObjects', 'initSDKs', 'initApp', 'go', 'cleanup', '_toClean']
