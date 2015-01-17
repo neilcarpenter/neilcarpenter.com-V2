@@ -19,8 +19,8 @@ require('neil-v2-config.php');
 
 		</script>
 
-		<script src="<? bloginfo('template_directory');?>/js/vendor/v.js"></script>
-		<script src="<? bloginfo('template_directory');?>/js/main.js"></script>
+		<script src="<? bloginfo('template_directory');?>/js/vendor/v-82b5e158.js"></script>
+		<script src="<? bloginfo('template_directory');?>/js/main-382d680c.js"></script>
 
 		<noscript>
 			<p>Sorry, JavaScript be needed</p>
