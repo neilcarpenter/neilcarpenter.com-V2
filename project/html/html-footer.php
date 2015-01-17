@@ -14,10 +14,7 @@ require('neil-v2-config.php');
 				GA_code         : window.location.host === 'neilcarpenter.com' ? "UA-16253496-4" : false,
 				base_path       : "<?= $base_path ?>",
 				base_url        : "<?= site_url(); ?>",
-				base_url_assets : "<? bloginfo('template_directory'); ?>",
-				dependencies : {
-					pixi : "<? bloginfo('template_directory');?>/{{ js/vendor/pixi.js }}"
-				}
+				base_url_assets : "<? bloginfo('template_directory'); ?>"
 			};
 
 		</script>
