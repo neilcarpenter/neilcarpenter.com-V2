@@ -9,6 +9,8 @@ class AbstractViewPage extends AbstractView
 	area           : null
 	sub            : null
 
+	getContentDfd  : null
+
 	pageTitle      : null
 	animatedHeader : null
 
@@ -33,6 +35,9 @@ class AbstractViewPage extends AbstractView
 
 		url =  if @sub then "#{@NC().BASE_URL}/#{@area}/#{@sub}/" else "#{@NC().BASE_URL}/#{@area}/"
 
+		# manually manage deferred here, as 404 is technically failing, we still want to show the page correctly
+		@getContentDfd = $.Deferred()
+
 		r = $.ajax
 			type : 'GET'
 			url  : url
@@ -46,7 +51,7 @@ class AbstractViewPage extends AbstractView
 		r.done @_onLoadComplete
 		r.fail @_onLoadFail
 
-		r
+		@getContentDfd
 
 	_onLoadProgress : (evt) =>
 
@@ -65,11 +70,17 @@ class AbstractViewPage extends AbstractView
 		@pageTitle = $res.filter('title').eq(0).text()
 		@$tmpl      = $res.filter('#main').find("[data-template=\"#{@template}\"]")
 
+		@getContentDfd.resolve res
+
 		null
 
-	_onLoadFail : =>
+	_onLoadFail : (res) =>
 
-		console.error "_onLoadFail : =>"
+		console.error "_onLoadFail : =>", res
+
+		if res and res.status is 404 then return @_onLoadComplete res.responseText
+
+		@getContentDfd.reject res
 
 		null
 

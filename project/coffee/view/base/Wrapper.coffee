@@ -1,11 +1,12 @@
-AbstractView    = require '../AbstractView'
-HomePageView    = require '../pages/homePage/HomePageView'
-AboutPageView   = require '../pages/aboutPage/AboutPageView'
-WorkPageView    = require '../pages/workPage/WorkPageView'
-ProjectPageView = require '../pages/projectPage/ProjectPageView'
-ContactPageView = require '../pages/contactPage/ContactPageView'
-Nav             = require '../../router/Nav'
-Scroller        = require '../../utils/Scroller'
+AbstractView       = require '../AbstractView'
+HomePageView       = require '../pages/homePage/HomePageView'
+AboutPageView      = require '../pages/aboutPage/AboutPageView'
+WorkPageView       = require '../pages/workPage/WorkPageView'
+ProjectPageView    = require '../pages/projectPage/ProjectPageView'
+ContactPageView    = require '../pages/contactPage/ContactPageView'
+FourOhFourPageView = require '../pages/fourOhFourPage/FourOhFourPageView'
+Nav                = require '../../router/Nav'
+Scroller           = require '../../utils/Scroller'
 
 class Wrapper extends AbstractView
 
@@ -26,11 +27,12 @@ class Wrapper extends AbstractView
 	constructor : ->
 
 		@views =
-			home    : classRef : HomePageView,    area : @NC().nav.sections.HOME,    sub : false
-			about   : classRef : AboutPageView,   area : @NC().nav.sections.ABOUT,   sub : false
-			work    : classRef : WorkPageView,    area : @NC().nav.sections.WORK,    sub : false
-			project : classRef : ProjectPageView, area : @NC().nav.sections.WORK,    sub : true
-			contact : classRef : ContactPageView, area : @NC().nav.sections.CONTACT, sub : false
+			home       : classRef : HomePageView,       area : @NC().nav.sections.HOME,    sub : false
+			about      : classRef : AboutPageView,      area : @NC().nav.sections.ABOUT,   sub : false
+			work       : classRef : WorkPageView,       area : @NC().nav.sections.WORK,    sub : false
+			project    : classRef : ProjectPageView,    area : @NC().nav.sections.WORK,    sub : true
+			contact    : classRef : ContactPageView,    area : @NC().nav.sections.CONTACT, sub : false
+			fourOhFour : classRef : FourOhFourPageView, area : null, sub : false
 
 		super()
 
@@ -39,9 +41,11 @@ class Wrapper extends AbstractView
 	getViewByURL : (area, sub) =>
 
 		for name, data of @views
-			return @views[name] if (area is @views[name].area) and ((@views[name].sub and sub) or (!@views[name].sub and !sub))
+			view = @views[name] if (area is @views[name].area) and ((@views[name].sub and sub) or (!@views[name].sub and !sub))
 
-		null
+		view = if view then view else @views.fourOhFour
+
+		view
 
 	init : =>
 
