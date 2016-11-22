@@ -10,7 +10,19 @@
 if ( ! defined( 'WP_ADMIN' ) )
 	require_once( dirname( __FILE__ ) . '/admin.php' );
 
-// In case admin-header.php is included in a function.
+/**
+ * In case admin-header.php is included in a function.
+ *
+ * @global string    $title
+ * @global string    $hook_suffix
+ * @global WP_Screen $current_screen
+ * @global WP_Locale $wp_locale
+ * @global string    $pagenow
+ * @global string    $wp_version
+ * @global string    $update_title
+ * @global int       $total_update_count
+ * @global string    $parent_file
+ */
 global $title, $hook_suffix, $current_screen, $wp_locale, $pagenow, $wp_version,
 	$update_title, $total_update_count, $parent_file;
 
@@ -24,7 +36,7 @@ $title = esc_html( strip_tags( $title ) );
 if ( is_network_admin() )
 	$admin_title = sprintf( __( 'Network Admin: %s' ), esc_html( get_current_site()->site_name ) );
 elseif ( is_user_admin() )
-	$admin_title = sprintf( __( 'Global Dashboard: %s' ), esc_html( get_current_site()->site_name ) );
+	$admin_title = sprintf( __( 'User Dashboard: %s' ), esc_html( get_current_site()->site_name ) );
 else
 	$admin_title = get_bloginfo( 'name' );
 
@@ -34,7 +46,7 @@ else
 	$admin_title = sprintf( __( '%1$s &lsaquo; %2$s &#8212; WordPress' ), $title, $admin_title );
 
 /**
- * Filter the title tag content for an admin page.
+ * Filters the title tag content for an admin page.
  *
  * @since 3.1.0
  *
@@ -162,7 +174,7 @@ $admin_body_class .= ' no-customize-support no-svg';
 </head>
 <?php
 /**
- * Filter the CSS classes for the body tag in the admin.
+ * Filters the CSS classes for the body tag in the admin.
  *
  * This filter differs from the {@see 'post_class'} and {@see 'body_class'} filters
  * in two important ways:
@@ -190,7 +202,6 @@ if ( current_user_can( 'customize' ) ) {
 ?>
 
 <div id="wpwrap">
-<a tabindex="1" href="#wpbody-content" class="screen-reader-shortcut"><?php _e('Skip to main content'); ?></a>
 <?php require(ABSPATH . 'wp-admin/menu-header.php'); ?>
 <div id="wpcontent">
 
@@ -203,7 +214,7 @@ if ( current_user_can( 'customize' ) ) {
 do_action( 'in_admin_header' );
 ?>
 
-<div id="wpbody">
+<div id="wpbody" role="main">
 <?php
 unset($title_class, $blog_name, $total_update_count, $update_title);
 
@@ -218,21 +229,21 @@ $current_screen->render_screen_meta();
 
 if ( is_network_admin() ) {
 	/**
-	 * Print network admin screen notices.
+	 * Prints network admin screen notices.
 	 *
 	 * @since 3.1.0
 	 */
 	do_action( 'network_admin_notices' );
 } elseif ( is_user_admin() ) {
 	/**
-	 * Print user admin screen notices.
+	 * Prints user admin screen notices.
 	 *
 	 * @since 3.1.0
 	 */
 	do_action( 'user_admin_notices' );
 } else {
 	/**
-	 * Print admin screen notices.
+	 * Prints admin screen notices.
 	 *
 	 * @since 3.1.0
 	 */
@@ -240,7 +251,7 @@ if ( is_network_admin() ) {
 }
 
 /**
- * Print generic admin screen notices.
+ * Prints generic admin screen notices.
  *
  * @since 3.1.0
  */

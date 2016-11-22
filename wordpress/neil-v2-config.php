@@ -16,7 +16,7 @@ switch ($_SERVER['SERVER_NAME']) {
 	case 'local.v2.neilcarpenter.com':
 		$db_name   = 'neil_v2_local';
 		$db_user   = 'root';
-		$db_pw     = 'root';
+		$db_pw     = 'whatwhatwhat';
 		$db_host   = 'localhost';
 		$base_path = '';
 		break;
