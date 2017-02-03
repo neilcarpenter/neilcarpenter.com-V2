@@ -49,8 +49,11 @@ then
 elif [ "$3" == "desktop" ]
 then
 	CROP="crop=2678:1707:342:328"
+elif [ "$3" == "browser-full-screen" ]
+then
+	CROP="crop=2880:1566:240:134"
 else
-	CROP="crop=3168:1723:96:328"
+	CROP="crop=2880:1566:240:328"
 fi	
 
 run $1 $2 $CROP
