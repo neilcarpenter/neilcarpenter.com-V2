@@ -2,6 +2,7 @@ AppView          = require '../AppView'
 AbstractView     = require '../view/AbstractView'
 Wrapper          = require '../view/base/Wrapper'
 WordTransitioner = require './WordTransitioner'
+VideoAutoPlayer  = require './VideoAutoPlayer'
 LazyImageLoader  = require './LazyImageLoader'
 
 class ScrollItemInView extends AbstractView
@@ -93,6 +94,7 @@ class ScrollItemInView extends AbstractView
 		$el.addClass @classNames.SHOW
 
 		WordTransitioner.in $el
+		VideoAutoPlayer.play $el
 		@NC().appView.lazyImageLoader.show $el
 
 		null

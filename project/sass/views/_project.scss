@@ -114,6 +114,7 @@
 		@include respond-to(small) {
 			width: 100%;
 			margin-right: 0;
+			margin-left: 0;
 		}
 	}
 }
@@ -475,6 +476,69 @@
 
 		.bg-image {
 			background-size: contain;
+		}
+	}
+
+	.proj-image-browser,
+	.proj-image-desktop,
+	.proj-image-desktop-mobile,
+	.proj-img-iphone {
+
+		&.has-video {
+
+			video {
+				position: absolute;
+				z-index: 10;
+			}
+		}
+	}
+
+	.proj-image-browser {
+
+		&.has-video {
+
+			video {
+				top: 9.1%;
+				left: 0;
+				width: 100%;
+			}
+		}
+	}
+
+	.proj-image-desktop {
+
+		&.has-video {
+
+			video {
+			    top: 12.1%;
+			    left: 13.7%;
+			    width: 63%;
+			}
+		}
+	}
+
+	.proj-image-desktop-mobile {
+
+		&.has-video {
+			z-index: 10;
+
+			video {
+				top: 33.5%;
+				left: 77%;
+				width: 17%;
+			}
+		}
+	}
+
+	.proj-img-iphone {
+
+		&.has-video {
+
+			video {
+			    top: 15%;
+			    left: 14%;
+			    width: 72%;
+			}
 		}
 	}
 }

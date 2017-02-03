@@ -18,6 +18,11 @@
 		width: 100%;
 	}
 
+	&.grid-item-full-with-margin {
+		width: 80%;
+		margin-left: 10%;
+	}
+
 	&.grid-item-large {
 		width: #{(3*18.4%)+(2*2%)};
 	}
