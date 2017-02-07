@@ -16,11 +16,20 @@ class Router extends Backbone.Router
 
     start : =>
 
+        @disableScrollRestoration()
+
         Backbone.history.start 
             pushState : true
             root      : @NC().BASE_PATH
 
         @bindEvents()
+
+        null
+
+    disableScrollRestoration : =>
+
+        if 'scrollRestoration' in window.history
+            window.history.scrollRestoration = 'manual'
 
         null
 
