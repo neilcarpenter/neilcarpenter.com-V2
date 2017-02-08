@@ -28,7 +28,7 @@ class Router extends Backbone.Router
 
     disableScrollRestoration : =>
 
-        if 'scrollRestoration' in window.history
+        if 'scrollRestoration' of window.history
             window.history.scrollRestoration = 'manual'
 
         null
