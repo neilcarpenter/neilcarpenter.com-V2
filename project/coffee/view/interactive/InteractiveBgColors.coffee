@@ -156,4 +156,21 @@ class InteractiveBgColors
 			'A35B00'
 		]
 
+		# http://paletton.com/#uid=13s0u0ki4SN6hZOcOWLmzNxqUFP
+		MCFC : [
+			'1E8EC3',
+			'42A7DA',
+			'67BFE9',
+			'94D4F5',
+			'CCECFD'
+		]
+
+		COPA : [
+			'E96036',
+			'EEE25A',
+			'FCBB47'
+		]
+
+		# CODEDOODLES : []
+		# DEEPMIND : []
 module.exports = InteractiveBgColors
