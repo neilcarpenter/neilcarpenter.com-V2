@@ -37,6 +37,7 @@ class AppView extends AbstractView
 
     EVENT_UPDATE_DIMENSIONS : 'EVENT_UPDATE_DIMENSIONS'
     EVENT_ON_SCROLL         : 'EVENT_ON_SCROLL'
+    EVENT_ON_SCROLL_END     : 'EVENT_ON_SCROLL_END'
 
     MOBILE_WIDTH : 700
     MOBILE       : 'mobile'
@@ -132,9 +133,10 @@ class AppView extends AbstractView
 
         @timerScroll = setTimeout =>
             @$body.removeClass('disable-hover')
+            @trigger @EVENT_ON_SCROLL_END
         , 50
 
-        @trigger AppView.EVENT_ON_SCROLL
+        @trigger @EVENT_ON_SCROLL
 
         null
 

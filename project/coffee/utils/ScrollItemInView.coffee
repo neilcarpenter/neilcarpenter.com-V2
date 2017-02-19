@@ -35,7 +35,8 @@ class ScrollItemInView extends AbstractView
 
 	bindEvents : =>
 
-		@NC().appView.on AppView.EVENT_ON_SCROLL, @onScroll
+		@NC().appView.on @NC().appView.EVENT_ON_SCROLL, @onScroll
+		@NC().appView.on @NC().appView.EVENT_ON_SCROLL_END, @onScrollEnd
 		@NC().appView.on @NC().appView.EVENT_UPDATE_DIMENSIONS, @onDimsUpdated
 		@NC().appView.wrapper.on Wrapper.VIEW_UPDATED, @onViewUpdated
 
@@ -64,7 +65,7 @@ class ScrollItemInView extends AbstractView
 
 	onScroll : =>
 
-		return unless @items.length
+		return unless @items.length or @videoItems.length
 
 		threshold   = @NC().appView.lastScrollY + (@NC().appView.dims.h * @defaults.showThreshold)
 		itemsToShow = []
@@ -85,6 +86,13 @@ class ScrollItemInView extends AbstractView
 
 		if videoItemsToPlay.length then @playVideos videoItemsToPlay
 		if videoItemsToPause.length then @pauseVideos videoItemsToPause
+
+		null
+
+	onScrollEnd : =>
+
+		@updateItems()
+		@onScroll()
 
 		null
 
@@ -111,6 +119,17 @@ class ScrollItemInView extends AbstractView
 						playing : false
 
 					@videoItems = _.sortBy @videoItems, (item) -> return item.offset
+
+		null
+
+	updateItems : =>
+
+		for item in @items
+			item.offset = item.$el.offset().top
+
+		for videoItem in @videoItems
+			videoItem.offset = videoItem.$el.offset().top
+			videoItem.height = videoItem.$el.outerHeight()
 
 		null
 
