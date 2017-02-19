@@ -171,6 +171,14 @@ class InteractiveBgColors
 			'FCBB47'
 		]
 
-		# CODEDOODLES : []
-		# DEEPMIND : []
+		CODEDOODLES : [
+			'EB3F3B',
+			'3357A8'
+		]
+
+		DEEPMIND : [
+			'3B90DF',
+			'4F55B2',
+			'379FEC'
+		]
 module.exports = InteractiveBgColors
