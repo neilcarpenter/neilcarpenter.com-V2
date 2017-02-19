@@ -35,8 +35,8 @@ class ProjectPageView extends AbstractViewPage
 
 	setListeners : (setting) =>
 
-		@NC().appView[setting] AppView.EVENT_UPDATE_DIMENSIONS, @onResize
-		@NC().appView[setting] AppView.EVENT_ON_SCROLL, @onScroll
+		@NC().appView[setting] @NC().appView.EVENT_UPDATE_DIMENSIONS, @onResize
+		@NC().appView[setting] @NC().appView.EVENT_ON_SCROLL, @onScroll
 
 		@$el.find('[data-scroll-to-content]')[setting] 'click', @scrollToContent
 
