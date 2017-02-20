@@ -79,9 +79,9 @@ class acf_field_functions
 		}
 		elseif( strpos($post_id, 'user_') !== false )
 		{
-			$post_id = str_replace('user_', '', $post_id);
+			$user_id = str_replace('user_', '', $post_id);
 			
-			$v = get_user_meta( $post_id, $field['name'], false );
+			$v = get_user_meta( $user_id, $field['name'], false );
 			
 			// value is an array
 			if( isset($v[0]) )
@@ -522,7 +522,7 @@ class acf_field_functions
 	function delete_field( $post_id, $field_key )
 	{
 		// clear cache
-		wp_cache_delete( 'load_field/key=' . $field['key'], 'acf' );
+		wp_cache_delete( 'load_field/key=' . $field_key, 'acf' );
 		
 		
 		// delete
