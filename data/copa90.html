@@ -35,7 +35,7 @@ I - article view - fff - browser
  -->
 
 <div class="proj-intro" data-palette="COPA">
-	<p data-scroll-item>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos ab nam, qui saepe quia, reprehenderit ducimus. Distinctio quo amet eaque voluptatibus. Ducimus numquam, repellat aliquam delectus eum, vero voluptates quasi.</p>
+	<p data-scroll-item>A video first, feed driven platform for the home of global football fan culture, showcasing the voice of football fans around the world.</p>
 	<p data-scroll-item><a href="https://copa90.com/" target="_blank">Visit site</a></p>
 </div>
 
@@ -66,8 +66,8 @@ I - article view - fff - browser
 
 <div class="row cf">
 	<div class="grid-item grid-item-small">
-		<p data-scroll-item>[C&T role]</p>
-		<p data-scroll-item>[High-level creative / UX approach]</p>
+		<p data-scroll-item>Code and Theory took on the task of completely overhauling Copa90's online presence - extending the company's offering from beyond their YouTube channel beginnings, to a video driven fully fledged editorial platform, with deep rich and social media integrations, and content personalisation.</p>
+		<p data-scroll-item>The core idea revolves around a feed based consumption model, which allows users to easily immerse themselves in endless taxonomy driven content streams.</p>
 	</div>
 	<div class="grid-item grid-item-large">
 		<div class="proj-img-wrap proj-img_1">
@@ -115,8 +115,9 @@ I - article view - fff - browser
 		</div>
 	</div>
 	<div class="grid-item grid-item-small">
-		<p data-scroll-item>[Tech explainer]</p>
-		<p data-scroll-item>[My role]</p>
+		<p data-scroll-item>The site is a hybrid server / client app - critical content and markup is rendered on the server, and then is progressively enhanced in to a fully single page application on the clientside. The frontend is a Backbone / Marionette app, which uses a combination of view markup scraping over AJAX and a RESTful API to render the site post the initial page load. The backend / CMS is WordPress, making heavy use of WP-REST for communication with the frontend.</p>
+		<p data-scroll-item>The site is hosted on AWS - using Elastic Load Balancer to distribute traffic to an autoscaling group spread across multiple availability zones. Varnish is used for HTTP caching and memcache is used as an in-application memory cache. The database is MySQL RDS, and static assets are hosted on S3 and served through Cloudfront. The CMS also uses Lambda for deferred image asset manipulation and optimisation, communicating with the CMS via webhooks.</p>
+		<p data-scroll-item>My role as technical director was to design overall technical architecture, including frontend app, CMS and FE / BE integration points, as well as the infrastructure architecture. I was also responsible for managing the day-to-day development tasks of the geographically distributed development team. In addition to this I took on some of the intricate frontend development tasks, such as the intelligent feed injection logic detailed below.</p>
 	</div>
 </div>
 
@@ -147,8 +148,9 @@ I - article view - fff - browser
 
 <div class="row cf">
 	<div class="grid-item grid-item-small">
-		<p data-scroll-item>[Tech explainer - feeds]</p>
-		<p data-scroll-item>[Tech explainer - integrations]</p>
+		<p data-scroll-item>A key feature of the site is it's feed driven nature. In order to achieve the infinite scrolling, taxonomy based experience, we designed a comprehensive REST API to allow any combination of taxonomy queries to be rendered as content feeds on the client. As the site was built as a single page application, we could upgrade the feed management logic on the client to track a user's exposure to certain content items, and intelligently inject promoted or related content, using parameters which were entirely configurable in the CMS.</p>
+		<p data-scroll-item>The site utilises multiple social media integrations in order to allow editors to seamlessly ingest content from Twitter, Instagram or Facebook, assign taxonomies as they would do to owned content, and redistribute around the site as part of the taxonomy driven feeds.</p>
+		<p data-scroll-item>We also created a custom Vidible video player integration to enable Copa90 to use their video platform of choice, and move away from their dependence on YouTube.
 	</div>
 	<div class="grid-item grid-item-large">
 		<div class="proj-img-wrap proj-img_3">
@@ -184,7 +186,8 @@ I - article view - fff - browser
 		</div>
 	</div>
 	<div class="grid-item grid-item-small">
-		<p data-scroll-item>[Tech explainer - personalisation / user accounts]</p>
+		<p data-scroll-item>The site allows user to create an account (via Twitter, Facebook, Instagram, Google+ or email) in order to save articles, subscribe to topics and receive content recommendations.</p>
+		<p data-scroll-item>We built a sophisticated account management interface which allows users to select and prioritise their favourite teams, leagues and countries. We then used this information to serve content recommendations both in the user account section of the site, as well as interspersed through the feed content across the site using the feed injection logic outlined above.</p>
 	</div>
 </div>
 
