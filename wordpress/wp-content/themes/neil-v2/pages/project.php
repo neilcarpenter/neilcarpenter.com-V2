@@ -50,6 +50,64 @@
 
 				<? the_field('project_content') ?>
 
+				<? /* <div class="proj-intro" data-palette="AXE">
+					<p data-scroll-item>How hard are you trying on social media? Too hard? Not hard enough? Or are you one of the few effortlessly cool? The social effort scale will analyse your activity on Facebook, Twitter and Instagram and make that judgement for you.</p>
+					<p data-scroll-item><a href="http://socialeffortscale.com/" target="_blank">Visit site</a> or <a href="https://www.youtube.com/watch?v=N1gFp0dwNK8" target="_blank">watch a video run through</a></p>
+				</div> 
+
+				<div class="row cf">
+					<div class="grid-item grid-item-full-with-margin" data-post-intro>
+						<div class="proj-img-wrap proj-img_1">
+							<span class="proj-img bg-image-wrapper proj-image-browser has-video" data-scroll-item data-lazyimage="{{ BASE_URL }}/wp-content/themes/neil-v2/static/img/video-bg-browser.png">
+								<span class="bg-image"></span>
+								<video src="wp-content/themes/neil-v2/static/img/projects/mcfc/video/browser-video-player-2.mp4" muted loop></video>
+								<div class="preloader preloader-image" data-preloader-shape="circle">
+									<span class="preloader-inner"><span class="mask" data-preloader-mask="inner"></span></span>
+									<span class="preloader-outer"><span class="mask" data-preloader-mask="outer"></span></span>
+								</div>
+							</span>
+						</div>
+					</div>
+				</div>
+
+				<div class="row cf">
+					<div class="grid-item grid-item-full" data-post-intro>
+						<div class="proj-img-wrap proj-img_1">
+							<span class="proj-img bg-image-wrapper proj-image-desktop has-video" data-scroll-item data-lazyimage="{{ BASE_URL }}/wp-content/themes/neil-v2/static/img/video-bg-desktop.png">
+								<span class="bg-image"></span>
+								<video src="/wp-content/themes/neil-v2/static/img/projects/mcfc/video/home-matchphase-desktop.mp4" muted loop></video>
+							</span>
+							<span class="proj-img bg-image-wrapper proj-image-desktop-mobile no-bg-colour has-video" data-scroll-item data-lazyimage="{{ BASE_URL }}/wp-content/themes/neil-v2/static/img/video-bg-desktop-mobile.png">
+								<span class="bg-image"></span>
+								<video src="/wp-content/themes/neil-v2/static/img/projects/mcfc/video/home-matchphase-mobile.mp4" muted loop></video>
+								<div class="preloader preloader-image" data-preloader-shape="circle">
+									<span class="preloader-inner"><span class="mask" data-preloader-mask="inner"></span></span>
+									<span class="preloader-outer"><span class="mask" data-preloader-mask="outer"></span></span>
+								</div>
+							</span>
+						</div>
+					</div>
+				</div>
+
+				<div class="row cf">
+					<div class="grid-item grid-item-full-with-margin" data-post-intro>
+						<div class="proj-img-wrap proj-img_3">
+							<span class="proj-img proj-img-iphone bg-image-wrapper has-video" data-scroll-item data-lazyimage="{{ BASE_URL }}/wp-content/themes/neil-v2/static/img/video-bg-mobile.png">
+								<span class="bg-image"></span>
+								<video src="<? bloginfo('template_directory');?>/static/img/projects/mcfc/mobile-menu-toggle.mp4" muted loop></video>
+							</span>
+							<span class="proj-img proj-img-iphone bg-image-wrapper has-video" data-scroll-item data-lazyimage="{{ BASE_URL }}/wp-content/themes/neil-v2/static/img/video-bg-mobile.png">
+								<span class="bg-image"></span>
+								<video src="<? bloginfo('template_directory');?>/static/img/projects/mcfc/mobile-city-feed.mp4" muted loop></video>
+							</span>
+							<span class="proj-img proj-img-iphone bg-image-wrapper has-video" data-scroll-item data-lazyimage="{{ BASE_URL }}/wp-content/themes/neil-v2/static/img/video-bg-mobile.png">
+								<span class="bg-image"></span>
+								<video src="<? bloginfo('template_directory');?>/static/img/projects/mcfc/mobile-show-gallery.mp4" muted loop></video>
+							</span>
+						</div>
+					</div>
+				</div> */ ?>
+
 				<? /* here just for reference
 
 				<div class="proj-intro">
