@@ -27,7 +27,7 @@ gulp.task('sass', ['_resetCSS', 'images'], function () {
 		.on('error', handleErrors)
 		.pipe(prefix("ie >= 8", "ff >= 3", "safari >= 4", "opera >= 12", "chrome >= 4"))
 		.pipe(global.isWatching ? gutil.noop() : cmq())
-		.pipe(global.isWatching ? gutil.noop() : minifyCSS())
+		// .pipe(global.isWatching ? gutil.noop() : minifyCSS())
 		.pipe(gzip({append: false}))
 		// issue here using pkg.folders.dest+'/css' - just hardcode
 		.pipe(gulp.dest('resonate-2015/css'));
