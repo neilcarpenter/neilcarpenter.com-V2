@@ -1,3 +1,5 @@
+<!-- 
+
 > full <
 V - intro loading to home - browser
 
@@ -26,9 +28,11 @@ I - hydrostats (about) - browser
 > full <
 V - mobile * 3 - 
 
+ -->
+
 <div class="proj-intro" data-palette="CODEDOODLES">
-	<p data-scroll-item>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos ab nam, qui saepe quia, reprehenderit ducimus. Distinctio quo amet eaque voluptatibus. Ducimus numquam, repellat aliquam delectus eum, vero voluptates quasi.</p>
-	<p data-scroll-item><a href="https://codedoodl.es/" target="_blank">Visit site</a></p>
+	<p data-scroll-item>codedoodl.es is a platform for showcasing small creative coding experiments which demonstrate how visual programming, playful and engaging interactivity, and generative algorithms can be explored through a web browser.</p>
+	<p data-scroll-item><a href="http://codedoodl.es/" target="_blank">Visit site</a></p>
 </div>
 
 <div class="row cf">
@@ -51,7 +55,9 @@ V - mobile * 3 -
 
 <div class="row cf">
 	<div class="grid-item grid-item-small">
-		<p data-scroll-item>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis rerum ipsum nostrum consectetur blanditiis nemo esse sunt officia porro veritatis nisi cumque nam minus beatae, facere aut. Nesciunt consectetur, impedit fugiat optio illo earum. Enim natus placeat inventore minus eum a perferendis illo, molestiae optio doloribus repellendus error dolore quo.</p>
+		<p data-scroll-item>Inspired by “new-tab” browser extensions such as <a href="https://chrome.google.com/webstore/detail/earth-view-from-google-ea/bhloflhklmhfpedakmangadcdofhnnoh?hl=en" target="_blank">Earth View from Google Earth</a> and <a href="https://chrome.google.com/webstore/detail/momentum/laookkfknpbbblfpciffpaejjkokdgca?hl=en" target="_blank">Momentum</a>, the original concept was to display a new code sketch every time a new tab was opened. This idea grew to include a standalone site to showcase small, creative coding experiments.</p>
+		<p data-scroll-item>You can find out more on <a href="https://medium.com/@neilcarpenter/introducing-codedoodl-es-598039758df8" target="_blank">this Medium post introducing the site</a>.</p>
+		<p data-scroll-item>In the days following the launch, codedoodl.es received an overwhelming response online - being featured on publications, news sites and blogs including Creative Applications Network, Fast.Co Design, The Next Web, It’s Nice That, Visuelle, Codrops and Siteinspire, as well as garnering hundreds of responses on social media and making the front page of reddit. All in all, the site received around 1.2 million page views in the first week.</p>
 	</div>
 	<div class="grid-item grid-item-large">
 		<div class="proj-img-wrap proj-img_1">
@@ -76,7 +82,7 @@ V - mobile * 3 -
 					src="/wp-content/themes/neil-v2/static/img/projects/codedoodles/video/box-physics.browser.mp4" muted loop
 					poster="/wp-content/themes/neil-v2/static/img/projects/codedoodles/video/box-physics.browser-poster.jpg">
 				</video>
-				<div class="preloader preloader-image" data-preloader-shape="circle">
+				<div class="preloader preloader-image" data-preloader-shape="triangle">
 					<span class="preloader-inner"><span class="mask" data-preloader-mask="inner"></span></span>
 					<span class="preloader-outer"><span class="mask" data-preloader-mask="outer"></span></span>
 				</div>
@@ -105,7 +111,10 @@ V - mobile * 3 -
 		</div>
 	</div>
 	<div class="grid-item grid-item-small">
-		<p data-scroll-item>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis rerum ipsum nostrum consectetur blanditiis nemo esse sunt officia porro veritatis nisi cumque nam minus beatae, facere aut. Nesciunt consectetur, impedit fugiat optio illo earum. Enim natus placeat inventore minus eum a perferendis illo, molestiae optio doloribus repellendus error dolore quo.</p>
+		<p data-scroll-item>I devised the original concept, which was then fully designed and developed with help from <a href="http://fluuu.id/" target="_blank">FLUUUID</a> (and friends).</p>
+		<p data-scroll-item>The project is community based - authors can submit doodles via a pull request, or by completing a form, and doodles that meet the necessary technical and creative criteria will be added to the site.</p>
+		<p data-scroll-item>Huge thanks goes to the talented authors who have submitted their work to be featured so far - a full list of which can be <a href="http://codedoodl.es/contribute/" target="_blank">seen on the site here</a>.</p>
+		<p data-scroll-item>Thanks also to <a href="http://nexusstudios.com/interactive-arts" target="_blank">Nexus Interactive Arts</a> for sponsoring the project.</p>
 	</div>
 </div>
 
@@ -118,7 +127,7 @@ V - mobile * 3 -
 					src="/wp-content/themes/neil-v2/static/img/projects/codedoodles/video/ascii-trail.browser.mp4" muted loop
 					poster="/wp-content/themes/neil-v2/static/img/projects/codedoodles/video/ascii-trail.browser-poster.jpg">
 				</video>
-				<div class="preloader preloader-image" data-preloader-shape="circle">
+				<div class="preloader preloader-image" data-preloader-shape="square">
 					<span class="preloader-inner"><span class="mask" data-preloader-mask="inner"></span></span>
 					<span class="preloader-outer"><span class="mask" data-preloader-mask="outer"></span></span>
 				</div>
@@ -129,7 +138,10 @@ V - mobile * 3 -
 
 <div class="row cf">
 	<div class="grid-item grid-item-small">
-		<p data-scroll-item>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis rerum ipsum nostrum consectetur blanditiis nemo esse sunt officia porro veritatis nisi cumque nam minus beatae, facere aut. Nesciunt consectetur, impedit fugiat optio illo earum. Enim natus placeat inventore minus eum a perferendis illo, molestiae optio doloribus repellendus error dolore quo.</p>
+		<p data-scroll-item>The site is a small Node.js (Express) app running on AWS elastic beanstalk with S3 / Cloudfront for static asset hosting and distribution. The frontend is a single-page app built on Backbone (more specifically, <a href="https://github.com/unit9/coffee-bone" target="_blank">coffee-bone</a>).</p>
+		<p data-scroll-item>The app has been optimised to reduce hosting overhead, so the entire experience is comprised one request to the express app for initial markup, and one API request to the app for the doodle data, the rest of the site content is served directly via S3 / Cloudfront, meaning the site was able to scale to the front page of reddit on a single T2 micro instance.</p>
+		<p data-scroll-item>The chrome extension is a modified version of the frontend app, using the node app API to receive the latest doodles.</p>
+		<p data-scroll-item>The site and extension are completely open source and can be viewed on GitHub <a href="https://github.com/fluuuid/codedoodl.es" target="_blank">here</a> and <a href="https://github.com/fluuuid/codedoodl.es-chrome-extension" target="_blank">here</a> respectively.</p>
 	</div>
 	<div class="grid-item grid-item-large">
 		<div class="proj-img-wrap proj-img_3">
@@ -160,7 +172,7 @@ V - mobile * 3 -
 					src="/wp-content/themes/neil-v2/static/img/projects/codedoodles/video/collapsar.browser.mp4" muted loop
 					poster="/wp-content/themes/neil-v2/static/img/projects/codedoodles/video/collapsar.browser-poster.jpg">
 				</video>
-				<div class="preloader preloader-image" data-preloader-shape="circle">
+				<div class="preloader preloader-image" data-preloader-shape="square">
 					<span class="preloader-inner"><span class="mask" data-preloader-mask="inner"></span></span>
 					<span class="preloader-outer"><span class="mask" data-preloader-mask="outer"></span></span>
 				</div>
@@ -173,47 +185,18 @@ V - mobile * 3 -
 		</div>
 	</div>
 	<div class="grid-item grid-item-small" data-scroll-item>
-		<h3 class="credit-title">Credits</h3>
+		<h3 class="credit-title">Press</h3>
 		<ul class="credit-list">
-			<li class="label">Client</li>
-			<li>Adidas Brasil</li>
-			<li class="label">Agency</li>
-			<li>Google Zoo</li>
-			<li class="label">Production Company</li>
-			<li>UNIT9</li>
-			<li class="label">Director</li>
-			<li>Takayoshi Kishimoto</li>
-			<li class="label">Executive producer</li>
-			<li>Marc D'Souza</li>
-			<li class="label">Technical director</li>
-			<li>Yates Buckley</li>
-			<li class="label">Project managers</li>
-			<li>Cyriele Piancastelli</li>
-			<li>Frederic Mouniguet </li>
-			<li class="label">UX</li>
-			<li>Quentin Gauvrit</li>
-			<li class="label">Designers</li>
-			<li>Karol Góreczny</li>
-			<li>Steven Mengin</li>
-			<li class="label">Technical lead</li>
-			<li>Silvio Paganini</li>
-			<li class="label">Lead frontend developer</li>
-			<li>Neil Carpenter</li>
-			<li class="label">Frontend developers</li>
-			<li>William Mapan</li>
-			<li>Michal Kleszcz</li>
-			<li>Damien Mortini</li>
-			<li>Sam Brown</li>
-			<li>Edgard Zavarezzi</li>
-			<li>Andy Kenward</li>
-			<li class="label">Backend developers</li>
-			<li>Krzysztof Kokoszka</li>
-			<li>Krzysztof Skoracki</li>
-			<li>Darko Stankovski</li>
-			<li>Adrian Lolo</li>
-			<li class="label">QA</li>
-			<li>Peter Law</li>
-			<li>zoonou</li>
+			<li class="label">“Hypnotizing Doodles Show The Beautiful Side Of Coding”</li>
+			<li><a href="https://www.fastcodesign.com/3049500/hypnotizing-doodles-show-the-beautiful-side-of-coding" target="_blank">Fast.co Design</a></li>
+			<li class="label">“codedoodl.es is the online platform pushing coding and digital art closer together”</li>
+			<li><a href="http://www.itsnicethat.com/articles/code-doodles" target="_blank">It’s Nice That</a></li>
+			<li class="label">“This Chrome extension shows you amazing code demos on every new tab”</li>
+			<li><a href="https://thenextweb.com/apps/2015/08/05/this-chrome-extension-shows-you-amazing-code-demos-on-every-new-tab/#.tnw_NWh6gq2M" target="_blank">The Next Web</a></li>
+			<li class="label">“New platform for showcasing experiments built with web technologies”</li>
+			<li><a href="http://www.creativeapplications.net/news/codedoodles-new-platform-for-showcasing-experiments-built-with-web-technologies/" target="_blank">CreativeApplications.Net</a></li>
+			<li class="label">“Interactive web doodles will mesmerize you”</li>
+			<li><a href="http://www.creativebloq.com/web-design/interactive-web-doodles-will-mesmerize-you-81516323" target="_blank">CreativeBloq</a></li>
 		</ul>
 	</div>
 </div>

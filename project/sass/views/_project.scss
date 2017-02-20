@@ -142,6 +142,17 @@
 			margin-top: 0;
 		}
 	}
+
+	a {
+		border-bottom: 2px solid #fff;
+
+		.no-touch & {
+
+			&:hover {
+				color: rgba(255, 255, 255, 0.6);
+			}
+		}
+	}
 }
 
 .proj-hero {
