@@ -43,7 +43,7 @@ class ProjectPageView extends AbstractViewPage
 		if setting is 'on'
 			@onResize force : true
 			@showTitle()
-			@checkVideos()
+			# @checkVideos()
 
 		null
 

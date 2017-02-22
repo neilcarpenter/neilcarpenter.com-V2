@@ -35,6 +35,11 @@
 					}
 				}
 			}
+
+			&:active {
+				opacity: 0.7;
+				transition: none;
+			}
 		}
 
 		@include respond-to(smallest) {
