@@ -43,7 +43,7 @@ $breakpoints: (
   smallest      'all and ( max-width: 500px )',
   small         'all and ( max-width: 700px )',
   ipad          'screen and (min-device-width : 768px) and (max-device-width : 1024px)',
-  medium        'all and (max-width: 900px) and (min-width: 701px)',
+  medium        'all and (max-width: 1023px) and (min-width: 701px)',
   large         'all and ( min-width: 1024px ) and ( max-width: 1366px )',
   extra-large   'all and ( min-width: 1367px )',
 );

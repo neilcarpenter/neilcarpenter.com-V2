@@ -43,6 +43,7 @@ class ProjectPageView extends AbstractViewPage
 		if setting is 'on'
 			@onResize force : true
 			@showTitle()
+			@checkVideos()
 
 		null
 
@@ -106,6 +107,15 @@ class ProjectPageView extends AbstractViewPage
 	showTitle : =>
 
 		WordTransitioner.in @$heading
+
+		null
+
+	checkVideos : =>
+
+		if @device is 'MOBILE'
+			this.$el
+				.find('video')
+				.attr('controls', true)
 
 		null
 

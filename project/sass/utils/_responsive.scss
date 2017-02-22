@@ -97,7 +97,7 @@
     {
         @media #{mapGet($breakpoints, $point, 2)}
         {
-            content: '#{mapGet($breakpoints, $point, 1)}';
+            font-family: "#{mapGet($breakpoints, $point, 1)} breakpoint";
         }
     }
     @else
@@ -116,12 +116,12 @@
  *
  */
 
-body:after
-{
-    display: none;
+.js-mediaqueries {
+  display: none;
+  font-family: "smallest breakpoint";
 
-    @each $b in $breakpoints
-    {
-        @include update-state(nth($b, 1));
-    }
+  @each $b in $breakpoints {
+    // @media #{get-min-media-query(nth(
+    @include update-state(nth($b, 1));
+  }
 }
